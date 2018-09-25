@@ -1,21 +1,64 @@
-//index.js
-//获取应用实例
+import { login, updateUserInfoFromServer } from '../../utils/index'
+
 const app = getApp()
 
 Page({
   data: {
+    uid: '',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+
+  onLoad:function(){
+
+    console.log('onLoad')
+
+    if (app.globalData && app.globalData.userInfo && app.globalData.userInfo.uid) {
+      this._onLoad()
+      updateUserInfoFromServer()
+        .then(data => {
+          app.globalData.userInfo = data
+          this.setData({
+            //TODO
+          })
+        })
+    } else {
+      login()
+        .then(() => {
+          this._onLoad()
+        })
+    }
+  },
+
+  _onLoad() {
+
+    console.log('_onLoad')
+
+    var that = this;
+    this.setData({
+      //TODO
+    })
+
+    //TODO
+
+  },
+
+  onShow() {
+    console.log('onShow')
+
+    if (app.globalData.userInfo) {
+      this.setData({
+        //TODO
+      })
+    }
+  },
+
   //事件处理函数
-  createClass: function() {
+  gotoCreateClass: function() {
     wx.navigateTo({
       url: '../class/create/index'
     })
-  },
-  onLoad: function () {
-
   }
 
 })

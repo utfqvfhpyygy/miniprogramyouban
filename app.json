@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/class/create/index",
     "pages/index/index",
+    "pages/class/create/index",
     "pages/class/index/index",
     "pages/class/grade/index",
     "pages/logs/logs"
@@ -12,5 +12,10 @@
     "navigationBarTextStyle": "black",
     "backgroundTextStyle": "dark",
     "backgroundColor": "#f8f8f8"
-  }
+  },
+  "networkTimeout": {
+    "request": 100000,
+    "downloadFile": 10000
+  },
+  "debug": true
 }
