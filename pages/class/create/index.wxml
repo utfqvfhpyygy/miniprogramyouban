@@ -8,16 +8,13 @@
 
     <cell-block title="选择年级">
      
-        <van-button bind:click="toggleGradeSheet">{{}}</van-button>
+        
         <van-cell title="年级" >
-              <van-action-sheet
-                show="{{ showSelGrade }}"
-                actions="{{actions}}"
-                cancel-text="取消"
-                bind:close="toggleGradeSheet"
-                bind:cancel="toggleGradeSheet"
-                bind:select="toggleGradeSheet"
-              />
+          <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+              <picker-view-column>
+                <view wx:for="{{gradeList}}" style="line-height: 50px">{{item.name}}</view>
+              </picker-view-column>
+        </picker-view>
 
         </van-cell>
       

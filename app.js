@@ -30,8 +30,7 @@ App({
     origin: 'http://39.104.82.18/index.php?r=miniprogram/', 
     platform: '2',
     userInfo: null, // 当前登录的用户信息
-    wxUserInfo: null, // 当前微信用户信息（需要授权获取）
-    gradeLists:'[{"id":"1","name":"\u5c0f\u5b66\u4e00\u5e74\u7ea7"},{"id":"2","name":"\u5c0f\u5b66\u4e8c\u5e74\u7ea7"},{"id":"3","name":"\u5c0f\u5b66\u4e09\u5e74\u7ea7"},{"id":"4","name":"\u5c0f\u5b66\u56db\u5e74\u7ea7"},{"id":"5","name":"\u5c0f\u5b66\u4e94\u5e74\u7ea7"},{"id":"6","name":"\u5c0f\u5b66\u516d\u5e74\u7ea7"},{"id":"7","name":"\u5e7c\u513f\u56ed\u5c0f\u73ed"},{"id":"8","name":"\u5e7c\u513f\u56ed\u4e2d\u73ed"},{"id":"9","name":"\u5e7c\u513f\u56ed\u5927\u73ed"}]'
+    wxUserInfo: null // 当前微信用户信息（需要授权获取）
   },
 
   /**
