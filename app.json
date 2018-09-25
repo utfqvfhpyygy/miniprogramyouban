@@ -1,0 +1,16 @@
+{
+  "pages":[
+    "pages/class/create/index",
+    "pages/index/index",
+    "pages/class/index/index",
+    "pages/class/grade/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "Vant Weapp",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f8f8f8"
+  }
+}

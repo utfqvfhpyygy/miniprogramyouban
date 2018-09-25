@@ -1,0 +1,4 @@
+<view class="custom-class cell-block {{ padding ? 'cell-block--padding' : '' }}">
+  <view wx:if="{{ title }}" class="cell-block__title">{{ title }}</view>
+  <slot />
+</view>
