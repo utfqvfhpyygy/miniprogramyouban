@@ -6,10 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showSelGrade:false,
     buttonType: ['default', 'default', 'default', 'default', 'default', 'default', 'default', 'default', 'default'],
     buttonName: ['幼小班', '幼中班', '幼大班', '一年级', '二年级', '三年级', '四年级', '五年级', '六年级'],
     buttonId:[-3,-2,-1,1,2,3,4,5,6],
+    showmore:6,
+    moreButton:false,
   },
 
   /**
@@ -46,29 +47,6 @@ Page({
   
   },
 
-
-  toggleGradeSheet() {
-    this.setData({
-       showSelGrade : !this.showSelGrade
-    });
-  },
-
-  cancel() {
-    this.setData({
-      showSelGrade: false
-    });
-  },
-
-  confirmGrade(e){
-    console.log('confirmGrade')
-    console.log(e)
-  },
-
-  changeGrade(e){
-    console.log('changeGrade')
-    console.log(e)
-  },
-
   chooseGrade(e){
     
     for (var i = 0; i < this.data.buttonId.length;i++){
@@ -84,6 +62,14 @@ Page({
       }
     }
     console.log(this.data.buttonType)
+  },
+
+  showMore(e){
+    this.setData({
+      "showmore":"9",
+      "moreButton":true,
+    })
+
   },
 
   /**

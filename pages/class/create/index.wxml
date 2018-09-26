@@ -1,14 +1,18 @@
 <view class='class-create-container'>
 
     <cell-block title="选择年级">
-
       <van-row gutter="20" custom-class="rows">
       <block wx:for="{{buttonType}}" wx:for-index="idx" wx:key="buttonId">
-        <van-col span="8" custom-class="gradeButton"><van-button type="{{buttonType[idx]}}" size="normal" bindtap='chooseGrade' id="{{buttonId[idx]}}">{{buttonName[idx]}}</van-button>
+        <block wx:if="{{ idx<showmore}}">
+        <van-col span="8" custom-class="gradeButton">
+        <van-button type="{{buttonType[idx]}}" size="normal" bindtap='chooseGrade' id="{{buttonId[idx]}}">{{buttonName[idx]}}</van-button>
         </van-col>
+        </block>
       </block>
       </van-row>
     </cell-block>
+
+    <view class="more" bindtap='showMore' hidden="{{moreButton}}">查看更多>></view>
 
     <cell-block title="填写班级名称"> 
       <van-field
@@ -26,25 +30,5 @@
       <van-button bindtap='createClass' type="primary">创建班级</van-button>
       </van-col>
     </van-row>
-
-    
-    <view bindtap="cancel" class="mask" hidden="{{!showSelGrade}}">
-    </view>
-
-    <view class="picker-view" animation="{{animationAddressMenu}}" style="visibility:{{showSelGrade ? 'visible':'hidden'}}">
-      <view style="height:10% ;width:95%;margin-top:20rpx">
-        <text catchtap="cancel">取消</text>
-        <text style="float: right" catchtap="confirmGrade">确定</text>
-      </view>
-      <picker-view style="width: 100%; height: 180px;" bindchange="changeGrade" value="{{value}}" wx:key="">
-        <picker-view-column>
-          <view wx:for="{{gradeList}}" wx:key="{{item.id}}" class="picker-item">
-            {{item.name}}
-          </view>
-        </picker-view-column>
-      </picker-view>
-    </view>
-
-
 </view>
 
