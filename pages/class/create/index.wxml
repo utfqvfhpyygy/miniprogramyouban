@@ -1,26 +1,12 @@
 <view class='class-create-container'>
 
     <cell-block title="选择年级">
+
       <van-row gutter="20" custom-class="rows">
-        <van-col span="8" custom-class="gradeButton">
-          <van-button type="default" size="normal" bindtap='chooseGrade'>幼小班</van-button>
+      <block wx:for="{{buttonType}}" wx:for-index="idx" wx:key="buttonId">
+        <van-col span="8" custom-class="gradeButton"><van-button type="{{buttonType[idx]}}" size="normal" bindtap='chooseGrade' id="{{buttonId[idx]}}">{{buttonName[idx]}}</van-button>
         </van-col>
-        <van-col span="8" custom-class="gradeButton"><van-button type="warning" size="normal">幼中班</van-button></van-col>
-        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">幼大班</van-button></van-col>
-      </van-row>
-      <van-row gutter="20" custom-class="rows">
-        <van-col span="8" custom-class="gradeButton">
-          <van-button type="default" size="normal">一年级</van-button>
-        </van-col>
-        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">二年级</van-button></van-col>
-        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">三年级</van-button></van-col>
-      </van-row>      
-      <van-row gutter="20" custom-class="rows">
-        <van-col span="8" custom-class="gradeButton">
-          <van-button type="default" size="normal">四年级</van-button>
-        </van-col>
-        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">五年级</van-button></van-col>
-        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">六年级</van-button></van-col>
+      </block>
       </van-row>
     </cell-block>
 
