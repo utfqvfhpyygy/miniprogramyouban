@@ -1,48 +1,45 @@
 <view class='class-create-container'>
 
-    <cell-block title="选择学校">
-      <van-cell-group>
-        <van-cell title="单元格" value="内容" />
-      </van-cell-group>
+    <cell-block title="选择年级">
+      <van-row gutter="20" custom-class="rows">
+        <van-col span="8" custom-class="gradeButton">
+          <van-button type="default" size="normal">幼小班</van-button>
+        </van-col>
+        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">幼中班</van-button></van-col>
+        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">幼大班</van-button></van-col>
+      </van-row>
+      <van-row gutter="20" custom-class="rows">
+        <van-col span="8" custom-class="gradeButton">
+          <van-button type="default" size="normal">一年级</van-button>
+        </van-col>
+        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">二年级</van-button></van-col>
+        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">三年级</van-button></van-col>
+      </van-row>      
+      <van-row gutter="20" custom-class="rows">
+        <van-col span="8" custom-class="gradeButton">
+          <van-button type="default" size="normal">四年级</van-button>
+        </van-col>
+        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">五年级</van-button></van-col>
+        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">六年级</van-button></van-col>
+      </van-row>
     </cell-block>
 
-    
-     
-        
-        <van-cell title="年级" >
-          <van-button bindtap='toggleGradeSheet'>test11</van-button>
+    <cell-block title="填写班级名称"> 
+      <van-field
+          value=""
+          center
+          required
+          label="班级名称"
+          placeholder="输入班级名称，例如四一班"
+          clearable
+      />
+   </cell-block>  
 
-        </van-cell>
-      
-   
-
-
-    <van-cell-group>
-     
-            <van-field
-                value=""
-                center
-                label="班级名称"
-                placeholder="请输入名称"
-                clearable
-            />
-        
-
-        <van-cell title="班级人数">
-            <van-stepper
-                value="20"
-                integer
-                min="5"
-                max="200"
-                step="1"
-            />
-        </van-cell>
-    </van-cell-group>    
-  
-   
-
-
-    <van-button bindtap='createClass'>创建班级</van-button>
+    <van-row gutter="20" custom-class="createButton">
+      <van-col span="24" >
+      <van-button bindtap='createClass' type="primary">创建班级</van-button>
+      </van-col>
+    </van-row>
 
     
     <view bindtap="cancel" class="mask" hidden="{{!showSelGrade}}">

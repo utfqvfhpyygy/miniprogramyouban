@@ -1,4 +1,5 @@
 <!--index.wxml-->
 <view class="container">
+  
   <van-button type="primary" bindtap='gotoCreateClass'>创建班级</van-button>
 </view>
