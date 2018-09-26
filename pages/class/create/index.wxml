@@ -6,19 +6,15 @@
       </van-cell-group>
     </cell-block>
 
-    <cell-block title="选择年级">
+    
      
         
         <van-cell title="年级" >
-          <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
-              <picker-view-column>
-                <view wx:for="{{gradeList}}" style="line-height: 50px">{{item.name}}</view>
-              </picker-view-column>
-        </picker-view>
+          <van-button bindtap='toggleGradeSheet'>test11</van-button>
 
         </van-cell>
       
-    </cell-block>
+   
 
 
     <van-cell-group>
@@ -47,6 +43,25 @@
 
 
     <van-button bindtap='createClass'>创建班级</van-button>
+
+    
+    <view bindtap="cancel" class="mask" hidden="{{!showSelGrade}}">
+    </view>
+
+    <view class="picker-view" animation="{{animationAddressMenu}}" style="visibility:{{showSelGrade ? 'visible':'hidden'}}">
+      <view style="height:10% ;width:95%;margin-top:20rpx">
+        <text catchtap="cancel">取消</text>
+        <text style="float: right" catchtap="confirmGrade">确定</text>
+      </view>
+      <picker-view style="width: 100%; height: 180px;" bindchange="changeGrade" value="{{value}}" wx:key="">
+        <picker-view-column>
+          <view wx:for="{{gradeList}}" wx:key="{{item.id}}" class="picker-item">
+            {{item.name}}
+          </view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+
 
 </view>
 

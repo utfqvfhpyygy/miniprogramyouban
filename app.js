@@ -43,20 +43,30 @@ App({
    * @param errBack  失败回调
    */
   requestData: function (option) {
+
+    console.log('requestData')
+
     var requestBody = {
       url: option.url,
       data: option.params,
       dataType: 'json',
       method: option.type || 'get',
       success: function (data) {
+
+        console.log('requestDataSuc111')
+        console.log(data)
+
         if(data.data.code == 0) {
           option.sucBack && option.sucBack(data.data);
-        } else if (data.data.code == 1000) {
+        } else {
           option.errBack && option.errBack(data.data.msg);
         }
       },
       error: function (xhr, type, status)  {
         // console.log(type);
+
+        console.log('requestDataFail111')
+
         option.errBack && option.errBack(type);
       }
     }

@@ -15,7 +15,8 @@ Page({
   onLoad: function (options) {
 
     console.log('onLoad')
-   
+    var that = this;
+
     app.requestData({
       url: app.globalData.origin + 'class/configList',
       params: {
@@ -24,12 +25,14 @@ Page({
       },
       type: 'get',
       sucBack: function (res) {
+        console.log('suc111')
         console.log(res)
-        // that.setData({
-        //   "gradeList": res.data.gradeList,
-        // })
+        that.setData({
+           "gradeList": res.data.gradeList,
+        })
       },
       errBack: function (msg) {
+        console.log('fail111')
         wx.showModal({
           title: '提示',
           content: msg,
@@ -45,6 +48,22 @@ Page({
     this.setData({
        showSelGrade : !this.showSelGrade
     });
+  },
+
+  cancel() {
+    this.setData({
+      showSelGrade: false
+    });
+  },
+
+  confirmGrade(e){
+    console.log('confirmGrade')
+    console.log(e)
+  },
+
+  changeGrade(e){
+    console.log('changeGrade')
+    console.log(e)
   },
 
   /**
