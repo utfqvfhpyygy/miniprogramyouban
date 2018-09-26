@@ -3,9 +3,9 @@
     <cell-block title="选择年级">
       <van-row gutter="20" custom-class="rows">
         <van-col span="8" custom-class="gradeButton">
-          <van-button type="default" size="normal">幼小班</van-button>
+          <van-button type="default" size="normal" bindtap='chooseGrade'>幼小班</van-button>
         </van-col>
-        <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">幼中班</van-button></van-col>
+        <van-col span="8" custom-class="gradeButton"><van-button type="warning" size="normal">幼中班</van-button></van-col>
         <van-col span="8" custom-class="gradeButton"><van-button type="default" size="normal">幼大班</van-button></van-col>
       </van-row>
       <van-row gutter="20" custom-class="rows">
