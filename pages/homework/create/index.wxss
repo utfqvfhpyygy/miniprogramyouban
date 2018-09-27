@@ -1,0 +1,6 @@
+.bottom {
+  width: 100%;
+  padding: 20px;
+  line-height: 100px;
+  background-color: #fff;
+}
