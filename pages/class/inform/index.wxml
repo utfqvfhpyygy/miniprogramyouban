@@ -3,10 +3,24 @@
 <cell-block title="通知内容"></cell-block>
 <view class="line"></view>
 <view class="views">
-  <textarea placeholder="这个只有在按钮点击的时候才聚焦" focus="{{focus}}" class="inputcss" fixed  maxlength="500"/>
+  <textarea placeholder="" focus="{{focus}}" class="inputcss" fixed  maxlength="500"/>
 </view>
 <view class="line"></view>
+<view class="attach">
+  <i class="attach iconfont icon-camera_fill"></i><i class="iconfont icon-video_fill"></i><i class="iconfont icon-translation_fill"></i>
+  <i class="iconfont icon-accessory"></i>
+</view>
 
+<view>
+    <van-switch-cell
+    title="是否确认"
+    checked="{{ checked }}"
+    bind:change="onChange"
+    />
+</view>
 
+<view class="buttonview">
+  <van-button size="normal" type="primary">发布通知</van-button>
+</view>
 
 </view>
