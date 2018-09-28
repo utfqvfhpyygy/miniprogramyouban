@@ -1,1 +1,27 @@
 /* pages/class/index/index.wxss */
+.header{
+  font-size: 12px;
+}
+.enter{
+  font-size: 20px;
+}
+.pictext{
+    align-items: center;
+    display: flex;  
+}
+.pictext span {
+  margin-left: 5px;
+}
+.tab{
+  height: 200px;
+  font-size: 25px;
+  display:block;
+  text-align:center;
+  margin-top:10px;
+
+}
+.tab span{
+  font-size: 12px;
+  text-align:center;
+  display:block;
+}
