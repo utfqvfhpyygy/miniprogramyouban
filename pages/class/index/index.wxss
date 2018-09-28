@@ -13,15 +13,29 @@
   margin-left: 5px;
 }
 .tab{
-  height: 200px;
+  height: 70px;
   font-size: 25px;
   display:block;
   text-align:center;
-  margin-top:10px;
-
+  margin-top:15px;
 }
 .tab span{
   font-size: 12px;
   text-align:center;
   display:block;
+}
+.title{
+font-weight:bold;
+font-size:13px;
+padding-top:10px;
+margin-left:10px;
+align-items:center;
+display:flex;
+
+}
+.tuchu{
+background-color:#01DFA5;
+width:5px;
+height:22px;
+margin-right:5px;
 }

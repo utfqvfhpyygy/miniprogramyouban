@@ -16,6 +16,20 @@
     <van-col span="6"><i class="iconfont icon-zuoye"></i> <span>作业</span> </van-col>
     <van-col span="6"><i class="iconfont icon-gengduo"></i> <span>更多</span> </van-col>
   </van-row>
-
-
+  <view class='line'></view>
+  <view>
+    <van-notice-bar
+    left-icon="https://img.yzcdn.cn/1.png"
+    text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
+    scrollable="false"
+    />
+  </view>
+  <view class='line'></view>
+  <view>
+    <span class="title"><i class="tuchu"></i>我发布的通知</span>
+  </view>
+  
+  <view>
+    <span class="title"><i class="tuchu"></i>我发布的作业</span>
+  </view>
 </view>

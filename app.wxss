@@ -18,6 +18,7 @@ page {
 .line{
   height: 1px;
   background: #E0E3DA;
+  clear: both;
 }
 
 
