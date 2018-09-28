@@ -1,0 +1,20 @@
+.inputcss{
+  background-color: #fff;
+  width: 90%;
+  font-size: 13px;
+  margin-top: 5px;
+  height: 195px;
+}
+
+.views{
+  width: 100%;
+  background-color: #fff;
+  justify-content: center;
+  display: flex;
+  height: 200px;
+}
+
+.line{
+  height: 1px;
+  background: #E0E3DA;
+}
