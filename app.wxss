@@ -14,3 +14,8 @@ page {
   -webkit-font-smoothing: antialiased;
   font-family: 'PingFang SC', Helvetica, 'STHeiti STXihei', 'Microsoft YaHei', Tohoma, Arial, sans-serif;
 }
+
+.line{
+  height: 1px;
+  background: #E0E3DA;
+}

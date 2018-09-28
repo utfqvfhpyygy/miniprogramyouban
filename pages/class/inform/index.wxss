@@ -13,8 +13,3 @@
   display: flex;
   height: 200px;
 }
-
-.line{
-  height: 1px;
-  background: #E0E3DA;
-}
