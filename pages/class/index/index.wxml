@@ -28,6 +28,19 @@
   <view>
     <span class="title"><i class="tuchu"></i>我发布的通知</span>
   </view>
+
+  <view class="tlist">
+    <view class="ttime">9月16日<span>星期日</span></view>
+    <view class="confirmnum">
+      1人<view>确认</view>
+    </view>
+    <view class="detail">
+      <view class="dtitle">第一节课英语作业2</view>
+      <view class="dcontent">语音反馈 明天前要交作业</view>
+    </view>
+    <view class="right"><i class="iconfont icon-enter enter"></i></view>
+
+  </view>
   
   <view>
     <span class="title"><i class="tuchu"></i>我发布的作业</span>

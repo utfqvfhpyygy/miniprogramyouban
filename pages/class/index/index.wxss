@@ -39,3 +39,48 @@ width:5px;
 height:22px;
 margin-right:5px;
 }
+.tlist{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.ttime{
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.ttime span{
+  font-size: 12px;
+  color: #585858;
+}
+.confirmnum{
+  border-radius: 5px;
+  background-color: #2E64FE;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  font-size: 12px;
+  text-align: center;
+  padding-top: 2px;
+  color: #fff;
+}
+.detail{
+  display: inline-block;
+  font-size: 13px;
+  vertical-align:top;
+  margin-left: 5px;
+}
+.dtitle{
+  align-items: top;
+  display: flex;
+}
+.dcontent{
+  color: #666666;
+  font-size: 12px;
+  margin-top: 5px;
+
+}
+.right{
+  display:block;
+  float:right;
+  margin-right:10px;
+}
