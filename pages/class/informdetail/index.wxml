@@ -1,2 +1,88 @@
 <!--pages/class/informdetail/index.wxml-->
-<text>pages/class/informdetail/index.wxml</text>
+<view class="idetail">
+<text>微信小程序文档... 小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识,...开发者需要在开发者服务器后台调用 api,使用 code 换取 openid 和微信小程序文档... \n \n小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识,...开发者需要在开发者服务器后台调用 api,使用 code 换取 openid 和微信小程序文档... 小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识,...开发者需要在开发者服务器后台调用 api,使用 code 换取 openid 和微信小程序文档... 小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识,...开发者需要在开发者服务器后台调用 api,使用 code 换取 openid 和微信小程序文档... 小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识,...开发者需要在开发者服务器后台调用 api,使用 code 换取 openid 和微信小程序文档... 小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识,...开发者需要在开发者服务器后台调用 api,使用 code 换取 openid 和微信小程序文档... 小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识,...开发者需要在开发者服务器后台调用 api,使用 code 换取 openid 和微信小程序文档... 小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识,...开发者需要在开发者服务器后台调用 api,使用 code 换取 openid 和</text>
+
+
+
+</view>
+<view class="more" bindtap='showMore' hidden="{{moreButton}}">展开更多>></view>
+
+<!--图片附件-->
+<view class="ipiclist">
+
+<image style="width: 60px; height: 60px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+
+<image style="width: 60px; height: 60px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+
+<image style="width: 60px; height: 60px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+
+<image style="width: 60px; height: 60px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+
+</view>
+<!--音频附件-->
+<!--视频附件-->
+<!--其他附件-->
+
+<view class="line"></view>
+
+<cell-block title="回复情况5/30" custom-class="ireply">
+
+<view class="iuserpic">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<view class="timer">15分钟前</view>
+</view>
+
+<view class="iuserpic">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<view class="timer">15分钟前</view>
+</view>
+
+<view class="iuserpic">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<view class="timer">15分钟前</view>
+</view>
+
+<view class="iuserpic">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<view class="timer">15分钟前</view>
+</view>
+
+<view class="iuserpic">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<view class="timer">15分钟前</view>
+</view>
+
+<view class="iuserpic">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<view class="timer">15分钟前</view>
+</view>
+
+<view class="iuserpic">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<view class="timer">15分钟前</view>
+</view>
+
+<view class="iuserpic">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<view class="timer">15分钟前</view>
+</view>
+
+<view class="iuserpic">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<view class="timer">15分钟前</view>
+</view>
+
+<view class="iuserpic">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<view class="timer">15分钟前</view>
+</view>
+
+<view class="iuserpic">
+<i class="iconfont icon-tianjia mytianjia"></i>
+<view class="timer">　</view>
+</view>
+</cell-block>
+
+<view class="hudong">
+  家长互动 <span><i class="iconfont icon-enter enter"></i></span>
+</view>
