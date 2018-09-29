@@ -72,6 +72,7 @@ Page({
       message: '我已经阅读完通知内容'
     });
   },
+  
   clickimg:function(e){
     wx.previewImage({
       urls: ['http://39.104.82.18/inform/55/10000/1538231717.png'],

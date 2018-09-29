@@ -1,8 +1,8 @@
 {
   "pages":[
+    "pages/class/index/index",
     "pages/class/inform/index",
     "pages/class/informdetail/index",
-    "pages/class/index/index",
     
 
     "pages/class/create/index",
