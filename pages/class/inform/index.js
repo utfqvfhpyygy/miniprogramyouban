@@ -1,4 +1,4 @@
-import { MiniChooseImage } from '../../utils/upload'
+import { MiniChooseImage, MiniChooseVedio } from '../../../utils/upload'
 
 const app = getApp()
 
@@ -9,13 +9,19 @@ Page({
    */
   data: {
     feedBackChecked:false,   //是否需要反馈
+    content:'',   //通知内容
     isShowRecordView: false,  //是否显示录音界面
     isRecording:false,  //是否正在录音中
     voiceRecordingTimer: null,  //录音计时器
     time_counter:0,  //录音计时
-    selectedImgs: [],  //选中的图片
-    selectedRecords: [],   //选中的录音
-    selectedVideos: []    //选中的视频
+
+    selectedImgsTmp: [],  //选中的图片
+    selectedRecordsTmp: [],   //选中的录音
+    selectedVideosTmp: [],    //选中的视频
+
+    selectedImgsUrl: [],  //选中的图片
+    selectedRecordsUrl: [],   //选中的录音
+    selectedVideosUrl: []    //选中的视频
   },
 
   /**
@@ -43,163 +49,51 @@ Page({
     })
   },
 
-
   /**
-   * 录音开始回调
+   * 获取通知内容
    */
-  onVoiceRecorderManagerStart() {
-      console.log('recorder start')
-
-      that.setData({
-          "isRecording":true,
-          "time_counter":0
-      });
-
-      //计时器
-      var voiceRecordingTimer = setInterval(function () {
-        console.log('start interval')
-        if (that.data.isRecording) {
-          var timeTotal = that.data.time_counter + 1;
-
-          console.log(timeTotal)
-
-          that.setData({
-            time_counter: timeTotal
-          })
-        }else{
-          console.log('clearInterval')
-          clearInterval(voiceRecordingTimer)
-        } 
-      }.bind(that), 1000);
-  },
-
-  /**
-   * 录音结束回调
-   */
-  onVoiceRecorderManagerStop(res) {
-
-
-      const that = this
-
-      // 正常结束
-      console.log(res)
-      clearInterval(this.data.voiceRecordingTimer)
-      this.setData({
-        voiceRecording: false,
-        voiceRecordingTimer: null
-      }, () => {
-        this.data.voiceRecorderManager.stop()
-      })
-
-      if (Math.floor(res.duration / 1000) < 1) {
-        wx.showModal({
-          title: '提示',
-          content: '录音时间不能太短。',
-          showCancel: false
-        })
-        return
-      }
-
-      //音频数量限制
-      var a = this.data.selectedRecords.concat(res.tempFilePath);
-      if (a.length > 5) {
-          a = a.slice(0, 5);
-          wx.showToast({
-                title: '最多5个音频',
-          })
-          return
-      };
-
-      wx.uploadFile({
-        url: app.globalData.origin + 'SGWeChat/uploadFile',
-        filePath: res.tempFilePath,
-        name: 'file',
-        formData: {
-          uid: this.data.userInfo.uid
-        },
-        success(respond) {
-          if (respond.statusCode === 200) {
-            const data = JSON.parse(respond.data)
-            if (data.code === 0) {
-
-
-              console.log(a);
-
-              this.setData({
-                "selectedRecords": a,
-              });
-            }
-          }
-        },
-        fail(err) {
-          console.log(err)
-        }
-      })
-
-      this.setData({
-        
-      })
-    
-  },
-
-  /**
-   * 录音错误回调
-   */
-  onVoiceRecorderManagerError(err) {
-    console.log(err)
-
-    clearInterval(this.data.voiceRecordingTimer)
+  bindTextAreaBlur: function(e) {
     this.setData({
-      isRecording: false,
-      time_counter: 0
-    }, () => {
-      this.data.voiceRecorderManager.stop()
-    })
-  },
-
+      content:e.detail.value
+    }) 
+  },   
 
   /**
-   * 选择图片
+   * 用户点击选择图片按钮
    */
   chooseImage: function (e) {
 
-    console.log(e)
+    console.log("chooseImage");
 
-
+    MiniChooseImage()
+    .then(function(res){
+      console.log("chooseImage suc");
+      console.log(res);
+    },function(err){
+      console.log("chooseImage fail");
+      console.log(err);
+    })
+    
   },
 
 
   /**
-   * 选择视频
+   * 用户点击选择视频按钮
    */
   chooseVedio: function (e) {
 
-    console.log(e)
+    console.log("chooseVedio");
 
-    var that = this;
-    wx.chooseVideo({
-      sourceType: ["album", "camera"],
-      maxDuration: 60,
-      camera: "back",
-      success: function (e) {
+    MiniChooseVedio()
+    .then(function(res){
+      console.log("chooseVedio suc");
+      console.log(res);
+    },function(err){
+      console.log("chooseVedio fail");
+      console.log(err);
+    })
 
-        var a = that.data.selectedVideos.concat(e.tempFilePath);
-
-        if (a.length > 5) {
-          a = a.slice(0, 5);
-          wx.showToast({
-            title: '最多9个视频',
-          })
-        };
-
-        console.log(a);
-
-        that.setData({
-          "selectedVideos": a,
-        });
-
-      }
-    });
+   
   },
 
   /**
@@ -226,40 +120,6 @@ Page({
     })
   },
 
-  /**
-   * 录音
-   */
-  checkRecord: function () {
-    console.log("开始录音");
-
-    var that = this;
-
-    wx.getSetting({
-      success: function (t) {
-        t.authSetting["scope.record"] ? that.startRecord() : wx.authorize({
-          scope: "scope.record",
-          success: function () {
-            console.log("获取授权成功"), that.startRecord();
-          },
-          fail: function () {
-            wx.showModal({
-              title: "提示",
-              content: "录音需要获取您的录音权限,请允许",
-              success: function (t) {
-                wx.openSetting ? wx.openSetting({
-                  success: function (t) {
-                    that.startRecord();
-                  }
-                }) : wx.redirectTo({
-
-                });
-              }
-            });
-          }
-        });
-      }
-    });
-  },
 
   /**
    * 开始录音
@@ -271,14 +131,12 @@ Page({
 
     var that = this;
 
-    var options = {
-      sampleRate: 12e3,
-      numberOfChannels: 1,
-      encodeBitRate: 3e4,
-      format: "mp3",
-      duration: 6e5,
-      frameSize: 50
-    };
+    wxCheckRecordAuth()
+    .then(function(data){
+
+    },function(err){
+
+    })
 
   },
 
@@ -291,6 +149,52 @@ Page({
     console.log("endRecord");
 
     recorderManager.stop()
+  },
+
+  /**
+   * 发布通知
+   */
+  submit: function(){
+    console.log('submit');
+
+    if(this.data.content.length <= 0){
+      wx.showToast({
+        icon: 'none',
+        title: '内容不能为空'
+      })
+    }
+
+    app.requestData({
+      url: app.globalData.origin + 'inform/add',
+      params: {
+        uid: '10000',
+        classId: 123,
+        title: this.data.content,
+        feedbackType:this.data.feedBackChecked,
+        selectedImgs:this.data.selectedImgsUrl,
+        selectedRecords:this.data.selectedRecordsUrl,
+        selectedVideos:this.data.selectedVideosUrl
+      },
+      type: 'get',
+      sucBack(res) {
+        if (res.code === 0) {
+          
+        }
+
+        wx.showToast({
+          icon: 'none',
+          title: res.msg
+        })
+        
+      },
+      errBack(err) {
+        wx.showModal({
+          title: '请求失败',
+          content: err,
+          showCancel: false
+        })
+      }
+    })
   },
 
   /**
@@ -340,5 +244,102 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+
+  /**
+   * 录音开始回调
+   */
+  onVoiceRecorderManagerStart() {
+    console.log('recorder start')
+
+    that.setData({
+        "isRecording":true,
+        "time_counter":0
+    });
+
+    //计时器
+    var voiceRecordingTimer = setInterval(function () {
+      console.log('start interval')
+      if (that.data.isRecording) {
+        var timeTotal = that.data.time_counter + 1;
+
+        console.log(timeTotal)
+
+        that.setData({
+          time_counter: timeTotal
+        })
+      }else{
+        console.log('clearInterval')
+        clearInterval(voiceRecordingTimer)
+      } 
+    }.bind(that), 1000);
+
+  },
+
+  /**
+   * 录音结束回调
+   */
+  onVoiceRecorderManagerStop(res) {
+
+
+      const that = this
+
+      // 正常结束
+      console.log(res)
+      clearInterval(this.data.voiceRecordingTimer)
+      this.setData({
+        voiceRecording: false,
+        voiceRecordingTimer: null
+      }, () => {
+        this.data.voiceRecorderManager.stop()
+      })
+
+      if (Math.floor(res.duration / 1000) < 1) {
+        wx.showModal({
+          title: '提示',
+          content: '录音时间不能太短。',
+          showCancel: false
+        })
+        return
+      }
+
+      //音频数量限制
+      var a = this.data.selectedRecords.concat(res.tempFilePath);
+      if (a.length > 5) {
+          a = a.slice(0, 5);
+          wx.showToast({
+                title: '最多5个音频',
+          })
+          return
+      };
+
+      //上传
+      uploadVoice(res)
+      .then(function(res){
+        console.log("uploadVoice suc");
+        console.log(res);
+      },function(err){
+        console.log("uploadVoice fail");
+        console.log(err);
+      })
+    
+  },
+
+  /**
+   * 录音错误回调
+   */
+  onVoiceRecorderManagerError(err) {
+    console.log(err)
+
+    clearInterval(this.data.voiceRecordingTimer)
+    this.setData({
+      isRecording: false,
+      time_counter: 0
+    }, () => {
+      this.data.voiceRecorderManager.stop()
+    })
   }
+
+
 })
