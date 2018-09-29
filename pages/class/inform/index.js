@@ -1,4 +1,4 @@
-import { MiniChooseImage, MiniChooseVedio } from '../../../utils/upload'
+import { MiniChooseImage, MiniChooseVedio, wxChooseImage, uploadImage } from '../../../utils/upload'
 
 const app = getApp()
 
@@ -53,8 +53,6 @@ Page({
    * 获取通知内容
    */
   bindTextAreaBlur: function(e) {
-    console.log('bindTextAreaBlur');
-    console.log(e);
     this.setData({
       content:e.detail.value
     }) 
@@ -67,12 +65,42 @@ Page({
 
     console.log("chooseImage");
 
-    MiniChooseImage()
+    var that = this;
+    wxChooseImage()
     .then(function(res){
-      console.log("chooseImage suc");
+      console.log("wxChooseImage suc");
       console.log(res);
+
+      //数量限制
+      var tmpList = that.data.selectedImgsTmp.concat(res.tempFilePaths);
+      if (tmpList.length > 5) {
+        wx.showToast({
+          title: '最多5图片',
+        })
+        return
+      };
+
+      res.tempFilePaths.forEach(function (tempFilePath){
+        uploadImage(tempFilePath)
+        .then(function(res){
+
+          console.log(res);
+          console.log(res.data.url);
+          var tempList = that.data.selectedImgsTmp.concat(tempFilePath);
+          var urlList = that.data.selectedImgsUrl.concat(res.data.url);
+          that.setData({
+            selectedImgsTmp: tempList,
+            selectedImgsUrl: urlList
+          })
+        },function(err){
+            console.log(err);
+        })
+      })
+
+      
+
     },function(err){
-      console.log("chooseImage fail");
+      console.log("wxChooseImage fail");
       console.log(err);
     })
     
@@ -167,12 +195,16 @@ Page({
       return
     }
 
+    console.log(this.data.selectedImgsTmp);
+    console.log(this.data.selectedImgsUrl);
+
+    var that = this;
     app.requestData({
       url: app.globalData.origin + 'inform/add',
       params: {
         uid: '10000',
         classId: 123,
-        title: this.data.content,
+        content: this.data.content,
         feedbackType:this.data.feedBackChecked,
         selectedImgs:this.data.selectedImgsUrl,
         selectedRecords:this.data.selectedRecordsUrl,
@@ -180,8 +212,11 @@ Page({
       },
       type: 'get',
       sucBack(res) {
+        console.log(res)
         if (res.code === 0) {
-          
+          that.setData({
+            content:''
+          })
         }
 
         wx.showToast({

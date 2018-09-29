@@ -24,7 +24,7 @@ export function MiniChooseImage() {
 /**
  * 微信选择图片
  */
-function wxChooseImage(){
+export function wxChooseImage(){
 
   console.log('wxChooseImage');
 
@@ -34,14 +34,9 @@ function wxChooseImage(){
         sizeType: ["compressed"],
         sourceType: ["album", "camera"],
         success: function (res) {
-
-          console.log('wxChooseImage suc');
-          console.log(res);
           resolve(res)
         },
         fail(err){
-          console.log('wxChooseImage fail');
-          console.log(err)
           reject(err)
         }
     });
@@ -51,37 +46,33 @@ function wxChooseImage(){
 /**
  * 后台上传图片
  */
-function uploadImage(res){
+export function uploadImage(tempFilePath){
 
   console.log('uploadImage');
-  console.log(res);
-  console.log(res.tempFilePaths[0]);
+  console.log(tempFilePath);
 
   return new Promise((resolve, reject) => {
     
     wx.uploadFile({
       url: app.globalData.origin + 'upload/informImage',
-      filePath: res.tempFilePaths[0],
+      filePath: tempFilePath,
       name: 'pic',
       formData: {
         uid: 10000
       },
       success(respond) {
 
-        console.log('uploadImage suc');
-        console.log(respond)
+        //console.log('uploadImage suc');
+        //console.log(respond)
 
         if (respond.statusCode === 200) {
-          console.log('uploadImage statusCode 200');
           const data = JSON.parse(respond.data)
-          console.log(data);
           if (data.code === 0) {
-            console.log('resolve');
-            resolve(respond)
+            resolve(data)
           }
         }else{
           console.log('uploadImage reject');
-          reject(respond)
+          reject(data)
         }
       },
       fail(err) {

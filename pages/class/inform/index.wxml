@@ -6,6 +6,13 @@
     <textarea placeholder="" focus="{{focus}}" class="inputcss" fixed  maxlength="500"  bindblur="bindTextAreaBlur"/>
   </view>
   <view class="line"></view>
+  
+  <view class="imagelist">
+    <block wx:for="{{selectedImgsTmp}}" wx:for-item="item" wx:key="item">
+        <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFit" src="{{item}}"></image>
+    </block>
+  </view>
+
   <view class="attach">
     <i class="iconfont icon-camera_fill" bindtap='chooseImage'></i>
     <i class="iconfont icon-video_fill" bindtap='chooseVedio'></i>

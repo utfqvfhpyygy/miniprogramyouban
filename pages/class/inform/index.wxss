@@ -46,3 +46,8 @@
   color: #000000;
   margin-top: 10px;
 }
+
+.imagelist {
+  display: inline;
+  padding: 20px;
+}
