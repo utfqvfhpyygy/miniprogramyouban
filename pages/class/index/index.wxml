@@ -34,7 +34,7 @@
     <view class="tline"></view>
 
     <view class="confirmnum">
-      1人<view>已读</view>
+      12人<view>已读</view>
     </view>
     <view class="detail">
       <view class="dtitle">第一节课英语作业2</view>
@@ -48,7 +48,7 @@
     <view class="tlist">
     <view class="ttime">9月16日<span>星期日</span></view>
     <view class="confirmnum">
-      1人<view>确认</view>
+      99人<view>确认</view>
     </view>
     <view class="detail">
       <view class="dtitle">第一节课英语作业2</view>
@@ -65,7 +65,7 @@
   <view class="tlist">
     <view class="ttime">9月16日<span>星期日</span></view>
     <view class="confirmnum">
-      1人<view>确认</view>
+      99+<view>确认</view>
     </view>
     <view class="detail">
       <view class="dtitle">第一节课英语作业水利电力熟练度法士大夫...</view>
