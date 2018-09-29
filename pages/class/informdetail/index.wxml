@@ -23,6 +23,8 @@
 <!--视频附件-->
 <!--其他附件-->
 
+<view class="line"></view>
+
 <cell-block title="回复情况5/30" custom-class="ireply">
 
 <view class="iuserpic">
@@ -79,5 +81,8 @@
 <i class="iconfont icon-tianjia mytianjia"></i>
 <view class="timer">　</view>
 </view>
-
 </cell-block>
+
+<view class="hudong">
+  家长互动 <span><i class="iconfont icon-enter enter"></i></span>
+</view>

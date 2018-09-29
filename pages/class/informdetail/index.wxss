@@ -49,3 +49,21 @@
 .mytianjia{
   font-size: 35px;
 }
+
+.line{
+  background-color: #fff;
+  height: 4px;
+  margin-top: 3px;
+}
+
+.enter{
+  float: right;
+  margin-right: 10px;
+  font-size: 20px;
+}
+.hudong{
+  font-size: 13px;
+  color: rgba(69,90,100,.6);
+  margin-left: 22px;
+  margin-top: 5px;
+}
