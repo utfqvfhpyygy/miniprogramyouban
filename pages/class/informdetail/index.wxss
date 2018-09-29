@@ -1,1 +1,51 @@
 /* pages/class/informdetail/index.wxss */
+.idetail{
+  font-size: 13px;
+  width: 90%;
+  margin-left: auto; 
+  margin-right: auto;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 14;
+  overflow: hidden;
+}
+
+.ipiclist{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.ipiclist image{
+  margin-left: 5px;
+}
+.ireply{
+  margin-left: 10px;
+}
+
+.iuserpic{
+  margin-left: 5px;
+  width: 40px;
+  height: 50px;
+  display: inline-block;
+  text-align: center;
+}
+
+
+.iuserpic image{
+  margin-top: 2px;
+}
+.timer{
+  font-size: 9px;
+}
+
+.more{
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #666666;
+  margin-top: 5px;
+}
+
+.mytianjia{
+  font-size: 35px;
+}
