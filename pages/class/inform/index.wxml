@@ -1,28 +1,39 @@
 <view class='class-create-container'>
 
-<cell-block title="通知内容"></cell-block>
-<view class="line"></view>
-<view class="views">
-  <textarea placeholder="" focus="{{focus}}" class="inputcss" fixed  maxlength="500"/>
-</view>
-<view class="line"></view>
-<view class="attach">
-  <i class="iconfont icon-camera_fill"></i>
-  <i class="iconfont icon-video_fill"></i>
-  <i class="iconfont icon-translation_fill"></i>
-  <i class="iconfont icon-accessory"></i>
-</view>
+  <cell-block title="通知内容"></cell-block>
+  <view class="line"></view>
+  <view class="views">
+    <textarea placeholder="" focus="{{focus}}" class="inputcss" fixed  maxlength="500"  bindblur="bindTextAreaBlur"/>
+  </view>
+  <view class="line"></view>
+  <view class="attach">
+    <i class="iconfont icon-camera_fill" bindtap='chooseImage'></i>
+    <i class="iconfont icon-video_fill" bindtap='chooseVedio'></i>
+    <i class="iconfont icon-translation_fill" bindtap='chooseVoice'></i>
+    <i class="iconfont icon-accessory" bindtap='chooseFile'></i>
+  </view>
 
-<view>
-    <van-switch-cell
-    title="是否需要确认"
-    checked="{{ checked }}"
-    bind:change="onChange"
-    />
-</view>
+  <view>
+      <van-switch-cell
+      title="是否需要确认"
+      checked="{{ feedBackChecked }}"
+      bind:change="onChange"
+      />
+  </view>
 
-<view class="buttonview">
-  <van-button size="normal" type="primary">发布通知</van-button>
-</view>
+  <view class="buttonview">
+    <van-button size="normal" type="primary" bindtap='submit'>发布通知</van-button>
+  </view>
 
+
+  <van-popup
+    show="{{isShowRecordView}}"
+    overlay="true"
+    position="bottom"
+    custom-class="pop-bottom"
+    bind:close="closeRecordView">
+      <text class="record-time-label">21s</text>
+      <van-icon  wx:if="{{!isRecording}}" name="play" bind:click='checkRecord' size="40px" class="record-btn"/>
+      <van-icon wx:if="{{isRecording}}" name="stop" bind:click='endRecord' size="40px" class="record-btn"/>
+  </van-popup>
 </view>
