@@ -9,7 +9,6 @@
     <van-col span="3"> <i class="iconfont icon-enter enter"></i> </van-col>
   </van-row>
 
-  
   <van-row custom-class="tab">
     <van-col span="6"><i class="iconfont icon-xiaoxi"></i> <span>消息</span>　</van-col>
     <van-col span="6"><i class="iconfont icon-tongzhi"></i> <span>通知</span> </van-col>
@@ -19,7 +18,6 @@
   <view class='line'></view>
   <view>
     <van-notice-bar
-    left-icon="https://img.yzcdn.cn/1.png"
     text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
     scrollable="false"
     />
@@ -40,9 +38,59 @@
     </view>
     <view class="right"><i class="iconfont icon-enter enter"></i></view>
 
+    <view class="tline"></view>
+
+    <view class="confirmnum">
+      1人<view>已读</view>
+    </view>
+    <view class="detail">
+      <view class="dtitle">第一节课英语作业2</view>
+      <view class="dcontent">语音反馈 明天前要交作业</view>
+    </view>
+    <view class="right"><i class="iconfont icon-enter enter"></i></view>
+
+
+  </view>
+
+    <view class="tlist">
+    <view class="ttime">9月16日<span>星期日</span></view>
+    <view class="confirmnum">
+      1人<view>确认</view>
+    </view>
+    <view class="detail">
+      <view class="dtitle">第一节课英语作业2</view>
+      <view class="dcontent">语音反馈 明天前要交作业</view>
+    </view>
+    <view class="right"><i class="iconfont icon-enter enter"></i></view>
+
   </view>
   
   <view>
     <span class="title"><i class="tuchu"></i>我发布的作业</span>
   </view>
+
+  <view class="tlist">
+    <view class="ttime">9月16日<span>星期日</span></view>
+    <view class="confirmnum">
+      1人<view>确认</view>
+    </view>
+    <view class="detail">
+      <view class="dtitle">第一节课英语作业水利电力熟练度法士大夫...</view>
+      <view class="dcontent">无需要反馈</view>
+    </view>
+    <view class="right"><i class="iconfont icon-enter enter"></i></view>
+
+    <view class="tline"></view>
+
+    <view class="confirmnum">
+      1人<view>已读</view>
+    </view>
+    <view class="detail">
+      <view class="dtitle">第一节课英语作业2</view>
+      <view class="dcontent">语音反馈 明天前要交作业</view>
+    </view>
+    <view class="right"><i class="iconfont icon-enter enter"></i></view>
+
+
+  </view>  
 </view>

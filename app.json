@@ -1,5 +1,6 @@
 {
   "pages":[
+  "pages/class/informdetail/index",
     "pages/class/index/index",
     "pages/class/inform/index",
 
