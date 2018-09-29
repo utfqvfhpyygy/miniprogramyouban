@@ -55,13 +55,14 @@ function uploadImage(res){
 
   console.log('uploadImage');
   console.log(res);
-  console.log(res[0].tempFilePath);
+  console.log(res.tempFilePaths[0]);
 
   return new Promise((resolve, reject) => {
+    
     wx.uploadFile({
       url: app.globalData.origin + 'upload/informImage',
-      filePath: res[0].tempFilePaths,
-      name: 'file',
+      filePath: res.tempFilePaths[0],
+      name: 'pic',
       formData: {
         uid: 10000
       },
@@ -71,11 +72,15 @@ function uploadImage(res){
         console.log(respond)
 
         if (respond.statusCode === 200) {
+          console.log('uploadImage statusCode 200');
           const data = JSON.parse(respond.data)
+          console.log(data);
           if (data.code === 0) {
+            console.log('resolve');
             resolve(respond)
           }
         }else{
+          console.log('uploadImage reject');
           reject(respond)
         }
       },

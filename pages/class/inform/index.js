@@ -53,6 +53,8 @@ Page({
    * 获取通知内容
    */
   bindTextAreaBlur: function(e) {
+    console.log('bindTextAreaBlur');
+    console.log(e);
     this.setData({
       content:e.detail.value
     }) 
@@ -162,6 +164,7 @@ Page({
         icon: 'none',
         title: '内容不能为空'
       })
+      return
     }
 
     app.requestData({

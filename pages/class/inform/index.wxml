@@ -3,7 +3,7 @@
   <cell-block title="通知内容"></cell-block>
   <view class="line"></view>
   <view class="views">
-    <textarea placeholder="" focus="{{focus}}" class="inputcss" fixed  maxlength="500"/>
+    <textarea placeholder="" focus="{{focus}}" class="inputcss" fixed  maxlength="500"  bindblur="bindTextAreaBlur"/>
   </view>
   <view class="line"></view>
   <view class="attach">
@@ -22,7 +22,7 @@
   </view>
 
   <view class="buttonview">
-    <van-button size="normal" type="primary">发布通知</van-button>
+    <van-button size="normal" type="primary" bindtap='submit'>发布通知</van-button>
   </view>
 
 
