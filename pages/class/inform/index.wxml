@@ -16,7 +16,7 @@
   <view>
       <van-switch-cell
       title="是否需要确认"
-      checked="{{ checked }}"
+      checked="{{ feedBackChecked }}"
       bind:change="onChange"
       />
   </view>
