@@ -10,7 +10,7 @@
 <!--图片附件-->
 <view class="ipiclist">
 
-<image style="width: 60px; height: 60px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<image style="width: 60px; height: 60px; background-color: #eeeeee;" mode="{{item.mode}}" src="http://39.104.82.18/inform/55/10000/1538231717.png" bindtap='clickimg'></image>
 
 <image style="width: 60px; height: 60px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
 
@@ -78,7 +78,7 @@
 </view>
 
 <view class="iuserpic">
-<i class="iconfont icon-tianjia mytianjia"></i>
+<i class="iconfont icon-tianjia mytianjia" bindtap="onClickAlert2"></i>
 <view class="timer">　</view>
 </view>
 </cell-block>
@@ -86,3 +86,22 @@
 <view class="hudong">
   家长互动 <span><i class="iconfont icon-enter enter"></i></span>
 </view>
+
+<view class="comment">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<span>临时临时了临时临时老师李胜利了老师李</span>
+<span class="commentTime">15分钟前</span>
+</view>
+
+<view class="comment">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<span>临时临时了临时临时老师李胜利了老师李</span>
+<span class="commentTime">15分钟前</span>
+</view>
+
+<view class="comment">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<span>临时临时了临时临时老师李胜利了老师李</span>
+<span class="commentTime">15分钟前</span>
+</view>
+<van-dialog id="van-dialog" />

@@ -1,3 +1,4 @@
+import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
 // pages/class/informdetail/index.js
 Page({
 
@@ -62,5 +63,18 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onClickAlert2:function(e) {
+    console.log(123123)
+    Dialog.confirm({
+      title:'重要提示',
+      message: '我已经阅读完通知内容'
+    });
+  },
+  clickimg:function(e){
+    wx.previewImage({
+      urls: ['http://39.104.82.18/inform/55/10000/1538231717.png'],
+    })
   }
 })
