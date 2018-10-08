@@ -12,21 +12,21 @@ Page({
 
     console.log('onLoad')
 
-    if (app.globalData && app.globalData.userInfo && app.globalData.userInfo.uid) {
-      this._onLoad()
-      updateUserInfoFromServer()
-        .then(data => {
-          app.globalData.userInfo = data
-          this.setData({
-            //TODO
-          })
-        })
-    } else {
-      login()
-        .then(() => {
-          this._onLoad()
-        })
-    }
+    // if (app.globalData && app.globalData.userInfo && app.globalData.userInfo.uid) {
+    //   this._onLoad()
+    //   updateUserInfoFromServer()
+    //     .then(data => {
+    //       app.globalData.userInfo = data
+    //       this.setData({
+    //         //TODO
+    //       })
+    //     })
+    // } else {
+    //   login()
+    //     .then(() => {
+    //       this._onLoad()
+    //     })
+    // }
   },
 
   _onLoad() {
