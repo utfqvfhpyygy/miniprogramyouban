@@ -1,4 +1,5 @@
-import { MiniChooseImage, MiniChooseVedio, wxChooseImage, uploadImage } from '../../../utils/upload'
+import { wxChooseImage, wxChooseVedio, uploadImage, uploadVedio, voiceCallBack} from '../../../utils/upload'
+import {voiceManager} from '../../../utils/voiceManager'
 
 const app = getApp()
 
@@ -24,21 +25,24 @@ Page({
     selectedVideosUrl: []    //选中的视频
   },
 
+
+
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     
-    const voiceRecorderManager = wx.getRecorderManager()
-    voiceRecorderManager.onStart(this.onVoiceRecorderManagerStart)
-    voiceRecorderManager.onStop(res => this.onVoiceRecorderManagerStop(res))
-    voiceRecorderManager.onError(err => this.onVoiceRecorderManagerError(err))
+    var voiceManager2 = voiceManager(voiceCallBack);  
 
     this.setData({
-      voiceRecorderManager,
-    })
-
+      voiceManager2: voiceManager2
+    });
+ 
   },
+
+
+
 
   /**
    * 是否需要反馈变化
@@ -114,15 +118,42 @@ Page({
 
     console.log("chooseVedio");
 
-    MiniChooseVedio()
-    .then(function(res){
-      console.log("chooseVedio suc");
-      console.log(res);
-    },function(err){
-      console.log("chooseVedio fail");
+    var that = this;
+    wxChooseVedio()
+    .then(function (res) {
+
+      console.log(res.tempFilePath);
+      var tempFilePath = res.tempFilePath;
+
+      //数量限制
+      var tmpList = that.data.selectedVideosTmp.concat(tempFilePath);
+      if (tmpList.length > 5) {
+        wx.showToast({
+          title: '最多5个视频',
+        })
+        return
+      };
+
+      
+      uploadFile(tempFilePath)
+        .then(function (res) {
+
+          console.log(res);
+          console.log(res.data.url);
+          var tempList = that.data.selectedVideosTmp.concat(tempFilePath);
+          var urlList = that.data.selectedVideosUrl.concat(res.data.url);
+          that.setData({
+            selectedVideosTmp: tempList,
+            selectedVideosUrl: urlList
+          })
+        }, function (err) {
+          console.log(err);
+        })
+      
+    }, function (err) {
+      console.log("wxChooseVedio fail");
       console.log(err);
     })
-
    
   },
 
@@ -157,17 +188,9 @@ Page({
   startRecord: function () {
 
     console.log("startRecord");
-    console.log(recorderManager);
-
-    var that = this;
-
-    wxCheckRecordAuth()
-    .then(function(data){
-
-    },function(err){
-
-    })
-
+    console.log(this.data.voiceManager2);
+    
+    this.data.voiceManager2.newMaker();
   },
 
 
@@ -178,7 +201,8 @@ Page({
 
     console.log("endRecord");
 
-    recorderManager.stop()
+    this.data.voiceManager2.recorderManager.stop();
+
   },
 
   /**

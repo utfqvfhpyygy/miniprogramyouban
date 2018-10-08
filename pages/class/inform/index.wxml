@@ -13,6 +13,18 @@
     </block>
   </view>
 
+  <view class="voicelist">
+    <block wx:for="{{selectedRecordsTmp}}" wx:for-item="item" wx:key="item">
+        
+    </block>
+  </view>
+
+  <view class="videolist">
+    <block wx:for="{{selectedVideosTmp}}" wx:for-item="item" wx:key="item">
+        <video src='{{item}}'></video>
+    </block>
+  </view>
+
   <view class="attach">
     <i class="iconfont icon-camera_fill" bindtap='chooseImage'></i>
     <i class="iconfont icon-video_fill" bindtap='chooseVedio'></i>
@@ -40,7 +52,7 @@
     custom-class="pop-bottom"
     bind:close="closeRecordView">
       <text class="record-time-label">21s</text>
-      <van-icon  wx:if="{{!isRecording}}" name="play" bind:click='checkRecord' size="40px" class="record-btn"/>
-      <van-icon wx:if="{{isRecording}}" name="stop" bind:click='endRecord' size="40px" class="record-btn"/>
+      <van-icon   name="play" bind:click='startRecord' size="40px" class="record-btn"/>
+      <van-icon  name="stop" bind:click='endRecord' size="40px" class="record-btn"/>
   </van-popup>
 </view>

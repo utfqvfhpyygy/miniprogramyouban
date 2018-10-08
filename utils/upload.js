@@ -1,24 +1,4 @@
-
 const app = getApp()
-
-/**
- * 选择上传图片
- */
-export function MiniChooseImage() {
-  console.log('MiniChooseImage');
-
-  return new Promise((resolve, reject) => {
-
-    wxChooseImage()
-    .then(res => {
-        return uploadImage(res)
-    })
-    .catch(err => {
-        console.error(err)
-    })
-
-  })
-}
 
 
 /**
@@ -62,9 +42,6 @@ export function uploadImage(tempFilePath){
       },
       success(respond) {
 
-        //console.log('uploadImage suc');
-        //console.log(respond)
-
         if (respond.statusCode === 200) {
           const data = JSON.parse(respond.data)
           if (data.code === 0) {
@@ -86,30 +63,10 @@ export function uploadImage(tempFilePath){
 
 ////////////////////////////////////////////
 
-
-/**
- * 选择上传视频
- */
-export function MiniChooseVedio() {
-  console.log('MiniChooseVedio');
-
-  return new Promise((resolve, reject) => {
-
-    wxChooseImage()
-    .then(res => {
-        return uploadVedio(res)
-    })
-    .catch(err => {
-        console.error(err)
-    })
-
-  })
-}
-
 /**
  * 微信选择视频
  */
-function wxChooseVedio(){
+export function wxChooseVedio(){
 
   console.log('wxChooseVedio');
 
@@ -134,38 +91,38 @@ function wxChooseVedio(){
 }
 
 /**
- * 后台上传视频
+ * 后台上传文件
  */
-function uploadVedio(res){
+export function uploadFile(tempFilePath){
 
-  console.log('uploadVedio');
-  console.log(res);
-  console.log(res[0].tempFilePath);
+  console.log('uploadFile');
+  console.log(tempFilePath);
 
   return new Promise((resolve, reject) => {
     wx.uploadFile({
       url: app.globalData.origin + 'upload/informFile',
-      filePath: res[0].tempFilePaths,
+      filePath: tempFilePath,
       name: 'file',
       formData: {
         uid: 10000
       },
       success(respond) {
 
-        console.log('uploadVedio suc');
+        console.log('uploadFile suc');
         console.log(respond)
 
         if (respond.statusCode === 200) {
           const data = JSON.parse(respond.data)
           if (data.code === 0) {
-            resolve(respond)
+            resolve(data)
           }
         }else{
+          console.log('uploadFile reject');
           reject(respond)
         }
       },
       fail(err) {
-        console.log('uploadVedio fail');
+        console.log('uploadFile fail');
         console.log(err)
         reject(err)
       }
@@ -214,66 +171,24 @@ function wxCheckRecordAuth(){
 }
 
 
+export const voiceCallBack = {
 
-/**
- * 后台上传音频
- */
-function uploadVoice(res){
+  upStart: function () {
+    console.log('upStart');
+  },
 
-  console.log('uploadVoice');
-  console.log(res);
-  console.log(res[0].tempFilePath);
+  upStop: function (res) {
+    console.log('upStop');
+    console.log(res);
+  },
 
-  return new Promise((resolve, reject) => {
-    wx.uploadFile({
-      url: app.globalData.origin + 'upload/informFile',
-      filePath: res[0].tempFilePaths,
-      name: 'file',
-      formData: {
-        uid: 10000
-      },
-      success(respond) {
+  upError: function (err) {
+    console.log('upError');
+    console.log(err);
+  },
 
-        console.log('uploadVoice suc');
-        console.log(respond)
-
-        if (respond.statusCode === 200) {
-          const data = JSON.parse(respond.data)
-          if (data.code === 0) {
-            resolve(respond)
-          }
-        }else{
-          reject(respond)
-        }
-      },
-      fail(err) {
-        console.log('uploadVoice fail');
-        console.log(err)
-        reject(err)
-      }
-    })
-  })  
-}
-
-/**
- * 限制长度
- * @param {*} res 
- */
-export function timeLimit(res){
-  console.log('timeLimit');
-  
-  return new Promise((resolve,reject) => {
-    if (Math.floor(res.duration / 1000) < 10) {
-      wx.showModal({
-        title: '提示',
-        content: '录音时间不能太短。',
-        showCancel: false
-      })
-      reject(res);
-    }else{
-      resolve(res);
-    }
-  })
+  upComplete: function () {
+    console.log('upComplete');
+  },
 
 }
-
