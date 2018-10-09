@@ -19,6 +19,9 @@ Page({
 
           // 已经授权
           if (res.authSetting['scope.userInfo']) {
+              wx.navigateTo({
+                url: '../index/index'
+              })
               updateUserInfo()
           }
 
@@ -28,8 +31,15 @@ Page({
 
 
   bindGetUserInfo(e) {
-    console.log(e.detail.userInfo)
-    updateUserInfo()
+
+    if (e.detail.userInfo != undefined){
+        wx.navigateTo({
+          url: '../index/index'
+        })
+
+        updateUserInfo()
+    }
+    
   },
 
   /**
