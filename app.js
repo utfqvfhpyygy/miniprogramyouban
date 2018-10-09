@@ -1,4 +1,5 @@
-//app.js
+const weRequest = require('./utils/request');
+
 App({
   onLaunch: function () {
       wx.onNetworkStatusChange(function(res) {
@@ -12,6 +13,10 @@ App({
     })
 
     console.log('小程序初始化完成')
+
+    weRequest.login(function(){
+      console.log(111);
+    })
   },
 
   onShow: function(options) {

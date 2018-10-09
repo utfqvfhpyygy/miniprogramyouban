@@ -28,3 +28,26 @@
   margin-left: 10px;
   font-size: 30px;
 }
+
+.pop-bottom {
+  width: 100%;
+  padding: 20px;
+  line-height: 100px;
+  background-color: #fff;
+  display: flex;
+}
+
+.record-btn {
+  margin-top: 50px;
+}
+
+.record-time-label {
+  font-size: 20px;
+  color: #000000;
+  margin-top: 10px;
+}
+
+.imagelist {
+  display: inline;
+  padding: 20px;
+}

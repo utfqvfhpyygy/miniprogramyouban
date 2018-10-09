@@ -8,6 +8,7 @@
     "van-field": "/miniprogram_npm/vant-weapp/field/index",
     "van-row": "/miniprogram_npm/vant-weapp/row/index",
     "van-col": "/miniprogram_npm/vant-weapp/col/index",
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
     "van-switch-cell": "/miniprogram_npm/vant-weapp/switch-cell/index"
   }
 }

@@ -1,12 +1,12 @@
 <view class='class-create-container'>
   <van-row custom-class="header">
-    <van-col span="2">　</van-col>
-    <van-col span="8" custom-class="pictext">
+    <van-col span="1">　</van-col>
+    <van-col span="9" custom-class="pictext">
       <image style="width: 25px; height: 25px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
       <span>肯尼斯大朋友</span>
       </van-col>
-    <van-col span="11">　</van-col>
-    <van-col span="3"> <i class="iconfont icon-enter enter"></i> </van-col>
+    <van-col span="12">　</van-col>
+    <van-col span="2"> <i class="iconfont icon-enter enter"></i> </van-col>
   </van-row>
 
   <van-row custom-class="tab">
@@ -15,13 +15,6 @@
     <van-col span="6"><i class="iconfont icon-zuoye"></i> <span>作业</span> </van-col>
     <van-col span="6"><i class="iconfont icon-gengduo"></i> <span>更多</span> </van-col>
   </van-row>
-  <view class='line'></view>
-  <view>
-    <van-notice-bar
-    text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
-    scrollable="false"
-    />
-  </view>
   <view class='line'></view>
   <view>
     <span class="title"><i class="tuchu"></i>我发布的通知</span>
@@ -41,7 +34,7 @@
     <view class="tline"></view>
 
     <view class="confirmnum">
-      1人<view>已读</view>
+      12人<view>已读</view>
     </view>
     <view class="detail">
       <view class="dtitle">第一节课英语作业2</view>
@@ -55,7 +48,7 @@
     <view class="tlist">
     <view class="ttime">9月16日<span>星期日</span></view>
     <view class="confirmnum">
-      1人<view>确认</view>
+      99人<view>确认</view>
     </view>
     <view class="detail">
       <view class="dtitle">第一节课英语作业2</view>
@@ -65,14 +58,14 @@
 
   </view>
   
-  <view>
+  <view class="housework">
     <span class="title"><i class="tuchu"></i>我发布的作业</span>
   </view>
 
   <view class="tlist">
     <view class="ttime">9月16日<span>星期日</span></view>
     <view class="confirmnum">
-      1人<view>确认</view>
+      99+<view>确认</view>
     </view>
     <view class="detail">
       <view class="dtitle">第一节课英语作业水利电力熟练度法士大夫...</view>

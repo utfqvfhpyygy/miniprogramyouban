@@ -132,6 +132,27 @@ export function updateUserInfoFromServer() {
   })
 }
 
+
+function getAddress(location){
+
+  console.log('getAddress')
+  console.log(location)
+
+  var qqMapApi = 'http://apis.map.qq.com/ws/geocoder/v1/' + "?location=" + location.latitude + ',' +
+      location.longitude + "&key=7L2BZ-4UZW6-UW7SS-MUEYB-M73PS-F2FFY" + "&get_poi=1";
+
+    wx.request({
+      url: qqMapApi,
+      data: {},
+      method: 'GET',
+      success: (res) => {
+        console.log(res.data)
+
+      }
+    });
+
+}
+
 /**
  * ajax请求
  * @param url    请求地址
