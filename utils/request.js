@@ -36,7 +36,7 @@ weRequest.init({
     // [必填] 触发请求成功的条件
     successTrigger: function (res) {
         // 此处例子：当返回数据中的字段errcode等于0时，代表请求成功，其他情况都认为业务逻辑失败
-        return res.errcode == 0;
+        return res.code == 0;
     },
     // [可选] 成功之后返回数据；可不配置
     successData: function (res) {
@@ -58,7 +58,7 @@ weRequest.init({
         // do some report
     },
     // [可选] 是否需要调用checkSession，验证小程序的登录态过期，可不配置，默认为false
-    doNotCheckSession: true,
+    doNotCheckSession: false,
 	// [可选] 上报耗时的函数，name为上报名称，startTime为接口调用开始时的时间戳，endTime为接口返回时的时间戳
     reportCGI: function(name, startTime, endTime, request) {
         //wx.reportAnalytics(name, {

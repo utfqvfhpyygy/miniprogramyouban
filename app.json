@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/guide/index",
     "pages/index/index",
     "pages/class/inform/index",
     "pages/class/index/index",
