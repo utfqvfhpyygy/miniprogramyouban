@@ -17,10 +17,10 @@ var playComplete;
 function init(param){
 
 
-    recorderManager = canUseNewMaker && !recorderManager ? wx.getRecorderManager : ''
-    innerAudioContext = canUseNewPlayer && !innerAudioContext ? wx.createInnerAudioContext : ''
+    recorderManager = canUseNewMaker && !recorderManager ? wx.getRecorderManager() : ''
+    innerAudioContext = canUseNewPlayer && !innerAudioContext ? wx.createInnerAudioContext() : ''
     recorderManager ? newMakerInit() : ''
-    innerAudioContext ? newPlayerInit() : ''
+    //innerAudioContext ? newPlayerInit() : ''
 
 
     // 配置默认设置
@@ -41,7 +41,7 @@ function init(param){
     playError = param.playError || function (err) {
         console.log(err)
     }
-    playComplete = param.playComplete || function () {}     
+    playComplete = param.playComplete || function () {}  
 
 }
 
@@ -66,24 +66,30 @@ function stopPlay(){
  */
 function newMakerInit() {
 
+
     // 监听录音开始
     recorderManager.onStart(() => {
-        //console.log('recorderManager onStart')
+        console.log('recorderManager onStart')
         upStart()
     })
 
     // 监听录音结束
     recorderManager.onStop((res) => {
-        //console.log('recorderManager onStop')
+        console.log('recorderManager onStop')
         upStop(res)
         upComplete()
     })
 
     // 监听录音出错
     recorderManager.onError(err => {
-        //console.log('recorderManager onError')
+        console.log('recorderManager onError')
         upError(err)
         upComplete()
+    })
+
+    // 监听录音中断
+    recorderManager.onPause(() => {
+      console.log('recorderManager onPause')
     })
 
 
@@ -92,7 +98,7 @@ function newMakerInit() {
 function newMakerStart() {
 
     const options = {
-        duration: 10000,
+        duration: 120000,
         sampleRate: 44100,
         numberOfChannels: 1,
         encodeBitRate: 192000,
