@@ -401,7 +401,16 @@ Page({
     }, () => {
       this.data.voiceRecorderManager.stop()
     })
+  },
+
+  //图片预览
+  clickimg: function (e) {
+    
+    var currents = e.target.dataset.src;
+    console.log(currents);
+    wx.previewImage({
+      current: currents,
+      urls: [currents],
+    })
   }
-
-
 })

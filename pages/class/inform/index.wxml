@@ -7,11 +7,35 @@
   </view>
   <view class="line"></view>
   
-  <view class="imagelist">
+
+
+  <view class="attach">
+    <i class="iconfont icon-camera_fill" bindtap='chooseImage'></i>
+    <i class="iconfont icon-video_fill" bindtap='chooseVedio'></i>
+    <i class="iconfont icon-translation_fill" bindtap='chooseVoice'></i>
+    <i class="iconfont icon-accessory" bindtap='chooseFile'></i>
+  </view>
+
+    <view class="imagelist">
+   
     <block wx:for="{{selectedImgsTmp}}" wx:for-item="item" wx:key="item">
         <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFit" src="{{item}}"></image>
     </block>
+
+    <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFit" src="http://39.104.82.18/inform/55/10000/1538237134.png" bindtap='clickimg'  data-src="http://39.104.82.18/inform/55/10000/1538237134.png"></image>
+    <icon type="cancel" size="15" color="red" class="cancel"/>
+
+    <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFit" src="http://39.104.82.18/inform/55/10000/1538237134.png"></image>
+    <icon type="cancel" size="15" color="red" class="cancel"/>
+
+    <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFit" src="http://39.104.82.18/inform/55/10000/1538237134.png"></image>
+    <icon type="cancel" size="15" color="red" class="cancel"/>
+
   </view>
+
+
+
+
 
   <view class="voicelist">
     <block wx:for="{{selectedRecordsTmp}}" wx:for-item="item" wx:key="item">
@@ -23,13 +47,6 @@
     <block wx:for="{{selectedVideosTmp}}" wx:for-item="item" wx:key="item">
         <video src='{{item}}'></video>
     </block>
-  </view>
-
-  <view class="attach">
-    <i class="iconfont icon-camera_fill" bindtap='chooseImage'></i>
-    <i class="iconfont icon-video_fill" bindtap='chooseVedio'></i>
-    <i class="iconfont icon-translation_fill" bindtap='chooseVoice'></i>
-    <i class="iconfont icon-accessory" bindtap='chooseFile'></i>
   </view>
 
   <view>

@@ -27,6 +27,7 @@
 .attach{
   margin-left: 10px;
   font-size: 30px;
+  margin-top: 10px;
 }
 
 .pop-bottom {
@@ -49,5 +50,12 @@
 
 .imagelist {
   display: inline;
-  padding: 20px;
+  margin-left: 10px;
+  padding-bottom: 5px;
+}
+
+.cancel{
+  vertical-align:top;
+  position:relative;
+  right:15px;
 }
