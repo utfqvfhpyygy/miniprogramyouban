@@ -1,4 +1,4 @@
-import { wxChooseImage, wxChooseVedio, uploadImage, uploadVedio, voiceCallBack} from '../../../utils/upload'
+import { wxChooseImage, wxChooseVedio, uploadImage, uploadFile, voiceCallBack} from '../../../utils/upload'
 import {voiceManager} from '../../../utils/voiceManager'
 
 const app = getApp()
