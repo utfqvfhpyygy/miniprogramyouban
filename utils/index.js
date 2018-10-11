@@ -93,115 +93,8 @@ export function getQueryString(str, name) {
   return null;
 }
 
-/**
- * 检查小程序session是否过期
- * @return { Promise } - resolve true：未过期；false：已过期；
- */
-function wxCheckSession() {
-  return new Promise((resolve, reject) => {
-    wx.checkSession({
-      success() {
-        console.log('session没过期')
-        resolve(true)
-      },
-      fail() {
-        console.log('session过期了')
-        resolve(false)
-      }
-    })
-  })
-}
 
-/**
- * 获取openId
-*/
-function getOpenid() {
-  return new Promise((resolve, reject) => {
-    const openid = wx.getStorageSync('openid')
 
-    console.log('本地openid:'+openid)
-
-    if (openid) {
-      wxCheckSession()
-        .then(flag => {
-          if (flag) {
-            resolve(openid)
-          } else {
-            return getOpenidFromServer()
-          }
-        })
-        .then(openid => {
-          resolve(openid)
-        })
-        .catch(() => {
-          console.error('出错了')
-        })
-    } else {
-      getOpenidFromServer()
-        .then(openid => {
-          console.log('getOpenid getOpenidFromServer suc')
-          resolve(openid)
-        })
-        .catch(() => {
-          console.log('getOpenid getOpenidFromServer fail')
-          console.error('出错了')
-        })
-    }
-  })
-}
-
-function getOpenidFromServer() {
-  return new Promise((resolve, reject) => {
-    wxLogin()
-      .then(res => {
-
-        console.log('wxlogin response:'+res)
-
-        return wxAjax({
-          url: app.globalData.origin + 'user/getOpenid',
-          params: {
-            code: res.code,
-            state: 'weChatLogin',
-            isXCX: 1,
-            platform: app.globalData.platform
-          },
-          type: 'get'
-        })
-      })
-      .then(res => {
-
-        console.log('getOpenidFromServer api response:'+res)
-
-        if (res.statusCode === 200) {
-          if (res.data.code === 0) {
-            wx.setStorage({
-              key: 'openid',
-              data: res.data.data.openId
-            })
-            app.globalData.openid = res.data.data.openId
-            resolve(res.data.data.openId)
-          } else {
-            wx.showModal({
-              title: '提示',
-              content: res.msg,
-              showCancel: false
-            })
-            reject()
-          }
-        } else {
-          wx.showModal({
-            title: '提示',
-            content: res.errMsg,
-            showCancel: false
-          })
-          reject()
-        }
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  })
-}
 
 /**
  * 询问授权
@@ -222,41 +115,6 @@ function wxAuthorize(type) {
   })
 }
 
-/**
- * 获取微信用户信息
-*/
-function wxGetUserInfo() {
-  return new Promise((resolve, reject) => {
-    wx.getUserInfo({
-      success(res) {
-        console.log('获取微信用户信息成功')
-        resolve(res)
-      },
-      fail() {
-        console.log('获取微信用户信息失败')
-        reject()
-      }
-    })
-  })
-}
-
-/**
- * 调用接口wx.login() 获取临时登录凭证（code）
-*/
-function wxLogin() {
-  return new Promise((resolve, reject) => {
-    wx.login({
-      success(res) {
-        console.log('wx.login suc')
-        resolve(res)
-      },
-      fail() {
-        console.log('wx.login fail')
-        reject()
-      }
-    })
-  })
-}
 
 /**
  * 请求方法

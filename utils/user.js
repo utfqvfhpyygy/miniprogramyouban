@@ -12,7 +12,7 @@ export function updateUserInfo(){
           console.log(openid)
 
           weRequest.request({
-              url: 'user/checkOpenid',
+              url: 'user/login',
               data: {
                 openid: openid,
                 nickName: res.userInfo.nickName,

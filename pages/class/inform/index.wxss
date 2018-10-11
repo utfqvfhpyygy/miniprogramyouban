@@ -59,3 +59,23 @@
   position:relative;
   right:15px;
 }
+
+.xm-record-play-btn-hover {
+    background-color: #b3d4f3;
+}
+
+.xm-reply-record-play-btn {
+    margin-right: 30px;
+    margin-left: 30px;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    border: 0px solid #1e90ff;
+    color: #1e90ff;
+    border-radius: 6px;
+    background-color: #deebf7;
+    line-height: 20px;
+    padding: 4px;
+    height: 30px;
+}
