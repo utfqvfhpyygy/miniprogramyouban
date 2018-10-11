@@ -17,7 +17,7 @@
   </view>
 
   <view class="imagelist2">
-    <block wx:for="{{alist}}">
+    <block wx:for="{{alist}}" wx:key="{{alist}}">
       <view class="imagelist" style='display:{{item}};'>
         <block wx:if="{{alistType[index] == 'video'}}">
           <video mode="aspectFit" src="{{alistUrl[index]}}" bindtap='clickimg' data-src='{{alistUrl[index]}}'></video>
@@ -33,7 +33,7 @@
 
 
   <view class="voicelist">
-    <block wx:for="{{selectedRecordsTmp}}" wx:for-item="item" wx:key="item">
+    <block wx:for="{{selectedRecordsUrl}}" wx:for-item="item" wx:key="item">
         <view bindtap="startPlay" class='xm-reply-record-play-btn' data-from="{{item}}" data-record="{{item}}" hoverClass="xm-record-play-btn-hover" style="margin-left:10px;position:relative">
         <view>
             <image src="../../../image/play.png" style="width: 30px; height: 30px; background-color: #eeeeee;" mode="aspectFit"></image>

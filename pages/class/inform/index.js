@@ -17,7 +17,7 @@ Page({
     time_counter:0,  //录音计时
 
     selectedImgsTmp: [],  //选中的图片
-    selectedRecordsTmp: ['wxfile://tmp_b37aae03f46fdbd49b7292896d2d4b62.mp3'],   //选中的录音
+    selectedRecordsTmp: [],   //选中的录音
     selectedVideosTmp: [],    //选中的视频
 
     selectedImgsUrl: [],  //选中的图片
@@ -76,7 +76,10 @@ Page({
           clearInterval(that.data.voiceRecordingTimer)
           that.setData({
             voiceRecording: false,
-            voiceRecordingTimer: null
+            voiceRecordingTimer: null,
+            isShowRecordView: false,
+            isRecording: false,
+            time_counter: 0
           })
 
           if (Math.floor(res.duration / 1000) < 1) {
@@ -319,8 +322,25 @@ Page({
   * 开始播放
   */
   startPlay: function(res){
+      console.log('start play');
       console.log(res);
+
+      var url = res.currentTarget.dataset.record;
+      if(!url){
+          console.log('url is null');
+      }
+      console.log(url);
+      voiceManager.startPlay(url)
   },
+
+
+  /**
+  * 停止播放
+  */
+    stopPlay: function () {
+      console.log('stop play');
+      voiceManager.stopPlay
+    },
 
   /**
    * 发布通知

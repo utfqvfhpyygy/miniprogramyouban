@@ -20,7 +20,7 @@ function init(param){
     recorderManager = canUseNewMaker && !recorderManager ? wx.getRecorderManager() : ''
     innerAudioContext = canUseNewPlayer && !innerAudioContext ? wx.createInnerAudioContext() : ''
     recorderManager ? newMakerInit() : ''
-    //innerAudioContext ? newPlayerInit() : ''
+    innerAudioContext ? newPlayerInit() : ''
 
 
     // 配置默认设置
@@ -53,8 +53,8 @@ function stopRecord(){
     recorderManager ? newMakerStop() : ''
 }
 
-function startPlay(){
-    innerAudioContext ? newPlayerPlay(): ''
+function startPlay(url){
+    innerAudioContext ? newPlayerPlay(url): ''
 }
 
 function stopPlay(){
@@ -190,6 +190,10 @@ function newPlayerInit() {
 }
 
 function newPlayerPlay(src){
+    console.log('newPlayerPlay')
+    console.log(src)
+    console.log(innerAudioContext)
+
     innerAudioContext.src = src
     innerAudioContext.play()
 }
