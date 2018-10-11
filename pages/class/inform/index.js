@@ -190,8 +190,6 @@ Page({
           console.log(res.data.url);
 
           //追加图片，先看看之前有多少
-          var count = that.data.alist.length;
-          count++;
           var newAlist = that.data.alist.concat("");
           var newAlistUrl = that.data.alistUrl.concat(res.data.url);
           var newAlistType = that.data.alistType.concat('img');
@@ -245,12 +243,18 @@ Page({
 
           console.log(res);
           console.log(res.data.url);
-          var tempList = that.data.selectedVideosTmp.concat(tempFilePath);
-          var urlList = that.data.selectedVideosUrl.concat(res.data.url);
+          //追加视频，先看看之前有多少
+          var newAlist = that.data.alist.concat("");
+          var newAlistUrl = that.data.alistUrl.concat(res.data.url);
+          var newAlistType = that.data.alistType.concat('video');
+
           that.setData({
-            selectedVideosTmp: tempList,
-            selectedVideosUrl: urlList
+            alist: newAlist,
+            alistUrl: newAlistUrl,
+            alistType: newAlistType,
           })
+
+
         }, function (err) {
           console.log(err);
         })
