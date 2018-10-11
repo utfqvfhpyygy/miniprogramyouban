@@ -73,15 +73,6 @@ Page({
           console.log('voiceManager upStop')
           console.log(res)
 
-          clearInterval(that.data.voiceRecordingTimer)
-          that.setData({
-            voiceRecording: false,
-            voiceRecordingTimer: null,
-            isShowRecordView: false,
-            isRecording: false,
-            time_counter: 0
-          })
-
           if (Math.floor(res.duration / 1000) < 1) {
             wx.showModal({
               title: '提示',
@@ -130,9 +121,16 @@ Page({
       upError:function(err){
         console.log('voiceManager upError')
         console.log(err)
+      },
+
+      upComplete:function(){
+        console.log('voiceManager upComplete')
 
         clearInterval(that.data.voiceRecordingTimer)
         that.setData({
+          voiceRecording: false,
+          voiceRecordingTimer: null,
+          isShowRecordView: false,
           isRecording: false,
           time_counter: 0
         })
@@ -270,7 +268,7 @@ Page({
   },
 
   /**
-   * 选择录音
+   * 选择录音出现van-popup
    */
   chooseVoice: function (e) {
     console.log(e)
@@ -281,7 +279,7 @@ Page({
   },
 
   /**
-   * 关闭录音
+   * 关闭录音van-popup
    */
   closeRecordView: function (e) {
     console.log(e)
@@ -356,8 +354,9 @@ Page({
       return
     }
 
-    console.log(this.data.selectedImgsTmp);
-    console.log(this.data.selectedImgsUrl);
+    console.log(this.data.alist);
+    console.log(this.data.alistUrl);
+    console.log(this.data.alistType);
 
     var that = this;
     app.requestData({
@@ -367,9 +366,7 @@ Page({
         classId: 123,
         content: this.data.content,
         feedbackType:this.data.feedBackChecked,
-        selectedImgs:this.data.selectedImgsUrl,
-        selectedRecords:this.data.selectedRecordsUrl,
-        selectedVideos:this.data.selectedVideosUrl
+        alistUrl: JSON.stringify(this.data.alistUrl),
       },
       type: 'get',
       sucBack(res) {
