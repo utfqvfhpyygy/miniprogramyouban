@@ -22,7 +22,13 @@ Page({
 
     selectedImgsUrl: [],  //选中的图片
     selectedRecordsUrl: [],   //选中的录音
-    selectedVideosUrl: []    //选中的视频
+    selectedVideosUrl: [],    //选中的视频
+    /*
+    暂定9个附件，用a1-a9,使用后就标记true,没有使用就是false
+    */
+    alist: [],
+    alistType: [],
+    alistUrl: []
   },
 
 
@@ -160,7 +166,7 @@ Page({
    */
   chooseImage: function (e) {
 
-    console.log("chooseImage");
+    console.log("chooseImage222");
 
     var that = this;
     wxChooseImage()
@@ -180,14 +186,20 @@ Page({
       res.tempFilePaths.forEach(function (tempFilePath){
         uploadImage(tempFilePath)
         .then(function(res){
-
           console.log(res);
           console.log(res.data.url);
-          var tempList = that.data.selectedImgsTmp.concat(tempFilePath);
-          var urlList = that.data.selectedImgsUrl.concat(res.data.url);
+
+          //追加图片，先看看之前有多少
+          var count = that.data.alist.length;
+          count++;
+          var newAlist = that.data.alist.concat("");
+          var newAlistUrl = that.data.alistUrl.concat(res.data.url);
+          var newAlistType = that.data.alistType.concat('img');
+
           that.setData({
-            selectedImgsTmp: tempList,
-            selectedImgsUrl: urlList
+            alist: newAlist,
+            alistUrl: newAlistUrl,
+            alistType: newAlistType,
           })
         },function(err){
             console.log(err);
@@ -420,5 +432,16 @@ Page({
       current: currents,
       urls: [currents],
     })
+  },
+  //删除附件
+  close:function(e){
+    var alist = this.data.alist;
+
+    var bindex = 'alist['+e.currentTarget.dataset.id+"]";
+    bindex
+    console.log(bindex);
+      this.setData({
+        [bindex]: 'none'
+      })
   }
 })

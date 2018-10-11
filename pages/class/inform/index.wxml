@@ -16,24 +16,19 @@
     <i class="iconfont icon-accessory" bindtap='chooseFile'></i>
   </view>
 
-    <view class="imagelist">
-   
-    <block wx:for="{{selectedImgsTmp}}" wx:for-item="item" wx:key="item">
-        <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFit" src="{{item}}"></image>
+  <view class="imagelist2">
+    <block wx:for="{{alist}}">
+      <view class="imagelist" style='display:{{item}};'>
+        <block wx:if="{{alistType[index] == 'video'}}">
+          <video mode="aspectFit" src="{{alistUrl[index]}}" bindtap='clickimg' data-src='{{alistUrl[index]}}'></video>
+        </block>
+        <block wx:if="{{alistType[index] == 'img'}}">
+          <image mode="aspectFit" src="{{alistUrl[index]}}" bindtap='clickimg' data-src='{{alistUrl[index]}}'></image>
+        </block>
+        <icon type="cancel" size="15" color="red" class="cancel" bindtap='close' data-id="{{index}}"/>
+      </view>
     </block>
-
-    <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFit" src="http://39.104.82.18/inform/55/10000/1538237134.png" bindtap='clickimg'  data-src="http://39.104.82.18/inform/55/10000/1538237134.png"></image>
-    <icon type="cancel" size="15" color="red" class="cancel"/>
-
-    <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFit" src="http://39.104.82.18/inform/55/10000/1538237134.png"></image>
-    <icon type="cancel" size="15" color="red" class="cancel"/>
-
-    <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFit" src="http://39.104.82.18/inform/55/10000/1538237134.png"></image>
-    <icon type="cancel" size="15" color="red" class="cancel"/>
-
   </view>
-
-
 
 
 
@@ -52,6 +47,7 @@
         <video src='{{item}}'></video>
     </block>
   </view>
+
 
   <view>
       <van-switch-cell
