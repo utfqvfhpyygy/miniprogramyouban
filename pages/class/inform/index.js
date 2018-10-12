@@ -154,15 +154,6 @@ Page({
   },
 
   /**
-   * 获取通知内容
-   */
-  bindTextAreaBlur: function(e) {
-    this.setData({
-      content:e.detail.value
-    }) 
-  },   
-
-  /**
    * 用户点击选择图片按钮
    */
   chooseImage: function (e) {
@@ -343,10 +334,10 @@ Page({
   /**
    * 发布通知
    */
-  submit: function(){
+  bindFormSubmit: function(e){
     console.log('submit');
-
-    if(this.data.content.length <= 0){
+    var content = e.detail.value.textarea;
+    if (content <= 0){
       wx.showToast({
         icon: 'none',
         title: '内容不能为空'
@@ -364,7 +355,7 @@ Page({
       params: {
         uid: '10000',
         classId: 123,
-        content: this.data.content,
+        content: content,
         feedbackType:this.data.feedBackChecked,
         alistUrl: JSON.stringify(this.data.alistUrl),
       },
@@ -454,15 +445,29 @@ Page({
       urls: [currents],
     })
   },
-  //删除附件
+  //删除附件,要清空数组
   close:function(e){
     var alist = this.data.alist;
 
-    var bindex = 'alist['+e.currentTarget.dataset.id+"]";
-    bindex
-    console.log(bindex);
-      this.setData({
-        [bindex]: 'none'
-      })
+    var index = e.currentTarget.dataset.id;
+  
+    // var bindex = 'alist['+e.currentTarget.dataset.id+"]";
+    // this.setData({
+    //     [bindex]: 'none'
+    // })
+    //清空数组
+    this.data.alist.splice(index,1);
+    var newAlist = this.data.alist
+    this.data.alistUrl.splice(index, 1);
+    var newAlistUrl = this.data.alistUrl;
+    this.data.alistType.splice(index, 1)
+    var newAlistType = this.data.alistType;
+
+    this.setData({
+      alist: newAlist,
+      alistUrl: newAlistUrl,
+      alistType: newAlistType,
+    })
+
   }
 })
