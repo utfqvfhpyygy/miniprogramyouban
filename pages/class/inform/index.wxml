@@ -69,8 +69,9 @@
     position="bottom"
     custom-class="pop-bottom"
     bind:close="closeRecordView">
-      <text class="record-time-label">21s</text>
-      <van-icon   name="play" bind:click='startRecord' size="40px" class="record-btn"/>
-      <van-icon  name="stop" bind:click='endRecord' size="40px" class="record-btn"/>
+      
+      <text class="record-time-label">0s</text>
+      <icon name="play"  size="40px" class="iconfont icon-translation_fill translation_fill"/>
+      <button type='default' size='default' bindtap='startRecord'>{{buttonName}}</button>
   </van-popup>
 </view>

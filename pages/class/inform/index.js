@@ -28,7 +28,8 @@ Page({
     */
     alist: [],
     alistType: [],
-    alistUrl: []
+    alistUrl: [],
+    buttonName:'开始录音'
   },
 
 
@@ -140,9 +141,6 @@ Page({
 
  
   },
-
-
-
 
   /**
    * 是否需要反馈变化
@@ -290,9 +288,19 @@ Page({
 
     console.log("startRecord");
     console.log(voiceManager);
-    
-    voiceManager.startRecord()
-   
+
+
+    if (this.data.buttonName == '暂停录音'){
+      voiceManager.stopRecord()
+      this.setData({
+        "buttonName": '开始录音',
+      })
+    }else{
+      voiceManager.startRecord()
+      this.setData({
+        "buttonName": '暂停录音',
+      })
+    }
   },
 
 
