@@ -183,6 +183,7 @@ function newPlayerInit() {
     })
 
     innerAudioContext.onError((err) => {
+        console.log(err)
         playError(err)
         playComplete()
     })

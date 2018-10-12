@@ -26,8 +26,11 @@
 
 .attach{
   margin-left: 10px;
-  font-size: 30px;
+  font-size: 35px;
   margin-top: 10px;
+}
+.attach i{
+  margin-right: 5px;
 }
 
 .pop-bottom {
@@ -69,6 +72,11 @@
   background-color: #eeeeee;
 }
 
+.imagelist audio{
+  width: 50px; 
+  height: 50px; 
+  background-color: #eeeeee;
+}
 .imagelist2{
   margin-left: 10px;
 }

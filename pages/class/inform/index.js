@@ -29,6 +29,7 @@ Page({
     alist: [],
     alistType: [],
     alistUrl: [],
+    alistTempUrl: [],
     buttonName:'开始录音'
   },
 
@@ -99,12 +100,17 @@ Page({
 
             console.log(res);
             console.log(res.data.url);
-            var tempList = that.data.selectedRecordsTmp.concat(tempFilePath);
-            var urlList = that.data.selectedRecordsUrl.concat(res.data.url);
+            //追加音频，先看看之前有多少
+            var newAlist     = that.data.alist.concat("");
+            var newAlistUrl  = that.data.alistUrl.concat(res.data.url);
+            var newAlistType = that.data.alistType.concat('audio');
+
             that.setData({
-              selectedRecordsTmp: tempList,
-              selectedRecordsUrl: urlList
+              alist: newAlist,
+              alistUrl: newAlistUrl,
+              alistType: newAlistType,
             })
+
           }, function (err) {
             console.log(err);
           })
@@ -273,10 +279,12 @@ Page({
   closeRecordView: function (e) {
     console.log(e)
 
+
     this.setData({
       "isShowRecordView":false,
       "isRecording":false,
-      "time_counter":0
+      "time_counter":0,
+      "buttonName": '开始录音'
     })
   },
 
@@ -322,7 +330,7 @@ Page({
       console.log('start play');
       console.log(res);
 
-      var url = res.currentTarget.dataset.record;
+      var url = res.currentTarget.dataset.src;
       if(!url){
           console.log('url is null');
       }
