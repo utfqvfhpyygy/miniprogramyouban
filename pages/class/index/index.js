@@ -1,11 +1,13 @@
-// pages/class/index/index.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      informList:[],
+      homeworkList:[]
   },
 
   /**
@@ -13,6 +15,34 @@ Page({
    */
   onLoad: function (options) {
 
+      console.log('onLoad')
+      var that = this;
+      var uid = app.getUid();
+
+      app.requestData({
+        url: app.globalData.origin + 'class/index',
+        params: {
+          deviceUid: uid,
+          platform: app.globalData.platform
+        },
+        type: 'get',
+        sucBack: function (res) {
+          console.log('suc111')
+          console.log(res)
+          that.setData({
+            "informList": res.data.informList,
+            "homeworkList": res.data.homeworkList,
+          })
+        },
+        errBack: function (msg) {
+          console.log('fail111')
+          wx.showModal({
+            title: '提示',
+            content: msg,
+            showCancel: false
+          })
+        }
+      })
   },
 
   /**

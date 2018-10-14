@@ -20,70 +20,46 @@
     <span class="title"><i class="tuchu"></i>我发布的通知</span>
   </view>
 
-  <view class="tlist">
-    <view class="ttime">9月16日<span>星期日</span></view>
-    <view class="confirmnum">
-      1人<view>确认</view>
-    </view>
-    <view class="detail">
-      <view class="dtitle">第一节课英语作业2</view>
-      <view class="dcontent">语音反馈 明天前要交作业</view>
-    </view>
-    <view class="right"><i class="iconfont icon-enter enter"></i></view>
+  
+  <view class="tlist" wx:for="{{informList}}" wx:for-item="dateList" wx:key="dateList">
+    <view class="ttime">"{{dateList[0].date}}"<span>"{{dateList[0].week}}"</span></view>
 
-    <view class="tline"></view>
+    <block wx:for="{{dateList}}" wx:for-item="item" wx:key="item">  
+      <view class="confirmnum">
+        "{{item.confirmNum}}"人<view>确认</view>
+      </view>
+      <view class="detail">
+        <view class="dtitle">"{{item.title}}"</view>
+        <view class="dcontent">语音反馈 "{{item.content}}"</view>
+      </view>
+      <view class="right"><i class="iconfont icon-enter enter"></i></view>
 
-    <view class="confirmnum">
-      12人<view>已读</view>
-    </view>
-    <view class="detail">
-      <view class="dtitle">第一节课英语作业2</view>
-      <view class="dcontent">语音反馈 明天前要交作业</view>
-    </view>
-    <view class="right"><i class="iconfont icon-enter enter"></i></view>
-
+      <view class="tline"></view>
+    </block>
 
   </view>
 
-    <view class="tlist">
-    <view class="ttime">9月16日<span>星期日</span></view>
-    <view class="confirmnum">
-      99人<view>确认</view>
-    </view>
-    <view class="detail">
-      <view class="dtitle">第一节课英语作业2</view>
-      <view class="dcontent">语音反馈 明天前要交作业</view>
-    </view>
-    <view class="right"><i class="iconfont icon-enter enter"></i></view>
-
-  </view>
   
   <view class="housework">
     <span class="title"><i class="tuchu"></i>我发布的作业</span>
   </view>
 
-  <view class="tlist">
-    <view class="ttime">9月16日<span>星期日</span></view>
-    <view class="confirmnum">
-      99+<view>确认</view>
-    </view>
-    <view class="detail">
-      <view class="dtitle">第一节课英语作业水利电力熟练度法士大夫...</view>
-      <view class="dcontent">无需要反馈</view>
-    </view>
-    <view class="right"><i class="iconfont icon-enter enter"></i></view>
 
-    <view class="tline"></view>
+  <view class="tlist" wx:for="{{homeworkList}}" wx:for-item="dateList" wx:key="dateList">
+    <view class="ttime">"{{dateList[0].date}}"<span>"{{dateList[0].week}}"</span></view>
 
-    <view class="confirmnum">
-      1人<view>已读</view>
-    </view>
-    <view class="detail">
-      <view class="dtitle">第一节课英语作业2</view>
-      <view class="dcontent">语音反馈 明天前要交作业</view>
-    </view>
-    <view class="right"><i class="iconfont icon-enter enter"></i></view>
+    <block wx:for="{{dateList}}" wx:for-item="item" wx:key="item">  
+      <view class="confirmnum">
+        "{{item.confirmNum}}"<view>确认</view>
+      </view>
+      <view class="detail">
+        <view class="dtitle">"{{item.title}}"</view>
+        <view class="dcontent">"{{item.content}}"</view>
+      </view>
+      <view class="right"><i class="iconfont icon-enter enter"></i></view>
 
+      <view class="tline"></view>
+    </block>
 
   </view>  
 </view>

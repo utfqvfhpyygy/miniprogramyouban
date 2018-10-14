@@ -38,6 +38,19 @@ App({
     wxUserInfo: null // 当前微信用户信息（需要授权获取）
   },
 
+  getUid: function(){
+
+    if (this.globalData.userInfo && this.globalData.userInfo.uid){
+        return this.globalData.userInfo.uid;
+    }
+
+    var userInfo = wx.getStorageSync('userInfo');
+    if(userInfo && userInfo.uid){
+        return userInfo.uid;
+    }
+
+  },
+
   /**
    * 请求网络公共方法
    * option {object} option具体内容如下
