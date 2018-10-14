@@ -1,12 +1,13 @@
 import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
-// pages/class/informdetail/index.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    detail: ''
   },
 
   /**
@@ -14,6 +15,35 @@ Page({
    */
   onLoad: function (options) {
 
+    console.log('onLoad')
+    let id = options.id;    
+    var that = this;
+    var uid = app.getUid();
+
+    app.requestData({
+      url: app.globalData.origin + 'inform/detail',
+      params: {
+        id: id,
+        deviceUid: uid,
+        platform: app.globalData.platform
+      },
+      type: 'get',
+      sucBack: function (res) {
+        console.log('suc111')
+        console.log(res)
+        that.setData({
+          "detail": res.data,
+        })
+      },
+      errBack: function (msg) {
+        console.log('fail111')
+        wx.showModal({
+          title: '提示',
+          content: msg,
+          showCancel: false
+        })
+      }
+    })
   },
 
   /**

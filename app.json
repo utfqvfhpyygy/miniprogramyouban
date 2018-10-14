@@ -1,10 +1,12 @@
 {
   "pages":[
+    
     "pages/class/index/index",
+    "pages/class/informdetail/index",
     "pages/class/inform/index",
     "pages/guide/index",
     "pages/index/index",
-    "pages/class/informdetail/index",
+    
     "pages/class/create/index",
     "pages/homework/create/index",
     "pages/class/grade/index",
