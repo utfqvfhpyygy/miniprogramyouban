@@ -379,8 +379,8 @@ Page({
       sucBack(res) {
         console.log(res)
         if (res.code === 0) {
-          that.setData({
-            content:''
+          wx.navigateTo({
+            url: '../informdetail/index?id='+res.data['id'],
           })
         }
 
