@@ -51,6 +51,19 @@ App({
 
   },
 
+  getLoginUserInfo: function () {
+
+    if (this.globalData.userInfo && this.globalData.userInfo) {
+      return this.globalData.userInfo;
+    }
+
+    var userInfo = wx.getStorageSync('userInfo');
+    if (userInfo) {
+      return userInfo;
+    }
+
+  },
+
   /**
    * 请求网络公共方法
    * option {object} option具体内容如下

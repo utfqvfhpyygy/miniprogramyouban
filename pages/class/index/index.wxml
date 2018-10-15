@@ -2,8 +2,8 @@
   <van-row custom-class="header">
     <van-col span="1">　</van-col>
     <van-col span="9" custom-class="pictext">
-      <image style="width: 25px; height: 25px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
-      <span>肯尼斯大朋友</span>
+      <image style="width: 25px; height: 25px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{userInfo.avatar}}"></image>
+      <span>{{userInfo.username}}</span>
       </van-col>
     <van-col span="12">　</van-col>
     <van-col span="2"> <i class="iconfont icon-enter enter"></i> </van-col>

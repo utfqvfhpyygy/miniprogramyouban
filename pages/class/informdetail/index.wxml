@@ -27,15 +27,14 @@
 
 <cell-block title="回复情况{{detail.inform.confirmNum}}/{{detail.inform.memberNum}}" custom-class="ireply">
 
-<view class="iuserpic" wx:for="{{detail.confirmLists}}" wx:for-item="{{item}}" wx:for-key="item">
+<view class="iuserpic" wx:for="{{detail.confirmLists}}" wx:for-item="{{item}}" wx:key="item">
 <image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
 <view class="timer">15分钟前</view>
 </view>
 
 
-
 <view class="iuserpic">
-<i class="iconfont icon-tianjia mytianjia" bindtap="onClickAlert2"></i>
+<i class="iconfont icon-tianjia mytianjia" bindtap="onClickConfirm"></i>
 <view class="timer">　</view>
 </view>
 </cell-block>

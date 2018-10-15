@@ -95,17 +95,58 @@ Page({
 
   },
 
-  onClickAlert2:function(e) {
+  onClickConfirm:function(e) {
     console.log(123123)
-    Dialog.confirm({
+
+    var aa = Dialog.confirm({
       title:'重要提示',
       message: '我已经阅读完通知内容'
+    }).then({
+      
+    }).catch({
+      
     });
+
+    console.log(aa)
   },
   
   clickimg:function(e){
     wx.previewImage({
       urls: ['http://39.104.82.18/inform/55/10000/1538231717.png'],
+    })
+  },
+
+  confirm:function(res){
+    console.log('confirm')
+    console.log(res)
+
+    let id = 41;
+    var that = this;
+    var uid = app.getUid();
+
+    app.requestData({
+      url: app.globalData.origin + 'inform/confirm',
+      params: {
+        informId: informId,
+        deviceUid: uid,
+        platform: app.globalData.platform
+      },
+      type: 'post',
+      sucBack: function (res) {
+        console.log('suc111')
+        console.log(res)
+        that.setData({
+          "detail": res.data,
+        })
+      },
+      errBack: function (msg) {
+        console.log('fail111')
+        wx.showModal({
+          title: '提示',
+          content: msg,
+          showCancel: false
+        })
+      }
     })
   }
 })

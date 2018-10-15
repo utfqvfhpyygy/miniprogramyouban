@@ -18,6 +18,11 @@ Page({
       console.log('onLoad')
       var that = this;
       var uid = app.getUid();
+      var userInfo = app.getLoginUserInfo();
+
+      this.setData({
+        userInfo: userInfo
+      })
 
       app.requestData({
         url: app.globalData.origin + 'class/index',
