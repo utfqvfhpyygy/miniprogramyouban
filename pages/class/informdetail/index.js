@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detail: ''
+    detail: '',
+    replyList:''
   },
 
   /**
@@ -17,6 +18,7 @@ Page({
 
     console.log('onLoad')
     let id = options.id;    
+    id = 43;
     var that = this;
     var uid = app.getUid();
 
@@ -30,9 +32,10 @@ Page({
       type: 'get',
       sucBack: function (res) {
         console.log('suc111')
-        console.log(res)
+        console.log(res.data.confirmLists)
         that.setData({
           "detail": res.data,
+          "replyList": res.data.confirmLists
         })
       },
       errBack: function (msg) {

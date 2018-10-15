@@ -3,6 +3,8 @@ var voiceManager = require('../../../utils/voiceManager');
 
 const app = getApp()
 
+var audioStatusPlay = 0;
+
 Page({
 
   /**
@@ -30,11 +32,13 @@ Page({
     alistType: [],
     alistUrl: [],
     alistTempUrl: [],
-    buttonName:'开始录音'
+    buttonName:'开始录音',
+    aimage:'../../../image/play.png'
+    
   },
 
 
-
+  
 
   /**
    * 生命周期函数--监听页面加载
@@ -334,8 +338,20 @@ Page({
       if(!url){
           console.log('url is null');
       }
+
+      if ( audioStatusPlay == 1  ){
+        this.stopPlay();
+        console.log('stop audio')
+        return ;
+      }
+
+      audioStatusPlay = 1;
       console.log(url);
       voiceManager.startPlay(url)
+      this.setData({
+        aimage:'../../../image/stop.png'
+
+      })
   },
 
 
@@ -345,6 +361,11 @@ Page({
     stopPlay: function () {
       console.log('stop play');
       voiceManager.stopPlay
+      audioStatusPlay = 0;
+      this.setData({
+        aimage: '../../../image/play.png'
+
+      })
     },
 
   /**

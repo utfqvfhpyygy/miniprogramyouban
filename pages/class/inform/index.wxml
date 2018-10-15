@@ -27,7 +27,7 @@
           <image mode="aspectFit" src="{{alistUrl[index]}}" bindtap='clickimg' data-src='{{alistUrl[index]}}'></image>
         </block>
         <block wx:if="{{alistType[index] == 'audio'}}">
-          <image mode="aspectFit" src="https://xcx.quan5fen.com/Public/xcx-hitui/image/imgs-jyh/yuyin-ico.png" bindtap='startPlay' data-src='{{alistUrl[index]}}'></image>
+          <image mode="aspectFit" src="{{aimage}}" bindtap='startPlay' data-src='{{alistUrl[index]}}'></image>
         </block>
 
         <icon type="cancel" size="15" color="red" class="cancel" bindtap='close' data-id="{{index}}"/>

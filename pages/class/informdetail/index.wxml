@@ -27,9 +27,9 @@
 
 <cell-block title="回复情况{{detail.inform.confirmNum}}/{{detail.inform.memberNum}}" custom-class="ireply">
 
-<view class="iuserpic" wx:for="{{detail.confirmLists}}" wx:for-item="{{item}}" wx:key="item">
-<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
-<view class="timer">15分钟前</view>
+<view class="iuserpic" wx:for="{{replyList}}" >
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
+<view class="timer">{{item['time']}}</view>
 </view>
 
 
@@ -39,15 +39,12 @@
 </view>
 </cell-block>
 
+
+<!--
 <view class="hudong">
   家长互动 <span><i class="iconfont icon-enter enter"></i></span>
 </view>
 
-<view class="comment">
-<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
-<span>临时临时了临时临时老师李胜利了老师李</span>
-<span class="commentTime">15分钟前</span>
-</view>
 
 <view class="comment">
 <image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
@@ -60,4 +57,11 @@
 <span>临时临时了临时临时老师李胜利了老师李</span>
 <span class="commentTime">15分钟前</span>
 </view>
+
+<view class="comment">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<span>临时临时了临时临时老师李胜利了老师李</span>
+<span class="commentTime">15分钟前</span>
+</view>
+-->
 <van-dialog id="van-dialog" />

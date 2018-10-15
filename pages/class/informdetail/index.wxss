@@ -28,6 +28,8 @@
   height: 50px;
   display: inline-block;
   text-align: center;
+  vertical-align:top;
+
 }
 
 

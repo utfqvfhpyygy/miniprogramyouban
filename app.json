@@ -1,9 +1,10 @@
 {
   "pages":[
+    "pages/class/informdetail/index",
+    
     "pages/class/index/index",
     "pages/guide/index",
     "pages/class/inform/index",
-    "pages/class/informdetail/index",
     
     
     
