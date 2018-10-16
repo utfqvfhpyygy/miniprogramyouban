@@ -4,7 +4,6 @@ const app = getApp()
 
 Page({
   data: {
-    uid: '',
     location
   },
 
@@ -20,22 +19,12 @@ Page({
     //checkLocation()
     
     var that = this;
-    this.setData({
-      //TODO
-    })
-
-    //TODO
 
   },
 
   onShow() {
     console.log('onShow')
 
-    if (app.globalData.userInfo) {
-      this.setData({
-        //TODO
-      })
-    }
   },
 
   checkLocation: function () {

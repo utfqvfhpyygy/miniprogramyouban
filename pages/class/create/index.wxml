@@ -2,10 +2,10 @@
 
     <cell-block title="选择年级">
       <van-row gutter="20" custom-class="rows">
-      <block wx:for="{{buttonType}}" wx:for-index="idx" wx:key="buttonId">
+      <block wx:for="{{gradeList}}" wx:for-index="idx" wx:key="buttonId" wx:for-item="{{item}}">
         <block wx:if="{{ idx<showmore}}">
         <van-col span="8" custom-class="gradeButton">
-        <van-button type="{{buttonType[idx]}}" size="normal" bindtap='chooseGrade' id="{{buttonId[idx]}}">{{buttonName[idx]}}</van-button>
+        <van-button type="{{item.select ? 'warning' : 'default'}}" size="normal" bindtap='chooseGrade' id="{{item.id}}">{{item.name}}</van-button>
         </van-col>
         </block>
       </block>

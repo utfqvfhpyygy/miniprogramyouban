@@ -6,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    buttonType: ['default', 'default', 'default', 'default', 'default', 'default', 'default', 'default', 'default'],
-    buttonName: ['幼小班', '幼中班', '幼大班', '一年级', '二年级', '三年级', '四年级', '五年级', '六年级'],
-    buttonId:[-3,-2,-1,1,2,3,4,5,6],
+    //buttonType: ['default', 'default', 'default', 'default', 'default', 'default', 'default', 'default', 'default'],
+    //buttonName: ['幼小班', '幼中班', '幼大班', '一年级', '二年级', '三年级', '四年级', '五年级', '六年级'],
+    //buttonId:[-3,-2,-1,1,2,3,4,5,6],
     showmore:6,
     moreButton:false,
   },
@@ -24,7 +24,7 @@ Page({
     app.requestData({
       url: app.globalData.origin + 'class/configList',
       params: {
-        deviceUid: app.globalData.userInfo.uid,
+        deviceUid: app.getUid(),
         platform: app.globalData.platform
       },
       type: 'get',
@@ -49,20 +49,52 @@ Page({
 
   chooseGrade(e){
     
-    for (var i = 0; i < this.data.buttonId.length;i++){
-      var bindex = "buttonType[" + i + "]";
-      if (e.target.id == this.data.buttonId[i]){
-        this.setData({
-          [bindex]: 'warning'
+    var gradeChangeList = this.data.gradeList;
+
+    gradeChangeList.forEach(grade => {
+        if(grade.id == e.target.id){
+            grade.select = true;
+        }else{
+            grade.select = false;
+        }
+    });
+
+    this.setData({
+      gradeList:gradeChangeList
+    })
+  },
+
+  createClass: function(){
+
+    let gradeId 
+    let name 
+    app.requestData({
+      url: app.globalData.origin + 'class/add',
+      params: {
+        deviceUid: app.getUid(),
+        gradeId: gradeId,
+        name:name,
+        platform: app.globalData.platform
+      },
+      type: 'get',
+      sucBack: function (res) {
+        console.log('suc111')
+        console.log(res)
+        that.setData({
+           "gradeList": res.data.gradeList,
         })
-      }else{
-        this.setData({
-          [bindex]: 'default'
+      },
+      errBack: function (msg) {
+        console.log('fail111')
+        wx.showModal({
+          title: '提示',
+          content: msg,
+          showCancel: false
         })
       }
-    }
-    console.log(this.data.buttonType)
+    }) 
   },
+
 
   showMore(e){
     this.setData({
