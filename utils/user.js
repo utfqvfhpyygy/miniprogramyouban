@@ -2,14 +2,14 @@ const weRequest = require('./request');
 
 const app = getApp()
 
-export function updateUserInfo(){
+export function updateUserInfo(callback){
     wx.getUserInfo({
         success: function (res) {
 
           //console.log(res.userInfo)
           const openid = wx.getStorageSync('session')
 
-          console.log(openid)
+          //console.log(openid)
 
           weRequest.request({
               url: 'user/login',
@@ -31,14 +31,19 @@ export function updateUserInfo(){
                   data: data
                 })
 
+                //callback
+                typeof callback === "function" && callback(data);
+
               },
               codeToSessionFail: function () {
 
               },
               fail: function (obj, res) {
 
-                console.log(obj)
-                console.log(res)
+                //console.log(obj)
+                //console.log(res)
+
+                typeof callback === "function" && callback()
               }
           })
 
