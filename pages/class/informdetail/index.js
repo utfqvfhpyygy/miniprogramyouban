@@ -8,7 +8,9 @@ Page({
    */
   data: {
     detail: '',
-    replyList:''
+    replyList:'',
+    atype:[],
+    aurl:[]
   },
 
   /**
@@ -32,10 +34,34 @@ Page({
       type: 'get',
       sucBack: function (res) {
         console.log('suc111')
-        console.log(res.data.confirmLists)
+        var atype = that.data.atype;
+        var aurl  = that.data.aurl;
+        if( res.data.images.length > 0){
+          for (var i = 0; i < res.data.images.length; i++){
+            atype = atype.concat("image");
+            aurl  = aurl.concat(res.data.images[i])
+          }
+        }
+        if (res.data.videos.length > 0) {
+          for (var i = 0; i < res.data.videos.length; i++) {
+            atype = atype.concat("video");
+            aurl = aurl.concat(res.data.videos[i])
+          }
+        }
+        if (res.data.voices.length > 0) {
+          for (var i = 0; i < res.data.voices.length; i++) {
+            atype = atype.concat("audio");
+            aurl = aurl.concat(res.data.voices[i])
+          }
+        }
+        console.log(atype)
+        console.log(aurl)
+
         that.setData({
           "detail": res.data,
-          "replyList": res.data.confirmLists
+          "replyList": res.data.confirmLists,
+          "aurl": aurl,
+          "atype": atype,
         })
       },
       errBack: function (msg) {
@@ -114,8 +140,11 @@ Page({
   },
   
   clickimg:function(e){
+    var currents = e.target.dataset.src;
+    console.log(currents);
     wx.previewImage({
-      urls: ['http://39.104.82.18/inform/55/10000/1538231717.png'],
+      current: currents,
+      urls: [currents],
     })
   },
 

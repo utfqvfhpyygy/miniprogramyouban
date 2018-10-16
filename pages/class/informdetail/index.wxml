@@ -10,13 +10,17 @@
 <!--图片附件-->
 <view class="ipiclist">
 
-<image style="width: 60px; height: 60px; background-color: #eeeeee;" mode="{{item.mode}}" src="http://39.104.82.18/inform/55/10000/1538231717.png" bindtap='clickimg'></image>
-
-<image style="width: 60px; height: 60px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
-
-<image style="width: 60px; height: 60px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
-
-<image style="width: 60px; height: 60px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<block wx:for="{{aurl}}">
+  <block wx:if="{{atype[index] == 'video'}}">
+    <video  src="{{aurl[index]}}"  data-src='{{aurl[index]}}'></video>
+  </block>
+  <block wx:if="{{atype[index] == 'image'}}">
+    <image  mode="{{item.mode}}" src="{{aurl[index]}}" bindtap='clickimg' data-src='{{aurl[index]}}'></image>
+  </block>
+  <block wx:if="{{atype[index] == 'audio'}}">
+    <video mode="aspectFit" src="{{aurl[index]}}" bindtap='clickv' data-src='{{aurl[index]}}'></video>
+  </block>
+</block>
 
 </view>
 <!--音频附件-->
