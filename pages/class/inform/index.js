@@ -90,13 +90,13 @@ Page({
 
           var tempFilePath = res.tempFilePath;
           //音频数量限制
-          var tmpList = that.data.selectedVideosTmp.concat(tempFilePath);
-          if (tmpList.length > 5) {
-            wx.showToast({
-              title: '最多5个音频',
-            })
-            return
-          };
+          // var tmpList = that.data.selectedVideosTmp.concat(tempFilePath);
+          // if (tmpList.length > 5) {
+          //   wx.showToast({
+          //     title: '最多5个音频',
+          //   })
+          //   return
+          // };
 
           // //上传
           uploadFile(tempFilePath)
@@ -108,25 +108,27 @@ Page({
             var newAlist     = that.data.alist.concat("");
             var newAlistUrl  = that.data.alistUrl.concat(res.data.url);
             var newAlistType = that.data.alistType.concat('audio');
+            var newAlistTempUrl = that.data.alistTempUrl.concat(tempFilePath);
 
             that.setData({
               alist: newAlist,
               alistUrl: newAlistUrl,
               alistType: newAlistType,
+              alistTempUrl: newAlistTempUrl,
             })
 
           }, function (err) {
             console.log(err);
           })
 
-          uploadFile(tempFilePath)
-            .then(function (res) {
-              console.log("uploadVoice suc");
-              console.log(res);
-            }, function (err) {
-              console.log("uploadVoice fail");
-              console.log(err);
-            })
+          // uploadFile(tempFilePath)
+          //   .then(function (res) {
+          //     console.log("uploadVoice suc");
+          //     console.log(res);
+          //   }, function (err) {
+          //     console.log("uploadVoice fail");
+          //     console.log(err);
+          //   })
       },
 
       upError:function(err){
@@ -175,13 +177,13 @@ Page({
       console.log(res);
 
       //数量限制
-      var tmpList = that.data.selectedImgsTmp.concat(res.tempFilePaths);
-      if (tmpList.length > 5) {
-        wx.showToast({
-          title: '最多5图片',
-        })
-        return
-      };
+      // var tmpList = that.data.selectedImgsTmp.concat(res.tempFilePaths);
+      // if (tmpList.length > 5) {
+      //   wx.showToast({
+      //     title: '最多5图片',
+      //   })
+      //   return
+      // };
 
       res.tempFilePaths.forEach(function (tempFilePath){
         uploadImage(tempFilePath)
@@ -193,11 +195,13 @@ Page({
           var newAlist = that.data.alist.concat("");
           var newAlistUrl = that.data.alistUrl.concat(res.data.url);
           var newAlistType = that.data.alistType.concat('img');
+          var newAlistTempUrl = that.data.alistTempUrl.concat(tempFilePath);
 
           that.setData({
             alist: newAlist,
             alistUrl: newAlistUrl,
             alistType: newAlistType,
+            alistTempUrl: newAlistTempUrl,
           })
         },function(err){
             console.log(err);
@@ -229,13 +233,13 @@ Page({
       var tempFilePath = res.tempFilePath;
 
       //数量限制
-      var tmpList = that.data.selectedVideosTmp.concat(tempFilePath);
-      if (tmpList.length > 5) {
-        wx.showToast({
-          title: '最多5个视频',
-        })
-        return
-      };
+      // var tmpList = that.data.selectedVideosTmp.concat(tempFilePath);
+      // if (tmpList.length > 5) {
+      //   wx.showToast({
+      //     title: '最多5个视频',
+      //   })
+      //   return
+      // };
 
       
       uploadFile(tempFilePath)
@@ -247,11 +251,13 @@ Page({
           var newAlist = that.data.alist.concat("");
           var newAlistUrl = that.data.alistUrl.concat(res.data.url);
           var newAlistType = that.data.alistType.concat('video');
+          var newAlistTempUrl = that.data.alistTempUrl.concat(tempFilePath);
 
           that.setData({
             alist: newAlist,
             alistUrl: newAlistUrl,
             alistType: newAlistType,
+            alistTempUrl: newAlistTempUrl,
           })
 
 
@@ -298,14 +304,20 @@ Page({
    */
   startRecord: function () {
 
-    console.log("startRecord");
+    if(this.data.isRecording){
+      console.log("startRecord");
+    }else{
+      console.log("stopRecord");
+    }
     console.log(voiceManager);
 
-
-    if (this.data.buttonName == '暂停录音'){
+    if (this.data.isRecording){
       voiceManager.stopRecord()
+      clearInterval(this.data.voiceRecordingTimer)
       this.setData({
         "buttonName": '开始录音',
+        "isRecording": false,
+        "time_counter": 0,
       })
     }else{
       voiceManager.startRecord()
@@ -319,13 +331,13 @@ Page({
   /**
    * 结束录音
    */
-  endRecord: function () {
+  // endRecord: function () {
 
-    console.log("endRecord");
+  //   console.log("endRecord");
 
-    voiceManager.stopRecord()
+  //   voiceManager.stopRecord()
 
-  },
+  // },
 
   /**
   * 开始播放
@@ -360,7 +372,7 @@ Page({
   */
     stopPlay: function () {
       console.log('stop play');
-      voiceManager.stopPlay
+      voiceManager.stopPlay();
       audioStatusPlay = 0;
       this.setData({
         aimage: '../../../image/play.png'
@@ -385,6 +397,7 @@ Page({
     console.log(this.data.alist);
     console.log(this.data.alistUrl);
     console.log(this.data.alistType);
+    console.log(this.data.alistTempUrl);
 
     var that = this;
     app.requestData({
@@ -494,16 +507,19 @@ Page({
     // })
     //清空数组
     this.data.alist.splice(index,1);
-    var newAlist = this.data.alist
+    var newAlist = this.data.alist;
     this.data.alistUrl.splice(index, 1);
     var newAlistUrl = this.data.alistUrl;
-    this.data.alistType.splice(index, 1)
+    this.data.alistType.splice(index, 1);
     var newAlistType = this.data.alistType;
+    this.data.alistTempUrl.splice(index, 1);
+    var newAlistTempUrl = this.data.alistTempUrl;
 
     this.setData({
       alist: newAlist,
       alistUrl: newAlistUrl,
       alistType: newAlistType,
+      alistTempUrl: newAlistTempUrl,
     })
 
   }

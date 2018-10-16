@@ -21,13 +21,13 @@
     <block wx:for="{{alist}}" wx:key="{{alist}}">
       <view class="imagelist" style='display:{{item}};'>
         <block wx:if="{{alistType[index] == 'video'}}">
-          <video mode="aspectFit" src="{{alistUrl[index]}}" bindtap='clickimg' data-src='{{alistUrl[index]}}'></video>
+          <video mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></video>
         </block>
         <block wx:if="{{alistType[index] == 'img'}}">
-          <image mode="aspectFit" src="{{alistUrl[index]}}" bindtap='clickimg' data-src='{{alistUrl[index]}}'></image>
+          <image mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></image>
         </block>
         <block wx:if="{{alistType[index] == 'audio'}}">
-          <image mode="aspectFit" src="{{aimage}}" bindtap='startPlay' data-src='{{alistUrl[index]}}'></image>
+          <image mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='startPlay' data-src='{{alistTempUrl[index]}}'></image>
         </block>
 
         <icon type="cancel" size="15" color="red" class="cancel" bindtap='close' data-id="{{index}}"/>
