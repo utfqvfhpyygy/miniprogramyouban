@@ -1,11 +1,11 @@
 <view class='class-create-container'>
-
+<form bindsubmit="bindFormSubmit">
     <cell-block title="选择年级">
       <van-row gutter="20" custom-class="rows">
-      <block wx:for="{{gradeList}}" wx:for-index="idx" wx:key="buttonId" wx:for-item="{{item}}">
+      <block wx:for="{{gradeList}}" wx:for-index="idx" wx:key="buttonId" wx:for-item="item">
         <block wx:if="{{ idx<showmore}}">
         <van-col span="8" custom-class="gradeButton">
-        <van-button type="{{item.select ? 'warning' : 'default'}}" size="normal" bindtap='chooseGrade' id="{{item.id}}">{{item.name}}</van-button>
+        <van-button type="{{item.select ? 'warning' : 'default'}}" size="normal" data-name="{{item.name}}" data-id="{{item.id}}" bindtap='chooseGrade' id="{{item.id}}">{{item.name}}</van-button>
         </van-col>
         </block>
       </block>
@@ -16,6 +16,7 @@
 
     <cell-block title="填写班级名称"> 
       <van-field
+          name="className"
           value=""
           center
           required
@@ -25,10 +26,11 @@
       />
    </cell-block>  
 
-    <van-row gutter="20" custom-class="createButton">
+    <van-row gutter="20" custom-class="buttonview">
       <van-col span="24" >
-      <van-button bindtap='createClass' type="primary">创建班级</van-button>
+      <button size="normal" form-type="submit" type="primary">创建班级</button>
       </van-col>
     </van-row>
+</form>    
 </view>
 

@@ -64,10 +64,34 @@ Page({
     })
   },
 
-  createClass: function(){
+  
+  bindFormSubmit: function(e) {  
 
-    let gradeId 
-    let name 
+    var name = e.detail.value.className;
+    if (name <= 0) {
+      wx.showToast({
+        icon: 'none',
+        title: '班级名称不能为空'
+      })
+      return
+    }
+
+    var gradeId = 0;
+    this.data.gradeList.forEach(grade => {
+      if (grade.select) {
+        grade.select = true;
+        gradeId = grade.id;
+      }
+    });
+
+    if (gradeId <= 0) {
+      wx.showToast({
+        icon: 'none',
+        title: '你需要选择一个年级'
+      })
+      return
+    }
+
     app.requestData({
       url: app.globalData.origin + 'class/add',
       params: {
@@ -80,8 +104,15 @@ Page({
       sucBack: function (res) {
         console.log('suc111')
         console.log(res)
-        that.setData({
-           "gradeList": res.data.gradeList,
+
+        wx.showModal({
+          title: '提示',
+          content: '创建班级成功',
+          showCancel: false
+        })
+
+        wx.navigateTo({
+          url: '../index/index?id=' + res.data['id'],
         })
       },
       errBack: function (msg) {

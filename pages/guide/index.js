@@ -8,6 +8,7 @@ Page({
    */
   data: {
       canIUse: wx.canIUse('button.open-type.getUserInfo'),
+      show:false
   },
 
   /**
@@ -40,7 +41,7 @@ Page({
       var fromType = options.fromType ? options.fromType : 1;  
       var userInfo = app.getLoginUserInfo()
       const that = this;
-
+ 
       if(!userInfo){
         wx.getSetting({
           success(res) {
@@ -53,6 +54,9 @@ Page({
           }
         })
 
+        this.setData({
+            show:true
+        })
         return;
       }
 
