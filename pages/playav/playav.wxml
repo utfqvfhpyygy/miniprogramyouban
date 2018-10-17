@@ -4,6 +4,6 @@
 </block>
 <block wx:if="{{atype == 'audio'}}">
 <view class="avcss">
-  <audio src='{{url}}' autoplay="true" style='width:100%' controls="true" name="音频附件"> </audio>
+  <audio src='{{url}}' autoplay="true" style='width:100%' controls="true" name="音频附件" loop author="音频" id="myAudio"> </audio>
   </view>
 </block>

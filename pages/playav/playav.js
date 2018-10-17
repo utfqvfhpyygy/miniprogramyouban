@@ -19,13 +19,18 @@ Page({
       url: options.url,
       atype:options.atype
     });
+
+    if(options.atype == 'audio'){
+      this.audioCtx = wx.createAudioContext('myAudio')
+      this.audioCtx.play()
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**

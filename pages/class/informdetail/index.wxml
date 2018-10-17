@@ -18,7 +18,7 @@
     <image  mode="{{item.mode}}" src="{{aurl[index]}}" bindtap='clickimg' data-src='{{aurl[index]}}'></image>
   </block>
   <block wx:if="{{atype[index] == 'audio'}}">
-    <video mode="aspectFit" src="{{aurl[index]}}" bindtap='clickv' data-src='{{aurl[index]}}' bindtap='clickaudio'></video>
+    <image  mode="{{item.mode}}" src="../../../image/play.png" bindtap='clickaudio' data-src='{{aurl[index]}}'></image>
   </block>
 </block>
 
