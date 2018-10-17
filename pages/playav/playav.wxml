@@ -1,0 +1,9 @@
+<!--pages/playav/playav.wxml-->
+<block wx:if="{{atype == 'video'}}">
+  <video src='{{url}}' autoplay="true" style='width:100%'></video>
+</block>
+<block wx:if="{{atype == 'audio'}}">
+<view class="avcss">
+  <audio src='{{url}}' autoplay="true" style='width:100%' controls="true" name="音频附件"> </audio>
+  </view>
+</block>

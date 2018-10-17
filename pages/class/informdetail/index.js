@@ -148,6 +148,20 @@ Page({
     })
   },
 
+  clickvideo:function(e){
+    var currents = e.target.dataset.src;
+    wx.navigateTo({
+      url: '../../playav/playav?url=' + currents + '&atype=video'
+    })
+  },
+
+  clickaudio: function (e) {
+    var currents = e.target.dataset.src;
+    wx.navigateTo({
+      url: '../../playav/playav?url=' + currents + '&atype=audio'
+    })
+  },
+
   confirm:function(res){
     console.log('confirm')
     console.log(res)

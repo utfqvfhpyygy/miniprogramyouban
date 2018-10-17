@@ -1,0 +1,4 @@
+/* pages/playav/playav.wxss */
+.avcss{
+  text-align: center
+}

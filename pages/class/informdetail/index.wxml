@@ -12,13 +12,13 @@
 
 <block wx:for="{{aurl}}">
   <block wx:if="{{atype[index] == 'video'}}">
-    <video  src="{{aurl[index]}}"  data-src='{{aurl[index]}}'></video>
+    <video  src="{{aurl[index]}}"  data-src='{{aurl[index]}}' bindtap='clickvideo'></video>
   </block>
   <block wx:if="{{atype[index] == 'image'}}">
     <image  mode="{{item.mode}}" src="{{aurl[index]}}" bindtap='clickimg' data-src='{{aurl[index]}}'></image>
   </block>
   <block wx:if="{{atype[index] == 'audio'}}">
-    <video mode="aspectFit" src="{{aurl[index]}}" bindtap='clickv' data-src='{{aurl[index]}}'></video>
+    <video mode="aspectFit" src="{{aurl[index]}}" bindtap='clickv' data-src='{{aurl[index]}}' bindtap='clickaudio'></video>
   </block>
 </block>
 
