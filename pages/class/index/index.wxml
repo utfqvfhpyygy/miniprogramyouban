@@ -11,7 +11,7 @@
 
   <van-row custom-class="tab">
     <van-col span="6"><i class="iconfont icon-xiaoxi"></i> <span>消息</span>　</van-col>
-    <van-col span="6"><i class="iconfont icon-tongzhi"></i> <span>通知</span> </van-col>
+    <van-col span="6" bindtap="gotoInform"><i class="iconfont icon-tongzhi"></i> <span>通知</span> </van-col>
     <van-col span="6"><i class="iconfont icon-zuoye"></i> <span>作业</span> </van-col>
     <van-col span="6"><i class="iconfont icon-gengduo"></i> <span>更多</span> </van-col>
   </van-row>
