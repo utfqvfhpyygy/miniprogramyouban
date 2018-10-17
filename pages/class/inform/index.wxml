@@ -27,7 +27,7 @@
           <image mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></image>
         </block>
         <block wx:if="{{alistType[index] == 'audio'}}">
-          <image mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='startPlay' data-src='{{alistTempUrl[index]}}'></image>
+          <image mode="aspectFit" src="{{aimage}}" bindtap='startPlay' data-src='{{alistTempUrl[index]}}'></image>
         </block>
 
         <icon type="cancel" size="15" color="red" class="cancel" bindtap='close' data-id="{{index}}"/>
