@@ -111,7 +111,7 @@ Page({
           showCancel: false
         })
 
-        wx.navigateTo({
+        wx.redirectTo({
           url: '../index/index?id=' + res.data['id'],
         })
       },

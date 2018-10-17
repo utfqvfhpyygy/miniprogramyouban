@@ -413,7 +413,7 @@ Page({
       sucBack(res) {
         console.log(res)
         if (res.code === 0) {
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../informdetail/index?id='+res.data['id'],
           })
         }
