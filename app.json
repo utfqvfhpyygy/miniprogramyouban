@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/class/index/index",
     "pages/class/inform/index",
     "pages/class/informdetail/index",
     "pages/index/index",
     
     
-    "pages/class/index/index",
+    
     
     
     
