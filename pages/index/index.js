@@ -1,4 +1,3 @@
-import { login, updateUserInfoFromServer } from '../../utils/index'
 
 const app = getApp()
 

@@ -39,9 +39,9 @@ export function updateUserInfo(callback){
 
               },
               fail: function (obj, res) {
-
-                //console.log(obj)
-                //console.log(res)
+                console.log('user login fail');
+                console.log(obj)
+                console.log(res)
 
                 typeof callback === "function" && callback()
               }

@@ -75,17 +75,12 @@ App({
    */
   requestData: function (option) {
 
-    console.log('requestData')
-
     var requestBody = {
       url: option.url,
       data: option.params,
       dataType: 'json',
       method: option.type || 'get',
       success: function (data) {
-
-        console.log('requestDataSuc111')
-        console.log(data)
 
         if(data.data.code == 0) {
           option.sucBack && option.sucBack(data.data);

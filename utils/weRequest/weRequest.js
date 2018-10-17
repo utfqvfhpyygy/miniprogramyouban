@@ -1,3 +1,4 @@
+
 const loading = require('./loading');
 const flow = require('./lib/flow');
 
@@ -132,8 +133,8 @@ function doLogin(callback, obj) {
                         method: codeToSession.method,
                         isLogin: true,
                         report: codeToSession.report || codeToSession.url,
-                        success: function (s) {
-                            session        = s;
+                        success: function (data) {
+                            session = data.openId;
                             sessionIsFresh = true;
                             // 如果有设置本地session过期时间
                             if(sessionExpireTime) {
@@ -147,6 +148,11 @@ function doLogin(callback, obj) {
                             wx.setStorage({
                                 key: sessionName,
                                 data: session
+                            })
+
+                            wx.setStorage({
+                              key: 'userInfo',
+                              data: data
                             })
                         },
                         complete: function () {

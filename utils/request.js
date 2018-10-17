@@ -25,7 +25,7 @@ weRequest.init({
             console.log('login suc')
             // 此处例子：CGI返回数据中的字段session即为session值
             //return res.session;
-            return res.data.openId
+            return res.data
         },
         // [可选] 接口失败的回调，可不配置，默认为弹窗报错
         fail: function(obj, res) {

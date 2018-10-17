@@ -20,9 +20,12 @@ Page({
       var uid = app.getUid();
       var userInfo = app.getLoginUserInfo();
 
-      this.setData({
-        userInfo: userInfo
-      })
+      if(userInfo){
+        this.setData({
+          userInfo: userInfo
+        })
+      }
+
 
       app.requestData({
         url: app.globalData.origin + 'class/index',
@@ -32,8 +35,6 @@ Page({
         },
         type: 'get',
         sucBack: function (res) {
-          console.log('suc111')
-          console.log(res)
           that.setData({
             "informList": res.data.informList,
             "homeworkList": res.data.homeworkList,
