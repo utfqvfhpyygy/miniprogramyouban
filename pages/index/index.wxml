@@ -1,5 +1,7 @@
 <!--index.wxml-->
-<view class="container">
+
+<label class="label-2__text">马上创建属于你的班级群</label>
+<view class="index">
   
   <van-button type="primary" bindtap='gotoCreateClass'>创建班级</van-button>
 </view>

@@ -1,15 +1,22 @@
 {
   "pages": [
     "pages/class/informdetail/index",
-    "pages/class/index/index",
-    "pages/guide/index",
-    "pages/class/inform/index",
     "pages/index/index",
+    
+    "pages/class/inform/index",
+    "pages/class/index/index",
+    
+    
+    
+    "pages/guide/index",
+    
+    
     "pages/class/create/index",
     "pages/homework/create/index",
     "pages/class/grade/index",
     "pages/logs/logs",
     "pages/playav/playav"
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "#f8f8f8",

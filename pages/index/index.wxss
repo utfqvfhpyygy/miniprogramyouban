@@ -19,3 +19,14 @@
 .usermotto {
   margin-top: 200px;
 }
+
+.index{
+  display:flex;
+  justify-content:center;
+}
+.label-2__text{
+  margin-bottom: 20px;
+  margin-top: 20px;
+  display:flex;
+  justify-content:center;
+}

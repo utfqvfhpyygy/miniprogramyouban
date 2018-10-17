@@ -20,7 +20,7 @@ Page({
 
     console.log('onLoad')
     let id = options.id;    
-    id = 43;
+    id = 50;
     var that = this;
     var uid = app.getUid();
 
