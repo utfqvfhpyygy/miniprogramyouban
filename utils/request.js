@@ -22,13 +22,16 @@ weRequest.init({
         data: {},
         // [必填] CGI中返回的session值
         success: function (res) {
+            console.log('login suc')
             // 此处例子：CGI返回数据中的字段session即为session值
             //return res.session;
             return res.data.openId
         },
         // [可选] 接口失败的回调，可不配置，默认为弹窗报错
         fail: function(obj, res) {
-
+            console.log('login fail')
+            console.log(obj)
+            console.log(res)
         }
     },
     // [可选] 登录重试次数，当连续请求登录接口返回失败次数超过这个次数，将不再重试登录；可不配置，默认为重试3次

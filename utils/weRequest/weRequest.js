@@ -77,6 +77,8 @@ function checkSession(callback, obj) {
 }
 
 function doLogin(callback, obj) {
+    console.log('doLogin');
+
     if (obj.isLogin) {
         // 登录接口，直接放过
         typeof callback === "function" && callback();
@@ -87,6 +89,7 @@ function doLogin(callback, obj) {
             session = '';
             doLogin(callback, obj);
         } else {
+            console.log('session not expire,not need to login');
             typeof callback === "function" && callback();
         }
     } else if (logining) {
