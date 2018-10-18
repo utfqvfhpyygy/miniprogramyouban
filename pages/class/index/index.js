@@ -1,3 +1,5 @@
+import { onShareAppMessage } from '../../../utils/util'
+
 const app = getApp()
 
 Page({
@@ -111,6 +113,14 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    console.log('class index onShareAppMessage');
 
+    let title = `班级助手`;;
+    let path = '/pages/class/index/index';
+    let shareCallBack = () => {
+        console.log('share call back suc')
+    };
+    //此处调用封装好的分享代码
+    return onShareAppMessage(title, path, shareCallBack);
   }
 })
