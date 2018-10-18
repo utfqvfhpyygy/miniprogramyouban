@@ -54,6 +54,7 @@
 }
 .timer{
   font-size: 9px;
+  margin-top: 2px;
 }
 
 .more{
