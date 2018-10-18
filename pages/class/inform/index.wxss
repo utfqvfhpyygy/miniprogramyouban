@@ -6,6 +6,14 @@
   height: 195px;
 }
 
+.title{
+  width: 100%;
+  background-color: #fff;
+  justify-content: center;
+  display: flex;
+  height: 50px;
+}
+
 .views{
   width: 100%;
   background-color: #fff;

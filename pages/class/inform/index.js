@@ -385,6 +385,16 @@ Page({
    */
   bindFormSubmit: function(e){
     console.log('submit');
+
+    var title = e.detail.value.title;
+    if (title <= 0) {
+      wx.showToast({
+        icon: 'none',
+        title: '标题不能为空'
+      })
+      return
+    }
+
     var content = e.detail.value.textarea;
     if (content <= 0){
       wx.showToast({

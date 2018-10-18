@@ -1,8 +1,12 @@
 <view class='class-create-container'>
 
-  <cell-block title="通知内容"></cell-block>
-  <view class="line"></view>
   <form bindsubmit="bindFormSubmit">
+  <cell-block title="通知标题"></cell-block>
+  <view class="title">
+    <input name="title"></input> 
+  </view>
+
+  <cell-block title="通知内容"></cell-block>
   <view class="views">
     <textarea placeholder="" focus="{{focus}}" class="inputcss" fixed  maxlength="500"  name="textarea"/>
   </view>
