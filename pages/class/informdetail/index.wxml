@@ -38,9 +38,9 @@
 </view>
 
 
-<view class="iuserpic">
-<i class="iconfont icon-tianjia mytianjia" bindtap="onClickConfirm"></i>
-<view class="timer">　</view>
+<view class="iuserpic2">
+<i class="iconfont icon-qiandao mytianjia" bindtap="onClickConfirm"></i>
+
 </view>
 </cell-block>
 

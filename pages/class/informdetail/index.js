@@ -182,8 +182,9 @@ Page({
       sucBack: function (res) {
         console.log('suc111')
         console.log(res)
+        var datalist = that.data.replyList.concat(res.data)
         that.setData({
-          "detail": res.data,
+          "replyList": datalist,
         })
       },
       errBack: function (msg) {
