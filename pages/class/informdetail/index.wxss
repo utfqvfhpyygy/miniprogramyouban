@@ -121,5 +121,5 @@
   margin-left:10px;
   margin-top:5px;
   vertical-align:middle;
-
+  margin-right: 5px;
 }
