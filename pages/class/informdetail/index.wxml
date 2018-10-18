@@ -30,7 +30,7 @@
 
 <view class="line"></view>
 
-<cell-block title="回复情况{{detail.inform.confirmNum}}/{{detail.inform.memberNum}}" custom-class="ireply">
+<cell-block title="回复情况 {{detail.inform.confirmNum}}/{{detail.inform.memberNum}}" custom-class="ireply">
 
 <view class="iuserpic" wx:for="{{replyList}}" >
 <image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
