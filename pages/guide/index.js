@@ -22,10 +22,6 @@ Page({
   bindGetUserInfo(e) {
 
     if (e.detail.userInfo != undefined){
-        wx.navigateTo({
-          url: '../index/index'
-        })
-
         updateUserInfo(function(res){
           res ? this.initGoPage(res, fromType) : '';
         })
