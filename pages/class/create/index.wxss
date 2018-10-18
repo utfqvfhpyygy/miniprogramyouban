@@ -36,3 +36,7 @@
   display: inline-block;
   vertical-align: middle;
 }
+
+.buttonview{
+  margin-top: 10px;
+}
