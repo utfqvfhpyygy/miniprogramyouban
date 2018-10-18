@@ -1,5 +1,6 @@
 import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
 const app = getApp()
+var informid = 0
 
 Page({
 
@@ -19,7 +20,7 @@ Page({
   onLoad: function (options) {
 
     console.log('onLoad')
-    let id = options.id;    
+    informid = options.id;    
     //id = 52;
     var that = this;
     var uid = app.getUid();
@@ -27,7 +28,7 @@ Page({
     app.requestData({
       url: app.globalData.origin + 'inform/detail',
       params: {
-        id: id,
+        id: informid,
         deviceUid: uid,
         platform: app.globalData.platform
       },
@@ -125,15 +126,15 @@ Page({
   },
 
   onClickConfirm:function(e) {
-    console.log(123123)
 
     var aa = Dialog.confirm({
       title:'重要提示',
       message: '我已经阅读完通知内容'
-    }).then({
-      
-    }).catch({
-      
+    }).then(() => {
+      // on confirm
+      this.confirm(informid);
+    }).catch(() => {
+      // on cancel
     });
 
     console.log(aa)
@@ -162,11 +163,11 @@ Page({
     })
   },
 
-  confirm:function(res){
+  confirm:function(id){
     console.log('confirm')
-    console.log(res)
+    // console.log(res)
 
-    let id = 41;
+    let informId = id;
     var that = this;
     var uid = app.getUid();
 
@@ -177,7 +178,7 @@ Page({
         deviceUid: uid,
         platform: app.globalData.platform
       },
-      type: 'post',
+      type: 'get',
       sucBack: function (res) {
         console.log('suc111')
         console.log(res)

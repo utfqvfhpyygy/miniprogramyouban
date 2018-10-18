@@ -10,5 +10,6 @@
     "van-col": "/miniprogram_npm/vant-weapp/col/index",
     "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
     "van-switch-cell": "/miniprogram_npm/vant-weapp/switch-cell/index"
-  }
+  },
+  "navigationBarTitleText": "发布"
 }

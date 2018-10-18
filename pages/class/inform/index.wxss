@@ -13,6 +13,15 @@
   display: flex;
   height: 50px;
 }
+.title input{
+  width: 100%;
+  background-color: #fff;
+  justify-content: center;
+  display: flex;
+  height: 50px;  
+  padding-left: 10px;
+}
+
 
 .views{
   width: 100%;

@@ -23,6 +23,7 @@ Page({
     if(options.atype == 'audio'){
       this.audioCtx = wx.createAudioContext('myAudio')
       this.audioCtx.play()
+      
     }
   },
 
