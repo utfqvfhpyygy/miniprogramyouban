@@ -67,7 +67,7 @@ Page({
     //如果之前有设置身份，则跳转到班级首页
     if (userInfo.type > 0) {
       //console.log('initGoPage type > 0');
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../class/index/index'
       })
     }
@@ -75,7 +75,7 @@ Page({
     //如果之前没有设置身份
     if (fromType == 1) {
       //console.log('fromType type = 1');
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../index/index'
       })
     } else if (fromType == 2) {
