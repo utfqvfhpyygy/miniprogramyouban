@@ -415,6 +415,7 @@ Page({
       params: {
         uid: '10000',
         classId: 123,
+        content: title,
         content: content,
         feedbackType:this.data.feedBackChecked,
         alistUrl: JSON.stringify(this.data.alistUrl),

@@ -11,7 +11,7 @@
 <!--图片附件-->
 <view class="ipiclist">
 
-<block wx:for="{{aurl}}">
+<block wx:for="{{aurl}}" wx:key="aurl">
   <block wx:if="{{atype[index] == 'video'}}">
     <video  src="../../../image/play.png"  data-src='{{aurl[index]}}' bindtap='clickvideo'></video>
   </block>
@@ -32,7 +32,7 @@
 
 <cell-block title="回复情况 {{detail.inform.confirmNum}}/{{detail.inform.memberNum}}" custom-class="ireply">
 
-<view class="iuserpic" wx:for="{{replyList}}" >
+<view class="iuserpic" wx:for="{{replyList}}"  wx:for-item="item" wx:key="item">
 <image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
 <view class="timer">{{item['time']}}</view>
 </view>
