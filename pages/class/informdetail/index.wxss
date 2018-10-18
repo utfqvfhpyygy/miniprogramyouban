@@ -106,3 +106,8 @@
   color: #888888;
   font-size: 11px;
 }
+.alistcass{
+  font-size: 14px;
+  margin-top: 15px;
+  margin-left: 20px;
+}

@@ -7,12 +7,13 @@
 </view>
 <view wx:if="{{detail.inform.isMore}}" class="more" bindtap='showMore' hidden="{{moreButton}}">展开更多>></view>
 
+<view class="alistcass">--附件列表--</view>
 <!--图片附件-->
 <view class="ipiclist">
 
 <block wx:for="{{aurl}}">
   <block wx:if="{{atype[index] == 'video'}}">
-    <video  src="{{aurl[index]}}"  data-src='{{aurl[index]}}' bindtap='clickvideo'></video>
+    <video  src="../../../image/play.png"  data-src='{{aurl[index]}}' bindtap='clickvideo'></video>
   </block>
   <block wx:if="{{atype[index] == 'image'}}">
     <image  mode="{{item.mode}}" src="{{aurl[index]}}" bindtap='clickimg' data-src='{{aurl[index]}}'></image>
