@@ -49,7 +49,8 @@
 
 
 .iuserpic image{
-  margin-top: 2px;
+  margin-top: 5px;
+  margin-bottom: -8px;
 }
 .timer{
   font-size: 9px;
@@ -64,7 +65,8 @@
 }
 
 .mytianjia{
-  font-size: 35px;
+  font-size: 30px;
+  margin-top: 5px;
 }
 
 .line{
@@ -110,4 +112,12 @@
   font-size: 14px;
   margin-top: 15px;
   margin-left: 20px;
+}
+
+.iuserpic2{
+  display:inline-block;
+  margin-left:10px;
+  margin-top:5px;
+  vertical-align:middle;
+
 }
