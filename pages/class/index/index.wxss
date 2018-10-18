@@ -23,6 +23,9 @@
 .tab view{
   height: 70px;
 }
+.tab i{
+  font-size: 25px;
+} 
 
 .tab span{
   font-size: 12px;
