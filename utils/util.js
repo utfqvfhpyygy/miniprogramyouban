@@ -17,7 +17,7 @@ const formatNumber = n => {
 
 function onShareAppMessage(title,path,callback,imageUrl){
 
-  let defaultImageUrl = '../../images/share.jpg';
+  let defaultImageUrl = '../image/icon.jpg';
 
   return {
     title: title,

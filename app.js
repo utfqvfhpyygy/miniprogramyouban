@@ -56,6 +56,25 @@ App({
 
   },
 
+  getOpenid: function () {
+
+    var openid = wx.getStorageSync('session');
+    if (openid) {
+      return openid;
+    }
+
+    if (this.globalData.userInfo && this.globalData.userInfo.openid) {
+      return this.globalData.userInfo.openid;
+    }
+
+    var userInfo = wx.getStorageSync('userInfo');
+    if (userInfo && userInfo.openid) {
+      return userInfo.openid;
+    }
+
+
+  },
+
   getLoginUserInfo: function () {
 
     if (this.globalData.userInfo && this.globalData.userInfo) {

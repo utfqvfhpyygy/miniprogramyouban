@@ -8,7 +8,8 @@
     "van-tabbar-item": "/miniprogram_npm/vant-weapp/tabbar-item/index",
     "van-row": "/miniprogram_npm/vant-weapp/row/index",
     "van-col": "/miniprogram_npm/vant-weapp/col/index",
-    "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index"
+    "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index",
+    "canvasdrawer": "../../../components/canvasdrawer/canvasdrawer"
   },
   "navigationBarTitleText": "首页"
 }
