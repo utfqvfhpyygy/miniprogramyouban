@@ -1,22 +1,123 @@
-<view class="container">
-  
-  <van-button type="primary" bindtap='chooseImage'>图片</van-button>
-  <van-button type="primary" bindtap='chooseVoice'>音频</van-button>
-  <van-button type="primary" bindtap='chooseVedio'>视频</van-button>
-  <van-button type="primary" bindtap='chooseFile'>附件</van-button>
+<view class='class-create-container'>
 
+  <form bindsubmit="bindFormSubmit">
+
+  <view class="section">
+  <picker bindchange="bindPickerChange" value="{{workType}}" range="{{workType}}" >
+    <view class="picker">
+      <view class="section__title">作业科目： </view>  <view class="right">{{workType[0]}}</view>
+    </view>
+  </picker>
+  </view>
+  <view class='line'></view>
+  <view class="section">
+  <picker bindchange="bindPickerChange" value="{{workClass}}" range="{{workClass}}" >
+    <view class="picker">
+      <view class="section__title">作业班级： </view>  <view class="right">{{workClass[0]}}</view>
+    </view>
+  </picker>
+  </view>
+
+
+  <cell-block title="通知内容"></cell-block>
+  <view class="views">
+    <textarea placeholder="" focus="{{focus}}" class="inputcss" fixed  maxlength="500"  name="textarea"/>
+  </view>
+  <view class="line"></view>
+  
+
+
+  <view class="attach">
+    <i class="iconfont icon-camera_fill" bindtap='chooseImage'></i>
+    <i class="iconfont icon-video_fill" bindtap='chooseVedio'></i>
+    <i class="iconfont icon-translation_fill" bindtap='chooseVoice'></i>
+    <i class="iconfont icon-accessory" bindtap='chooseFile'></i>
+  </view>
+
+  <view class="imagelist2">
+    <block wx:for="{{alist}}" wx:key="{{alist}}">
+      <view class="imagelist" style='display:{{item}};'>
+        <block wx:if="{{alistType[index] == 'video'}}">
+          <video mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></video>
+        </block>
+        <block wx:if="{{alistType[index] == 'img'}}">
+          <image mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></image>
+        </block>
+        <block wx:if="{{alistType[index] == 'audio'}}">
+          <image mode="aspectFit" src="{{aimage}}" bindtap='startPlay' data-src='{{alistTempUrl[index]}}'></image>
+        </block>
+
+        <icon type="cancel" size="15" color="red" class="cancel" bindtap='close' data-id="{{index}}"/>
+      </view>
+    </block>
+  </view>
+
+
+
+  <view class="voicelist">
+    <block wx:for="{{selectedRecordsUrl}}" wx:for-item="item" wx:key="item">
+        <view bindtap="startPlay" class='xm-reply-record-play-btn' data-from="{{item}}" data-record="{{item}}" hoverClass="xm-record-play-btn-hover" style="margin-left:10px;position:relative">
+        <view>
+            <image src="../../../image/play.png" style="width: 30px; height: 30px; background-color: #eeeeee;" mode="aspectFit"></image>
+        </view>
+    </view>
+    </block>
+  </view>
+
+  <view class="videolist">
+    <block wx:for="{{selectedVideosTmp}}" wx:for-item="item" wx:key="item">
+        <video src='{{item}}'></video>
+    </block>
+  </view>
+
+
+  <view>
+      <van-switch-cell
+      title="是否需要确认"
+      checked="{{ feedBackChecked }}"
+      bind:change="onChange"
+      />
+  </view>
+
+  <view class='line'></view>
+
+  <view class="section">
+
+  <picker bindchange="bindDateChange" value="{{date}}"  mode="date">
+    <view class="picker">
+      <view class="section__title">截止时间： </view>  <view class="right">{{date}}</view>
+    </view>
+  </picker>
+  </view>
+
+  <view class='line'></view>
+
+  <view class="section">
+
+  <picker bindchange="bindPickerChange" value="{{array}}" range="{{array}}" >
+    <view class="picker">
+      <view class="section__title">反馈方式： </view>  <view class="right">{{array[0]}}</view>
+    </view>
+  </picker>
+  </view>
+
+
+
+
+  <view class="buttonview">
+    <button size="normal" form-type="submit" type="primary">发布通知</button>
+  </view>
+  </form>
 
   <van-popup
     show="{{isShowRecordView}}"
     overlay="true"
     position="bottom"
-    custom-class="bottom"
-    bind:close="closeRecordView"
-  >
-
-      <van-button type="primary" bindtap='intRecord'>开始录音</van-button>
-      <van-button type="primary" bindtap='endRecord'>结束录音</van-button>
-
+    custom-class="pop-bottom"
+    bind:close="closeRecordView">
+      
+      <text class="record-time-label">{{time_counter}}s</text>
+      <icon name="play"  size="40px" class="iconfont icon-translation_fill translation_fill"/>
+      <button type='default' size='default' bindtap='startRecord'>{{buttonName}}</button>
   </van-popup>
-
 </view>

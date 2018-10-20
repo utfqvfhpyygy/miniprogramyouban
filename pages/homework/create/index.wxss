@@ -1,6 +1,148 @@
-.bottom {
-  width: 100%;
-  padding: 20px;
-  line-height: 100px;
+.inputcss{
   background-color: #fff;
+  width: 90%;
+  font-size: 14px;
+  margin-top: 5px;
+  height: 195px;
+}
+
+.title{
+  width: 100%;
+  background-color: #fff;
+  justify-content: center;
+  display: flex;
+  height: 50px;
+}
+.title input{
+  width: 100%;
+  background-color: #fff;
+  justify-content: center;
+  display: flex;
+  height: 50px;  
+  padding-left: 10px;
+}
+
+
+.views{
+  width: 100%;
+  background-color: #fff;
+  justify-content: center;
+  display: flex;
+  height: 200px;
+}
+
+.buttonview{
+  width: 100%;
+  background-color: #fff;
+  justify-content: center;
+  display: flex;
+  height: 70px;  
+  margin-top: 5px;
+  align-items: center;
+}
+
+.attach{
+  margin-left: 10px;
+  font-size: 35px;
+  margin-top: 10px;
+}
+.attach i{
+  margin-right: 5px;
+}
+
+.pop-bottom {
+  width: 100%;
+  height: 150px;
+  background-color: #fff;
+  display: block;
+  align-items: center;
+}
+
+.pop-bottom button{
+  margin-top: 10px;
+}
+
+.record-btn {
+  margin-top: 50px;
+}
+
+.record-time-label {
+  font-size: 20px;
+  color: #000000;
+  margin-top: 10px;
+  justify-content:center;
+  display: flex;
+}
+
+.imagelist {
+  display: inline;
+  padding-bottom: 5px;
+}
+.imagelist image{
+  width: 50px; 
+  height: 50px; 
+  background-color: #eeeeee;
+}
+.imagelist video{
+  width: 50px; 
+  height: 50px; 
+  background-color: #eeeeee;
+}
+
+.imagelist audio{
+  width: 50px; 
+  height: 50px; 
+  background-color: #eeeeee;
+}
+.imagelist2{
+  margin-left: 10px;
+}
+
+.cancel{
+  vertical-align:top;
+  position:relative;
+  right:15px;
+}
+
+.xm-record-play-btn-hover {
+    background-color: #b3d4f3;
+}
+
+.xm-reply-record-play-btn {
+    margin-right: 30px;
+    margin-left: 30px;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    border: 0px solid #1e90ff;
+    color: #1e90ff;
+    border-radius: 6px;
+    background-color: #deebf7;
+    line-height: 20px;
+    padding: 4px;
+    height: 30px;
+}
+
+.translation_fill{
+  font-size: 40px;
+  justify-content:center;
+  display: flex;
+}
+.section__title{
+  display: inline;
+  font-size: 15px;
+  margin-left: 15px;
+  
+}
+.section{
+  padding-top: 10px;
+  background-color: #fff; 
+  padding-bottom: 10px;
+}
+
+.right{
+  display: flex;
+  float: right;
+  margin-right: 20px;
 }
