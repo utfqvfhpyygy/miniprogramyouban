@@ -1,0 +1,125 @@
+/* pages/class/informdetail/index.wxss */
+.idetail{
+  font-size: 13px;
+  width: 90%;
+  margin-left: auto; 
+  margin-right: auto;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 14;
+  overflow: hidden;
+}
+
+.ipiclist{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.ipiclist image{
+  margin-left: 5px;
+  width:  50px;
+  height: 50px;
+}
+
+.ipiclist video{
+  width:  50px;
+  height: 50px;
+  margin-left: 5px;
+}
+
+.ipiclist audio{
+  width:  50px;
+  height: 50px;
+  margin-left: 5px;
+}
+
+.ireply{
+  margin-left: 10px;
+}
+
+.iuserpic{
+  margin-left: 5px;
+  width: 40px;
+  height: 50px;
+  display: inline-block;
+  text-align: center;
+  vertical-align:top;
+
+}
+
+
+.iuserpic image{
+  margin-top: 5px;
+  margin-bottom: -8px;
+}
+.timer{
+  font-size: 9px;
+  margin-top: 2px;
+}
+
+.more{
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #666666;
+  margin-top: 5px;
+}
+
+.mytianjia{
+  font-size: 30px;
+  margin-top: 5px;
+}
+
+.line{
+  background-color: #fff;
+  height: 4px;
+  margin-top: 3px;
+}
+
+.enter{
+  float: right;
+  margin-right: 10px;
+  font-size: 20px;
+}
+.hudong{
+  font-size: 13px;
+  color: rgba(69,90,100,.6);
+  margin-left: 22px;
+  margin-top: 5px;
+}
+
+.comment{
+  margin-left: 22px;
+  font-size: 13px;
+  margin-top: 10px;
+}
+.comment span{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+.comment image{
+  vertical-align: middle;
+}
+
+.commentTime{
+  float: right;
+  margin-right: 10px;
+  margin-top: 6px;
+  color: #888888;
+  font-size: 11px;
+}
+.alistcass{
+  font-size: 14px;
+  margin-top: 15px;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.iuserpic2{
+  display:inline-block;
+  margin-left:10px;
+  margin-top:5px;
+  vertical-align:middle;
+  margin-right: 5px;
+}

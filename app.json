@@ -1,8 +1,13 @@
 {
   "pages": [
-    "pages/homework/create/index",
-    "pages/guide/index",
+
     "pages/class/index/index",
+    "pages/homework/create/index",
+    "pages/homework/detail/index",
+    "pages/setting/index/index",
+    
+    "pages/guide/index",
+    
     "pages/class/inform/index",
     "pages/class/informdetail/index",
     "pages/index/index",

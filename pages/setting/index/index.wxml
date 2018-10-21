@@ -1,0 +1,34 @@
+<view class='class-setting-index-container'> 
+  <van-row custom-class="header">
+    <van-col span="1" custom-class="pictext">
+      <span>{{userInfo.username}}</span>
+      </van-col>
+    <van-col span="1" custom-class="avatar">　
+      <image style="width: 45px; height: 45px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{userInfo.avatar}}"></image>
+    </van-col>
+  </van-row>
+  <view class='line'></view>
+  <van-row>
+    <van-col span="1">
+      <span>我的姓名</span>
+      </van-col>
+    <van-col span="1">　
+      {{userInfo.username}}
+    </van-col>
+  </van-row>
+  <view class='line'></view>
+  <van-row>
+    <van-col span="1">
+      <span>电话号码</span>
+      </van-col>
+    <van-col span="1">　
+      <block wx:if="{{userInfo.mobile.length > 1}}">
+      {{userInfo.mobile.length}}
+      </block>
+      <block wx:else>
+      
+      </block>
+    </van-col>
+  </van-row>
+  <view class='line'></view>
+</view>

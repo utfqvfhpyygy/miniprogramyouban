@@ -1,0 +1,14 @@
+/* pages/class/index/index.wxss */
+.header{
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+}
+
+.pictext{
+
+}
+
+.avatar{
+  ali
+}

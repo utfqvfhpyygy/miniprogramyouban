@@ -53,7 +53,7 @@ Page({
       })
   },
 
-  gotoDetail: function(e){
+  gotoInformDetail: function(e){
     let id = e.currentTarget.dataset.id;
     if(id){
       wx.navigateTo({
@@ -61,6 +61,16 @@ Page({
       })
     }
   },
+
+  gotoHomeworkDetail: function (e) {
+    let id = e.currentTarget.dataset.id;
+    if (id) {
+      wx.navigateTo({
+        url: '../../homework/detail/index?id=' + id,
+      })
+    }
+  },
+
   gotoInform:function(e){
     wx.navigateTo({
       url: '../inform/index'
