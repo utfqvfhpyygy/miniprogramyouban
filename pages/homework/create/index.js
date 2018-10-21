@@ -74,6 +74,7 @@ Page({
           "coureNameList": res.data.courseNameList,
           "classList": res.data.classList,
           "feedBackTypeList": res.data.feedbackTypeList,
+          "date":res.data.deadlineDate,
         })
       },
       errBack: function (msg) {
