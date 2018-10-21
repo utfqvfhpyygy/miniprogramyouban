@@ -3,17 +3,17 @@
   <form bindsubmit="bindFormSubmit">
 
   <view class="section">
-  <picker bindchange="bindPickerChange" value="{{workType}}" range="{{workType}}" >
+  <picker bindchange="bindCourseNamePickerChange" value="{{coureIndex}}" range="{{coureNameList}}" range-key="name">
     <view class="picker">
-      <view class="section__title">作业科目： </view>  <view class="right">{{workType[0]}}</view>
+      <view class="section__title">作业科目： </view>  <view class="right">{{coureNameList[coureIndex].name}}</view>
     </view>
   </picker>
   </view>
   <view class='line'></view>
   <view class="section">
-  <picker bindchange="bindPickerChange" value="{{workClass}}" range="{{workClass}}" >
+  <picker bindchange="bindClassPickerChange" value="{{classIndex}}" range="{{classList}}" range-key="name">
     <view class="picker">
-      <view class="section__title">作业班级： </view>  <view class="right">{{workClass[0]}}</view>
+      <view class="section__title">作业班级： </view>  <view class="right">{{classList[classIndex].name}}</view>
     </view>
   </picker>
   </view>
@@ -94,9 +94,9 @@
 
   <view class="section">
 
-  <picker bindchange="bindPickerChange" value="{{array}}" range="{{array}}" >
+  <picker bindchange="bindFeedBackPickerChange" value="{{feedBackIndex}}" range="{{feedBackTypeList}}" range-key="name">
     <view class="picker">
-      <view class="section__title">反馈方式： </view>  <view class="right">{{array[0]}}</view>
+      <view class="section__title">反馈方式： </view>  <view class="right">{{feedBackTypeList[feedBackIndex].name}}</view>
     </view>
   </picker>
   </view>
