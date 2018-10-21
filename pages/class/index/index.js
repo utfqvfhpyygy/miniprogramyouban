@@ -57,7 +57,7 @@ Page({
     let id = e.currentTarget.dataset.id;
     if(id){
       wx.navigateTo({
-        url: '../informdetail/index?id='+id,
+        url: '../../inform/detail/index?id='+id,
       })
     }
   },
@@ -73,7 +73,7 @@ Page({
 
   gotoInform:function(e){
     wx.navigateTo({
-      url: '../inform/index'
+      url: '../../inform/create/index'
     })
   },
 

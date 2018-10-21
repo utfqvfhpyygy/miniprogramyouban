@@ -472,7 +472,7 @@ Page({
         console.log(res)
         if (res.code === 0) {
           wx.redirectTo({
-            url: '../../class/informdetail/index?id=' + res.data['id'],
+            url: '../detail/index?id=' + res.data['id'],
           })
         }
 
