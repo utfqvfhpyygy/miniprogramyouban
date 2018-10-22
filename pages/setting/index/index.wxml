@@ -1,34 +1,31 @@
 <view class='class-setting-index-container'> 
-  <van-row custom-class="header">
-    <van-col span="1" custom-class="pictext">
-      <span>{{userInfo.username}}</span>
-      </van-col>
-    <van-col span="1" custom-class="avatar">　
+
+  <form bindsubmit="bindFormSubmit">
+  <view class='line'></view>
+  <view class="avatar">
+    <span>我的头像</span>
+    <span>
       <image style="width: 45px; height: 45px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{userInfo.avatar}}"></image>
-    </van-col>
-  </van-row>
+    </span>
+  </view>
   <view class='line'></view>
-  <van-row>
-    <van-col span="1">
-      <span>我的姓名</span>
-      </van-col>
-    <van-col span="1">　
-      {{userInfo.username}}
-    </van-col>
-  </van-row>
+  <view class="normalField">
+    <span>我的姓名</span>
+    <span>
+      <input  maxlength="10" placeholder="最大输入长度10" value="{{userInfo.username}}" name="username"/>
+    </span>
+  </view>
   <view class='line'></view>
-  <van-row>
-    <van-col span="1">
-      <span>电话号码</span>
-      </van-col>
-    <van-col span="1">　
-      <block wx:if="{{userInfo.mobile.length > 1}}">
-      {{userInfo.mobile.length}}
-      </block>
-      <block wx:else>
-      
-      </block>
-    </van-col>
-  </van-row>
+  <view class="normalField">
+    <span>电话号码</span>
+    <span>
+      <input  maxlength="11" placeholder="你还没有绑定手机号码" name="mobile" value="{{userInfo.mobile.length > 1 ? userInfo.mobile : ''}}" />
+    </span>
+  </view>
   <view class='line'></view>
+  <view class="buttonview">
+    <button size="normal" form-type="submit" type="primary">保存修改</button>
+  </view>
+  </form>
+
 </view>

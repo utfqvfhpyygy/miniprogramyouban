@@ -1,14 +1,36 @@
 /* pages/class/index/index.wxss */
-.header{
-  font-size: 12px;
-  display: flex;
-  flex-direction: row;
-}
-
-.pictext{
-
+.class-setting-index-container{
+  font-size: 15px;
 }
 
 .avatar{
-  ali
+  height: 60px;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.normalField{
+  height: 50px;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.normalField input{
+  text-align: right;
+}
+
+
+.buttonview{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  height: 70px;  
+  margin-top: 5px;
+  align-items: center;
 }

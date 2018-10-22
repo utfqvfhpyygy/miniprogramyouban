@@ -21,6 +21,66 @@ Page({
   },
 
   /**
+   * 更新设置
+   */
+  bindFormSubmit: function (e) {
+    console.log('submit');
+
+    var username = e.detail.value.username;
+    if (username <= 0) {
+      wx.showToast({
+        icon: 'none',
+        title: '昵称不能为空'
+      })
+      return
+    }
+
+    var mobile = e.detail.value.mobile;
+
+
+    console.log(username);
+    console.log(mobile);
+
+    var uid = app.getUid();
+
+    var that = this;
+    app.requestData({
+      url: app.globalData.origin + 'setting/updateUserInfo',
+      params: {
+        deviceUid: uid,
+        username: username,
+        mobile: mobile,
+      },
+      type: 'get',
+      sucBack(res) {
+        console.log(res)
+        if (res.code === 0) {
+          app.globalData.userInfo = res.data;
+          wx.setStorage({
+            key: 'userInfo',
+            data: res.data
+          })
+          that.setData({
+            userInfo:res.data
+          })
+        }
+        wx.showToast({
+          icon: 'none',
+          title: res.msg
+        })
+
+      },
+      errBack(err) {
+        wx.showModal({
+          title: '请求失败',
+          content: err,
+          showCancel: false
+        })
+      }
+    })
+  },
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
