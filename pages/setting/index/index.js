@@ -63,6 +63,10 @@ Page({
           that.setData({
             userInfo:res.data
           })
+
+          wx.navigateBack({
+            delta: 1
+          })
         }
         wx.showToast({
           icon: 'none',

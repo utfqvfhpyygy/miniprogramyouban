@@ -6,7 +6,7 @@
       <span>{{userInfo.username}}</span>
       </van-col>
     <van-col span="12">　</van-col>
-    <van-col span="2"> <i class="iconfont icon-enter enter"></i> </van-col>
+    <van-col span="2" bindtap="gotoSetting"> <i class="iconfont icon-enter enter"></i> </van-col>
   </van-row>
 
   <van-row custom-class="tab">
