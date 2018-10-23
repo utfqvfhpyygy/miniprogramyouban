@@ -1,4 +1,4 @@
-// pages/msg.js
+// pages/class/informdetail/index.js
 Page({
 
   /**
