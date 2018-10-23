@@ -1,0 +1,31 @@
+.class-myclass-index-container{
+  font-size: 15px;
+}
+
+.myclassName{
+  font-weight:bold;
+  margin-left: 20rpx;
+}
+.normalField{
+  height: 50px;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+
+
+.xm-class-more:after {
+    content: " ";
+    height: 6px;
+    width: 6px;
+    border-width: 2px 2px 0 0;
+    border-color: #c8c8cd;
+    border-style: solid;
+    transform: matrix(.71,.71,-.71,.71,0,0);
+    display: flex;
+    margin-right: 30rpx;
+}
+
+.xm-class-sub{
+  margin-left: 40rpx;
+}

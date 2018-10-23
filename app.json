@@ -1,7 +1,9 @@
 {
   "pages": [
+    "pages/class/myclass/index",
+    "pages/class/timetable/index",
     "pages/msg/msg",
-  "pages/class/index/index",
+    "pages/class/index/index",
     "pages/index/index",
     
     "pages/homework/create/index",
