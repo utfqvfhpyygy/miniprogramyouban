@@ -7,9 +7,13 @@ export function updateUserInfo(callback){
         success: function (res) {
 
           //console.log(res.userInfo)
-          const openid = wx.getStorageSync('session')
+          const openid = app.getOpenid();
+          if(!openid){
+              console.log('openid null')
+              return;
+          }
 
-          //console.log(openid)
+          console.log(openid)
 
           weRequest.request({
               url: 'user/login',

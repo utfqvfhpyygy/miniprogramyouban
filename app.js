@@ -1,8 +1,12 @@
 const weRequest = require('./utils/request');
 
 App({
-  onLaunch: function () {
-      wx.onNetworkStatusChange(function(res) {
+  onLaunch: function (res) {
+
+    console.log('app onLaunch')
+    console.log(res)
+
+    wx.onNetworkStatusChange(function(res) {
       // console.log("网络状态："+res.isConnected);
       if(!res.isConnected) {
         wx.showToast({
@@ -12,7 +16,7 @@ App({
       }
     })
 
-    console.log('小程序初始化完成')
+    
 
     weRequest.login(function(){
       console.log(111);
@@ -21,7 +25,8 @@ App({
 
   onShow: function(options) {
     // Do something when show.
-    console.log('小程序进入前台')
+    console.log('app onShow')
+    console.log(options)
   },
   onHide: function() {
     // Do something when hide.
@@ -51,6 +56,25 @@ App({
 
   },
 
+  getOpenid: function () {
+
+    var openid = wx.getStorageSync('session');
+    if (openid) {
+      return openid;
+    }
+
+    if (this.globalData.userInfo && this.globalData.userInfo.openid) {
+      return this.globalData.userInfo.openid;
+    }
+
+    var userInfo = wx.getStorageSync('userInfo');
+    if (userInfo && userInfo.openid) {
+      return userInfo.openid;
+    }
+
+
+  },
+
   getLoginUserInfo: function () {
 
     if (this.globalData.userInfo && this.globalData.userInfo) {
@@ -75,6 +99,8 @@ App({
    */
   requestData: function (option) {
 
+    console.log(option.url)
+    
     var requestBody = {
       url: option.url,
       data: option.params,

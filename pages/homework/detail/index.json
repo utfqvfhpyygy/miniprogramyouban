@@ -5,11 +5,10 @@
     "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
     "van-cell-group": "/miniprogram_npm/vant-weapp/cell/index",
     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
-    "van-tabbar-item": "/miniprogram_npm/vant-weapp/tabbar-item/index",
+    "van-field": "/miniprogram_npm/vant-weapp/field/index",
     "van-row": "/miniprogram_npm/vant-weapp/row/index",
     "van-col": "/miniprogram_npm/vant-weapp/col/index",
-    "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index",
-    "canvasdrawer": "../../../components/canvasdrawer/canvasdrawer"
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
   },
-  "navigationBarTitleText": "首页"
+  "navigationBarTitleText": "作业详情"
 }

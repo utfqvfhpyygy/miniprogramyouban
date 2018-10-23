@@ -64,16 +64,16 @@ Page({
 
   initGoPage: function (userInfo, fromType){
 
+
     //如果之前有设置身份，则跳转到班级首页
     if (userInfo.type > 0) {
       //console.log('initGoPage type > 0');
       wx.redirectTo({
         url: '../class/index/index'
       })
-    }
 
-    //如果之前没有设置身份
-    if (fromType == 1) {
+    } else if (fromType == 1) {
+      //如果之前没有设置身份
       //console.log('fromType type = 1');
       wx.redirectTo({
         url: '../index/index'
@@ -85,13 +85,7 @@ Page({
     //异步更新用户信息
     let nowTime = parseInt(Date.now()/1000);
 
-    console.log('initGoPage')
-    console.log(nowTime)
-    console.log(userInfo.update)
-    console.log(nowTime - userInfo.update > 60)
-
     if(nowTime - userInfo.update > 60){
-      console.log('start update user info')
       updateUserInfo(function(res){
         console.log('update userinfo');
       })

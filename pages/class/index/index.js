@@ -1,3 +1,5 @@
+import { onShareAppMessage } from '../../../utils/util'
+
 const app = getApp()
 
 Page({
@@ -51,17 +53,33 @@ Page({
       })
   },
 
-  gotoDetail: function(e){
+  gotoInformDetail: function(e){
     let id = e.currentTarget.dataset.id;
     if(id){
       wx.navigateTo({
-        url: '../informdetail/index?id='+id,
+        url: '../../inform/detail/index?id='+id,
       })
     }
   },
+
+  gotoHomeworkDetail: function (e) {
+    let id = e.currentTarget.dataset.id;
+    if (id) {
+      wx.navigateTo({
+        url: '../../homework/detail/index?id=' + id,
+      })
+    }
+  },
+
   gotoInform:function(e){
     wx.navigateTo({
-      url: '../inform/index'
+      url: '../../inform/create/index'
+    })
+  },
+
+  gotoSetting: function (e) {
+    wx.navigateTo({
+      url: '../../setting/index/index'
     })
   },
 
@@ -117,6 +135,14 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    console.log('class index onShareAppMessage');
 
+    let title = `班级助手`;;
+    let path = '/pages/class/index/index';
+    let shareCallBack = () => {
+        console.log('share call back suc')
+    };
+    //此处调用封装好的分享代码
+    return onShareAppMessage(title, path, shareCallBack);
   }
 })

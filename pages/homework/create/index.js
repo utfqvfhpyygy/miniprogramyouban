@@ -11,6 +11,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    coureNameList:[],
+    coureIndex: 0,
+    classList:[],
+    classIndex:0,
+    feedBackTypeList:[],
+    feedBackIndex: 0,
+
     feedBackChecked: false,   //是否需要反馈
     content: '',   //通知内容
     isShowRecordView: false,  //是否显示录音界面
@@ -34,9 +41,10 @@ Page({
     alistTempUrl: [],
     buttonName: '开始录音',
     aimage: '../../../image/play.png',
-    array: ['签到+相片','签到', '相片', '视频', '语音','语音+相片'],
-    workType:['语文','数学','英语','体育','美术'],
-    workClass: ['一年级', '二年级', '三年级', '四年级', '五年级'],
+
+    //array: ['签到+相片','签到', '相片', '视频', '语音','语音+相片'],
+    //workType:['语文','数学','英语','体育','美术'],
+    //workClass: ['一年级', '二年级', '三年级', '四年级', '五年级'],
     date:'2018-10-18'
   },
 
@@ -48,7 +56,35 @@ Page({
    */
   onLoad: function (options) {
 
+    console.log('onLoad')
     const that = this
+    var uid = app.getUid();
+
+    app.requestData({
+      url: app.globalData.origin + 'homework/configList',
+      params: {
+        deviceUid: uid,
+        platform: app.globalData.platform
+      },
+      type: 'get',
+      sucBack: function (res) {
+        console.log(res)
+        that.setData({
+          "coureNameList": res.data.courseNameList,
+          "classList": res.data.classList,
+          "feedBackTypeList": res.data.feedbackTypeList,
+          "date":res.data.deadlineDate,
+        })
+      },
+      errBack: function (msg) {
+        console.log('fail111')
+        wx.showModal({
+          title: '提示',
+          content: msg,
+          showCancel: false
+        })
+      }
+    })
 
     voiceManager.init({
 
@@ -388,15 +424,7 @@ Page({
    */
   bindFormSubmit: function (e) {
     console.log('submit');
-
-    var title = e.detail.value.title;
-    if (title <= 0) {
-      wx.showToast({
-        icon: 'none',
-        title: '标题不能为空'
-      })
-      return
-    }
+    var that = this;
 
     var content = e.detail.value.textarea;
     if (content <= 0) {
@@ -412,13 +440,28 @@ Page({
     console.log(this.data.alistType);
     console.log(this.data.alistTempUrl);
 
-    var that = this;
+    console.log(this.data.coureIndex);
+    console.log(this.data.classIndex);
+    console.log(this.data.feedBackIndex);
+
+    var coureId = this.data.coureNameList[this.data.coureIndex].id;
+    var classId = this.data.classList[this.data.classIndex].id;
+    var feedId = this.data.feedBackTypeList[this.data.feedBackIndex].id;
+
+    console.log(coureId);
+    console.log(classId);
+    console.log(feedId);
+
+    console.log(this.data.date);
+
     app.requestData({
-      url: app.globalData.origin + 'inform/add',
+      url: app.globalData.origin + 'homework/add',
       params: {
         uid: '10000',
-        classId: 123,
-        content: title,
+        classId: classId,
+        courseNameId:coureId,
+        feedbackId:feedId,
+        deadline: this.data.date,
         content: content,
         feedbackType: this.data.feedBackChecked,
         alistUrl: JSON.stringify(this.data.alistUrl),
@@ -428,7 +471,7 @@ Page({
         console.log(res)
         if (res.code === 0) {
           wx.redirectTo({
-            url: '../informdetail/index?id=' + res.data['id'],
+            url: '../detail/index?id=' + res.data['id'],
           })
         }
 
@@ -540,6 +583,25 @@ Page({
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
+    })
+  },
+
+  bindCourseNamePickerChange: function (e) {
+    console.log('picker bindCourseNamePickerChange发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      coureIndex: e.detail.value
+    })
+  },
+  bindClassPickerChange: function (e) {
+    console.log('picker bindClassPickerChange发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      classIndex: e.detail.value
+    })
+  },
+  bindFeedBackPickerChange: function (e) {
+    console.log('picker bindFeedBackPickerChange发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      feedBackIndex: e.detail.value
     })
   },
 })

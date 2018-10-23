@@ -1,0 +1,72 @@
+<!--pages/class/informdetail/index.wxml-->
+<view class="idetail">
+<text>{{detail.item.shortContent}}</text>
+
+
+
+</view>
+<view wx:if="{{detail.item.isMore}}" class="more" bindtap='showMore' hidden="{{moreButton}}">展开更多>></view>
+
+<view class="alistcass">--附件列表--</view>
+<!--图片附件-->
+<view class="ipiclist">
+
+<block wx:for="{{aurl}}" wx:key="aurl">
+  <block wx:if="{{atype[index] == 'video'}}">
+    <video  src="../../../image/play.png"  data-src='{{aurl[index]}}' bindtap='clickvideo'></video>
+  </block>
+  <block wx:if="{{atype[index] == 'image'}}">
+    <image  mode="{{item.mode}}" src="{{aurl[index]}}" bindtap='clickimg' data-src='{{aurl[index]}}'></image>
+  </block>
+  <block wx:if="{{atype[index] == 'audio'}}">
+    <image  mode="{{item.mode}}" src="../../../image/play.png" bindtap='clickaudio' data-src='{{aurl[index]}}'></image>
+  </block>
+</block>
+
+</view>
+<!--音频附件-->
+<!--视频附件-->
+<!--其他附件-->
+
+<view class="line"></view>
+
+<cell-block title="回复情况 {{detail.item.confirmNum}}/{{detail.item.memberNum}}" custom-class="ireply">
+
+<view class="iuserpic" wx:for="{{replyList}}"  wx:for-item="item" wx:key="item">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
+<view class="timer">{{item['time']}}</view>
+</view>
+
+
+<view class="iuserpic2">
+<i class="iconfont icon-qiandao mytianjia" bindtap="onClickConfirm"></i>
+
+</view>
+</cell-block>
+
+
+<!--
+<view class="hudong">
+  家长互动 <span><i class="iconfont icon-enter enter"></i></span>
+</view>
+
+
+<view class="comment">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<span>临时临时了临时临时老师李胜利了老师李</span>
+<span class="commentTime">15分钟前</span>
+</view>
+
+<view class="comment">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<span>临时临时了临时临时老师李胜利了老师李</span>
+<span class="commentTime">15分钟前</span>
+</view>
+
+<view class="comment">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{src}}"></image>
+<span>临时临时了临时临时老师李胜利了老师李</span>
+<span class="commentTime">15分钟前</span>
+</view>
+-->
+<van-dialog id="van-dialog" />

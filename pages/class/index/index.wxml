@@ -6,7 +6,7 @@
       <span>{{userInfo.username}}</span>
       </van-col>
     <van-col span="12">　</van-col>
-    <van-col span="2"> <i class="iconfont icon-enter enter"></i> </van-col>
+    <van-col span="2" bindtap="gotoSetting"> <i class="iconfont icon-enter enter"></i> </van-col>
   </van-row>
 
   <van-row custom-class="tab">
@@ -25,7 +25,7 @@
     <view class="ttime">{{dateList[0].date}}<span>{{dateList[0].week}}</span></view>
 
     <block wx:for="{{dateList}}" wx:for-item="item" wx:key="item">  
-      <view bindtap='gotoDetail' data-id="{{item.id}}">
+      <view bindtap='gotoInformDetail' data-id="{{item.id}}">
         <view class="confirmnum">
           {{item.confirmNum}}人<view>确认</view>
         </view>
@@ -50,12 +50,14 @@
     <view class="ttime">"{{dateList[0].date}}"<span>"{{dateList[0].week}}"</span></view>
 
     <block wx:for="{{dateList}}" wx:for-item="item" wx:key="item">  
-      <view class="confirmnum">
-        "{{item.confirmNum}}"<view>确认</view>
-      </view>
-      <view class="detail">
-        <view class="dtitle">"{{item.title}}"</view>
-        <view class="dcontent">"{{item.content}}"</view>
+      <view bindtap='gotoHomeworkDetail' data-id="{{item.id}}">
+        <view class="confirmnum">
+          "{{item.confirmNum}}"<view>确认</view>
+        </view>
+        <view class="detail">
+          <view class="dtitle">"{{item.title}}"</view>
+          <view class="dcontent">"{{item.content}}"</view>
+        </view>
       </view>
       <view class="right"><i class="iconfont icon-enter enter"></i></view>
 
