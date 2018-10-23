@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/msg/msg",
   "pages/class/index/index",
     "pages/index/index",
     
@@ -15,8 +16,8 @@
     "pages/class/create/index",
     "pages/class/grade/index",
     "pages/logs/logs",
-    "pages/playav/playav",
-    "pages/msg/msg"
+    "pages/playav/playav"
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "#f8f8f8",

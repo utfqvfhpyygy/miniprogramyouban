@@ -1,2 +1,26 @@
 <!--pages/msg/msg.wxml-->
-<text>pages/msg/msg.wxml</text>
+<view>
+  <view class="title">发送人：系统通知</view> <view class="time">3天前</view>
+</view>
+<view class="contetn">
+  本次招聘会提供4个免费摊位给大基在孵企业报名参加
+</view>
+
+
+<view class="line"></view>
+
+<view>
+  <view class="title">发送人：系统通知</view> <view class="time">4天前</view>
+</view>
+<view class="contetn">
+  本次招聘会提供4个免费摊位给大基在孵企业报名参加
+</view>
+
+<view class="line"></view>
+
+<view>
+  <view class="title">发送人：系统通知</view> <view class="time">4天前</view>
+</view>
+<view class="contetn">
+  本次招聘会提供4个免费摊位给大基在孵企业报名参加
+</view>
