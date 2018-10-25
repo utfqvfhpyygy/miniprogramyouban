@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/class/myclass/index",
+    
     "pages/class/timetable/index",
+    "pages/class/myclass/index",
+    "pages/logs/logs",
     "pages/msg/msg",
     "pages/class/index/index",
     "pages/index/index",
@@ -17,7 +19,7 @@
     
     "pages/class/create/index",
     "pages/class/grade/index",
-    "pages/logs/logs",
+    
     "pages/playav/playav"
     
   ],

@@ -1,1 +1,15 @@
-{}
+{
+  "usingComponents": {
+    "cell-block": "../../../components/cell-block/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index",
+    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/vant-weapp/cell/index",
+    "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
+    "van-tabbar-item": "/miniprogram_npm/vant-weapp/tabbar-item/index",
+    "van-row": "/miniprogram_npm/vant-weapp/row/index",
+    "van-col": "/miniprogram_npm/vant-weapp/col/index",
+    "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index",
+    "canvasdrawer": "../../../components/canvasdrawer/canvasdrawer"
+  },
+  "navigationBarTitleText": "课程表"
+}

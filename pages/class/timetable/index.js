@@ -1,4 +1,6 @@
-// pages/class/timetable/index.js
+const app = getApp()
+
+
 Page({
 
   /**
@@ -12,6 +14,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    var uid = app.getUid();
+    var that = this;
+    var classId = 3;
+
+    app.requestData({
+      url: app.globalData.origin + 'class/timetableList',
+      params: {
+        deviceUid: uid,
+        classId: classId,
+        platform: app.globalData.platform
+      },
+      type: 'get',
+      sucBack: function (res) {
+        console.log(res);
+
+        that.setData({
+          "list": res.data.list,
+          "week": res.data.week,
+        })
+      },
+      errBack: function (msg) {
+        console.log('fail111')
+        wx.showModal({
+          title: '提示',
+          content: msg,
+          showCancel: false
+        })
+      }
+    })
 
   },
 
@@ -63,4 +95,6 @@ Page({
   onShareAppMessage: function () {
 
   }
+
+  
 })

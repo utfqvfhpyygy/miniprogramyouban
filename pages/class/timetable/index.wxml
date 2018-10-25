@@ -1,2 +1,32 @@
-<!--pages/class/timetable/index.wxml-->
-<text>pages/class/timetable/index.wxml</text>
+  <view class='table'>
+    <view class='table_header'>
+      <view class="th" style='width:100rpx;'>
+        <view class='centerclass cell_label'></view>
+      </view>
+      <block wx:for="{{week}}" wx:key="weekItem">
+        <view class='th'>
+          <view class="cell_label centerclass">{{weekItem.name}}</view>
+        </view>
+      </block>
+    </view>
+
+
+    <block wx:for="{{list}}" wx:for-index="posKey" wx:for-item="posList">
+      <view class='table_main'>
+       
+        <view class='td' style='width:100rpx;'>
+          <view class="cell_label_pos centerclass">{{posKey}}</view>
+        </view>
+
+        <block wx:for="{{posList}}" wx:for-item="course" wx:for-index="courseKey" wx:key="item">
+        <view class='td'>
+          
+            <view  class="cell_label_name bindtap='clickCourse'  data-id='{{course.id}}' data-pos='{{course.pos}}'
+              data-week='{{course.week}}'>{{course.name}}</view>
+          
+        </view>
+        </block>
+
+      </view>
+    </block>
+  </view>

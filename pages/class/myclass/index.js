@@ -49,8 +49,6 @@ Page({
     console.log(e)
     
     let id = e.currentTarget.dataset.id;
-    console.log(id);
-    
     if(!id){
       console.log('id error');
       return;
