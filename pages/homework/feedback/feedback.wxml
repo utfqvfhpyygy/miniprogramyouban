@@ -1,0 +1,26 @@
+<!--pages/homework/feedback/feedback.wxml-->
+<view>上传作业附件:</view>
+
+<view class='upload'><button>点击上传附件</button></view>
+
+
+<view class="ipiclist">
+
+  <image  mode="{{item.mode}}" src="../../../image/play.png" bindtap='clickaudio' data-src='{{aurl[index]}}'>
+    </image>
+
+
+  <image  mode="{{item.mode}}" src="../../../image/play.png" bindtap='clickaudio' data-src='{{aurl[index]}}'>
+    </image>
+
+</view>
+
+<view class='upload'><button>点击录制音频</button></view>
+
+
+<view class="ipiclist">
+  <image  mode="{{item.mode}}" src="../../../image/play.png" bindtap='clickaudio' data-src='{{aurl[index]}}'>
+    </image>
+</view>
+
+<view class='submit'><button type="primary">确认提交</button></view>

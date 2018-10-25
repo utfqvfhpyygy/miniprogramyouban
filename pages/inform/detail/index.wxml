@@ -39,7 +39,7 @@
 
 
 <view class="iuserpic2">
-<i class="iconfont icon-qiandao mytianjia" bindtap="onClickConfirm"></i>
+<i class="iconfont icon-qiandao1 mytianjia" bindtap="onClickConfirm"></i>
 
 </view>
 </cell-block>
