@@ -15,7 +15,6 @@
 
     "pages/setting/index/index",
     "pages/guide/index",
-    "pages/class/informdetail/index",
     
     "pages/class/create/index",
     "pages/class/grade/index",
