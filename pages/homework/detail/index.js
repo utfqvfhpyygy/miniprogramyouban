@@ -11,7 +11,9 @@ Page({
     detail: '',
     replyList: '',
     atype: [],
-    aurl: []
+    aurl: [],
+    contentCss:'.idetail',
+    moreButton:false
   },
 
   /**
@@ -20,7 +22,7 @@ Page({
   onLoad: function (options) {
 
     console.log('onLoad')
-    id = options.id;
+    id = options.id ? options.id : 10;
     var that = this;
     var uid = app.getUid();
 
@@ -160,6 +162,13 @@ Page({
     var currents = e.target.dataset.src;
     wx.navigateTo({
       url: '../../playav/playav?url=' + currents + '&atype=audio'
+    })
+  },
+
+  showMore:function(e){
+    this.setData({
+      "contentCss": ".idetailAll",
+      "moreButton":true
     })
   },
 
