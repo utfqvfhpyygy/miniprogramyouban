@@ -1,6 +1,8 @@
 {
   "pages": [
-
+    "pages/guide/index",
+    "pages/class/timetable/index",
+    "pages/class/myclass/index",
     "pages/logs/logs",
 
     "pages/homework/detail/index",
@@ -9,9 +11,9 @@
     "pages/class/index/index",
     "pages/index/index",
     "pages/inform/create/index",
-    "pages/class/timetable/index",
+    
     "pages/class/courseList/index",
-    "pages/class/myclass/index",
+    
 
     "pages/msg/msg",
     
@@ -23,7 +25,7 @@
     "pages/inform/detail/index",
 
     "pages/setting/index/index",
-    "pages/guide/index",
+    
     
     "pages/class/create/index",
     "pages/class/grade/index",

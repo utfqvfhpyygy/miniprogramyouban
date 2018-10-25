@@ -15,6 +15,8 @@ Page({
    */
   onLoad: function (options) {
 
+    console.log(options);
+
     var uid = app.getUid();
     var that = this;
     var classId = 3;
@@ -52,8 +54,12 @@ Page({
 
     let week = e.currentTarget.dataset.week;
     let pos = e.currentTarget.dataset.pos;
-    let classId = e.currentTarget.dataset.classId;
+    let classId = e.currentTarget.dataset.classid;
     let id = e.currentTarget.dataset.id;
+
+    console.log(week);
+    console.log(pos);
+    console.log(classId);
 
     if(week && pos && classId){
       wx.navigateTo({
@@ -74,9 +80,13 @@ Page({
    */
   onShow: function () {
 
-    let week = this.data.currentCourse.week;
-    let pos = this.data.currentCourse.pos;
-    let name = this.data.currentCourse.name;
+    console.log('onShow');
+
+    //console.log(this.data.changeCourse);
+
+    let week = this.data.changeCourse.week;
+    let pos = this.data.changeCourse.pos;
+    let name = this.data.changeCourse.name;
     let list = this.data.list;
 
     if (week && pos && list) {

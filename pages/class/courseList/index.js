@@ -1,6 +1,5 @@
 // pages/class/courseList/index.js
-var pages = getCurrentPages();
-var prevPage = pages[pages.length - 2]; 
+const app = getApp()
 
 Page({
 
@@ -36,7 +35,7 @@ Page({
     var that = this;
 
     app.requestData({
-      url: app.globalData.origin + 'course/list',
+      url: app.globalData.origin + 'courseName/list',
       params: {
         deviceUid: uid,
         platform: app.globalData.platform
@@ -46,7 +45,7 @@ Page({
         console.log(res);
 
         that.setData({
-          "list": res.data.courseList,
+          "list": res.data.courseNameList,
         })
       },
       errBack: function (msg) {
@@ -61,11 +60,14 @@ Page({
 
   },
 
+  /**
+   * 选择课程名称
+   */
   chooseCourse: function(e) {
 
     console.log(e);
 
-    let courseId = e.currentTarget.dataset.courseId;
+    let courseId = e.currentTarget.dataset.courseid;
     if (!courseId) {
         console.log('courseId is nul');
         return;
@@ -75,7 +77,7 @@ Page({
     var that = this;
 
     app.requestData({
-      url: app.globalData.origin + 'course/updateTimetable',
+      url: app.globalData.origin + 'class/updateTimetable',
       params: {
         deviceUid: uid,
         classId:this.data.classId,
@@ -88,14 +90,18 @@ Page({
       sucBack: function (res) {
         console.log(res);
 
-        const currentCourse = {
-          'week':this.data.week,
-          'pos':this.data.pos,
+        const changeCourse = {
+          'week': that.data.week,
+          'pos': that.data.pos,
           'name':res.data.course.name
         };
 
+        var pages = getCurrentPages();
+        var prevPage = pages[pages.length - 2]; 
+
+        console.log(prevPage);
         prevPage.setData({  
-          currentCourse:currentCourse,
+          changeCourse: changeCourse,
         })
 
         wx.navigateBack({

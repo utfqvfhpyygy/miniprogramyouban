@@ -3,15 +3,15 @@
       <view class="th" style='width:100rpx;'>
         <view class='centerclass cell_label'></view>
       </view>
-      <block wx:for="{{week}}" wx:key="weekItem">
+      <block wx:for="{{week}}" wx:key="weekItem" wx:for-item="weekItem">
         <view class='th'>
-          <view class="cell_label centerclass">{{weekItem.name}}</view>
+          <view class="cell_label centerclass">{{weekItem}}</view>
         </view>
       </block>
     </view>
 
 
-    <block wx:for="{{list}}" wx:for-index="posKey" wx:for-item="posList">
+    <block wx:for="{{list}}" wx:for-index="posKey" wx:for-item="posList" wx:key="posKey">
       <view class='table_main'>
        
         <view class='td' style='width:100rpx;'>
@@ -21,8 +21,7 @@
         <block wx:for="{{posList}}" wx:for-item="course" wx:for-index="courseKey" wx:key="item">
         <view class='td'>
           
-            <view bind:tap="clickCourse" class="cell_label_name data-id='{{course.id}}' data-pos='{{course.pos}}'
-              data-week='{{course.week}}'>{{course.name}}</view>
+            <view bind:tap="clickCourse" class="cell_label_name" data-id='{{course.id}}' data-pos='{{course.pos}}' data-week='{{course.week}}' data-classId='{{course.classId}}'>{{course.name}}</view>
           
         </view>
         </block>
