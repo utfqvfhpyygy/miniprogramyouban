@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      changeCourse:{}
   },
 
   /**
@@ -47,6 +47,21 @@ Page({
 
   },
 
+  clickCourse: function(e) {
+    console.log(e);
+
+    let week = e.currentTarget.dataset.week;
+    let pos = e.currentTarget.dataset.pos;
+    let classId = e.currentTarget.dataset.classId;
+    let id = e.currentTarget.dataset.id;
+
+    if(week && pos && classId){
+      wx.navigateTo({
+        url: '../courseList/index?week='+week+'&pos='+pos+'&classId='+classId,
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -58,6 +73,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
+    let week = this.data.currentCourse.week;
+    let pos = this.data.currentCourse.pos;
+    let name = this.data.currentCourse.name;
+    let list = this.data.list;
+
+    if (week && pos && list) {
+       list[pos][week]['name'] = name;
+
+       this.setData({
+          list:list,
+          currentCourse:{}
+       })
+    }
 
   },
 

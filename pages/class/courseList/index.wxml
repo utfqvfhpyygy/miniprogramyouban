@@ -1,0 +1,10 @@
+<view class='class-courseList-index-container'> 
+
+<block wx:for="{{list}}" wx:for-item="item" wx:key="list">  
+  <view class="normalField" bindtap='chooseCourse' data-courseId="{{item.id}}">
+    <span class="xm-class-sub">{{item.name}}</span>
+  </view>
+  <view class='line'></view>
+</block>
+
+</view>

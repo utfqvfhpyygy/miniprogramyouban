@@ -1,9 +1,10 @@
 {
   "pages": [
-    
-    "pages/class/timetable/index",
-    "pages/class/myclass/index",
     "pages/logs/logs",
+    "pages/class/timetable/index",
+    "pages/class/courseList/index",
+    "pages/class/myclass/index",
+
     "pages/msg/msg",
     "pages/class/index/index",
     "pages/index/index",
