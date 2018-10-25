@@ -1,2 +1,8 @@
 
 <button open-type="contact" bindcontact="handleContact">客服</button> 
+
+<form bindsubmit="submitInfo" report-submit='true' >  
+    <button form-type="submit">  
+             发送服务消息
+    </button>  
+</form>
