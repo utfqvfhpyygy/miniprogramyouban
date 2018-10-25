@@ -89,6 +89,12 @@ Page({
     })   
   },
 
+  gotoMyclass: function (e) {
+    wx.navigateTo({
+      url: '../myclass/index'
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,26 +1,27 @@
 <view class='class-myclass-index-container'> 
 
 <block wx:for="{{list}}" wx:for-item="item" wx:key="list">  
-  <view class="myclassName normalField">
-    <span>{{item.name}}</span>
-    
+  <view class='classItem'>
+    <view class="myclassName normalField">
+      <span>{{item.name}}</span>
+    </view>
+    <view class='line'></view>
+    <view class="normalField">
+      <span class="xm-class-sub">邀请成员</span>
+      <span class="xm-class-more"></span>
+    </view>
+    <view class='line'></view>
+    <view class="normalField">
+      <span class="xm-class-sub">班级成员</span>
+      <span class="xm-class-more"></span>
+    </view>
+    <view class='line'></view>
+    <view class="normalField" bindtap='gotoTimetable' data-id="{{item.id}}">
+      <span class="xm-class-sub">课程表</span>
+      <span class="xm-class-more"></span>
+    </view>
+    <view class='line'></view>
   </view>
-  <view class='line'></view>
-  <view class="normalField">
-    <span class="xm-class-sub">邀请成员</span>
-    <span class="xm-class-more"></span>
-  </view>
-  <view class='line'></view>
-  <view class="normalField">
-    <span class="xm-class-sub">班级成员</span>
-    <span class="xm-class-more"></span>
-  </view>
-  <view class='line'></view>
-  <view class="normalField" bindtap='gotoTimetable' data-id="{{item.id}}">
-    <span class="xm-class-sub">课程表</span>
-    <span class="xm-class-more"></span>
-  </view>
-  <view class='line'></view>
 </block>
 
 </view>
