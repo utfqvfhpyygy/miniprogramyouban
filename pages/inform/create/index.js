@@ -12,6 +12,7 @@ Page({
    */
   data: {
     feedBackChecked:false,   //是否需要反馈
+    loading:false,
     content:'',   //通知内容
     isShowRecordView: false,  //是否显示录音界面
     isRecording:false,  //是否正在录音中
@@ -37,8 +38,6 @@ Page({
     
   },
 
-
-  
 
   /**
    * 生命周期函数--监听页面加载
@@ -184,6 +183,9 @@ Page({
       //   })
       //   return
       // };
+      that.setData({
+        loading:true
+      })
 
       res.tempFilePaths.forEach(function (tempFilePath){
         uploadImage(tempFilePath)
@@ -202,6 +204,7 @@ Page({
             alistUrl: newAlistUrl,
             alistType: newAlistType,
             alistTempUrl: newAlistTempUrl,
+            loading: false,
           })
         },function(err){
             console.log(err);
@@ -240,13 +243,16 @@ Page({
       //   })
       //   return
       // };
+      that.setData({
+        loading: true
+      })
 
       
       uploadFile(tempFilePath)
         .then(function (res) {
 
           console.log(res);
-          console.log(res.data.url);
+          console.log("upload suc callback");
           //追加视频，先看看之前有多少
           var newAlist = that.data.alist.concat("");
           var newAlistUrl = that.data.alistUrl.concat(res.data.url);
@@ -258,11 +264,15 @@ Page({
             alistUrl: newAlistUrl,
             alistType: newAlistType,
             alistTempUrl: newAlistTempUrl,
+            loading: false,
           })
 
 
         }, function (err) {
           console.log(err);
+          that.setData({
+            loading: false
+          })
         })
       
     }, function (err) {

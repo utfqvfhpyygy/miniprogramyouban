@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/logs/logs",
+    "pages/inform/create/index",
     "pages/class/timetable/index",
     "pages/class/courseList/index",
     "pages/class/myclass/index",
@@ -11,7 +12,7 @@
     
     "pages/homework/create/index",
     "pages/homework/detail/index",
-    "pages/inform/create/index",
+    
     "pages/inform/detail/index",
 
     "pages/setting/index/index",
