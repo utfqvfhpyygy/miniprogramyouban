@@ -9,6 +9,15 @@
   -webkit-line-clamp: 14;
   overflow: hidden;
 }
+.idetailAll{
+  font-size: 13px;
+  width: 90%;
+  margin-left: auto; 
+  margin-right: auto;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 100%;
+}
 
 .ipiclist{
   margin-left: 10px;

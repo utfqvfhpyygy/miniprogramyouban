@@ -1,16 +1,12 @@
 <!--pages/class/informdetail/index.wxml-->
-<view class="idetail">
-<text>{{detail.item.shortContent}}</text>
-
-
-
+<view class="{{contentCss}}">
+<text>{{detail.item.content}}</text>
 </view>
 <view wx:if="{{detail.item.isMore}}" class="more" bindtap='showMore' hidden="{{moreButton}}">展开更多>></view>
 
-<view class="alistcass">--附件列表--</view>
+<view class="alistcass" wx:if="{{!(aurl.length==0)}}">--附件列表--</view>
 <!--图片附件-->
 <view class="ipiclist">
-
 <block wx:for="{{aurl}}" wx:key="aurl">
   <block wx:if="{{atype[index] == 'video'}}">
     <video  src="../../../image/play.png"  data-src='{{aurl[index]}}' bindtap='clickvideo'></video>
