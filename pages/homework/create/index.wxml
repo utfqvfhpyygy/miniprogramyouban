@@ -50,25 +50,9 @@
         <icon type="cancel" size="15" color="red" class="cancel" bindtap='close' data-id="{{index}}"/>
       </view>
     </block>
+    <button loading="{{loading}}"  size='mini' type='default' hidden='{{!loading}}'></button>
   </view>
 
-
-
-  <view class="voicelist">
-    <block wx:for="{{selectedRecordsUrl}}" wx:for-item="item" wx:key="item">
-        <view bindtap="startPlay" class='xm-reply-record-play-btn' data-from="{{item}}" data-record="{{item}}" hoverClass="xm-record-play-btn-hover" style="margin-left:10px;position:relative">
-        <view>
-            <image src="../../../image/play.png" style="width: 30px; height: 30px; background-color: #eeeeee;" mode="aspectFit"></image>
-        </view>
-    </view>
-    </block>
-  </view>
-
-  <view class="videolist">
-    <block wx:for="{{selectedVideosTmp}}" wx:for-item="item" wx:key="item">
-        <video src='{{item}}'></video>
-    </block>
-  </view>
 
 
   <view>

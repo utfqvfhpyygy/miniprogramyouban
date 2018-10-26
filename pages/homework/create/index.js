@@ -17,6 +17,7 @@ Page({
     classIndex:0,
     feedBackTypeList:[],
     feedBackIndex: 0,
+    loading: false,
 
     feedBackChecked: false,   //是否需要反馈
     content: '',   //通知内容
@@ -223,7 +224,9 @@ Page({
         //   })
         //   return
         // };
-
+        that.setData({
+          loading: true
+        })
         res.tempFilePaths.forEach(function (tempFilePath) {
           uploadImage(tempFilePath)
             .then(function (res) {
@@ -241,6 +244,7 @@ Page({
                 alistUrl: newAlistUrl,
                 alistType: newAlistType,
                 alistTempUrl: newAlistTempUrl,
+                loading:false,
               })
             }, function (err) {
               console.log(err);
@@ -279,6 +283,9 @@ Page({
         //   })
         //   return
         // };
+        that.setData({
+          loading: true
+        })
 
 
         uploadFile(tempFilePath)
@@ -297,6 +304,7 @@ Page({
               alistUrl: newAlistUrl,
               alistType: newAlistType,
               alistTempUrl: newAlistTempUrl,
+              loading:false,
             })
 
 
