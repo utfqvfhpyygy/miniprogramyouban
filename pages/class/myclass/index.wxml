@@ -2,7 +2,8 @@
 
 <block wx:for="{{list}}" wx:for-item="item" wx:key="list">  
   <view class='classItem'>
-    <view class="myclassName normalField">
+    <view class="myclassName">
+      <span><i class="iconfont icon-banjiguanli"></i></span>
       <span>{{item.name}}</span>
     </view>
     <view class='line'></view>

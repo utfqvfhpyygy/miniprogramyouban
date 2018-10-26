@@ -5,6 +5,14 @@
 .myclassName{
   font-weight:bold;
   margin-left: 20rpx;
+  height: 60px;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+}
+
+.myclassName i{
+  padding-right: 5px;
 }
 .normalField{
   height: 50px;
@@ -27,5 +35,20 @@
 }
 
 .xm-class-sub{
-  margin-left: 40rpx;
+  margin-left: 60rpx;
+}
+
+.classItem{
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.class-myclass-index-container{
+  background: #f8f8f8;
+}
+
+.line{
+  height: 1px;
+  background: rgb(247, 248, 245);
+
 }
