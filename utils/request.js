@@ -4,7 +4,7 @@ weRequest.init({
     // [可选] 存在localStorage的session名称，且CGI请求的data中会自动带上以此为名称的session值；可不配置，默认为session
     sessionName: "session",
     // [可选] 请求URL的固定前缀；可不配置，默认为空
-    urlPerfix: "http://39.104.82.18/index.php?r=miniprogram/",
+    urlPerfix: "https://www.91youban.com/index.php?r=miniprogram/",
     // [必填] 触发重新登录的条件，res为CGI返回的数据
     loginTrigger: function (res) {
         // 此处例子：当返回数据中的字段errcode等于-1，会自动触发重新登录
