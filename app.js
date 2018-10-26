@@ -36,8 +36,8 @@ App({
     console.log(msg)
   },
   globalData: {
-    host: 'http://39.104.82.18/',
-    origin: 'http://39.104.82.18/index.php?r=miniprogram/', 
+    host: 'https://www.91youban.com/',
+    origin: 'https://www.91youban.com/index.php?r=miniprogram/', 
     platform: '2',
     userInfo: null, // 当前登录的用户信息
     wxUserInfo: null // 当前微信用户信息（需要授权获取）
