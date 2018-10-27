@@ -1,11 +1,11 @@
 <view class='class-create-container'>
   <van-row custom-class="header">
     <van-col span="1">　</van-col>
-    <van-col span="9" custom-class="pictext">
+    <van-col span="9" custom-class="pictext" bindtap="gotoSetting">
       <image style="width: 25px; height: 25px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{userInfo.avatar}}"></image>
       <span>{{userInfo.username}}</span>
       </van-col>
-    <van-col span="12">　</van-col>
+    <van-col span="12" bindtap="gotoSetting">　</van-col>
     <van-col span="2" bindtap="gotoSetting"> <i class="iconfont icon-enter enter"></i> </van-col>
   </van-row>
 
