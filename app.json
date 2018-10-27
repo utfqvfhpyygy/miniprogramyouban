@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/class/member/index",
     "pages/guide/index",
+    "pages/class/member/index",
+    
         "pages/class/index/index",
         "pages/homework/feedback/feedback",
     "pages/class/timetable/index",

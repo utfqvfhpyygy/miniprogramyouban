@@ -1,1 +1,31 @@
-/* pages/class/member/index.wxss */
+.classItem{
+  background-color: white;
+  
+}
+
+.normalCell{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 70px;
+  font-size: 18px;
+}
+
+.xm-class-sub{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  padding-left: 10px;
+}
+
+.job{
+  font-size: 15px;
+  color: gray;
+}
+
+.xm-class-avatar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 20rpx;
+}

@@ -59,6 +59,22 @@ Page({
     })
 
   },
+
+  gotoMember: function (e) {
+    console.log(e)
+
+    let classId = e.currentTarget.dataset.id;
+    if (!classId) {
+      console.log('id error');
+      return;
+    }
+
+    wx.navigateTo({
+      url: '../member/index?classId=' + classId,
+    })
+
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

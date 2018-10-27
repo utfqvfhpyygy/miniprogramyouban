@@ -12,7 +12,7 @@
       <span class="xm-class-more"></span>
     </view>
     <view class='line'></view>
-    <view class="normalField">
+    <view class="normalField" bindtap='gotoMember' data-id="{{item.id}}">
       <span class="xm-class-sub">班级成员</span>
       <span class="xm-class-more"></span>
     </view>

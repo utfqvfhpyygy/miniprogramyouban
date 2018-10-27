@@ -1,31 +1,33 @@
 
-<view class='class-member-index-container'> 
+<view class='class-member-container'> 
 
   <cell-block title="老师列表"></cell-block>
+  
   <view class='classItem'>
 	  <block wx:for="{{teacher}}" wx:for-item="item" wx:key="list">
 	    <view class='line'></view>
 	    <view class="normalCell">
-	      <span class="xm-class-sub">
-	      		<image src="{{item.avatar}}" mode="scaleToFill"></image>
+	      <span class="xm-class-avatar">
+            <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item.avatar}}"></image>
 	      </span>
 	      <span class="xm-class-sub">
-	      		<span>{{item.job}}</span>
-	      		<span>{{item.username}}</span>
+            <span>{{item.username}}</span>
+	      		<span class="job">{{item.job}}</span>
 	      </span>
 	      <span class="xm-class-more"></span>
-	    </view>
+	    </view>  
 	  </block> 
   </view>
 
 
-  <cell-block title="家长列表"></cell-block>
+  <cell-block title="班级成员列表"></cell-block>
+
   <view class='classItem'>
 	  <block wx:for="{{member}}" wx:for-item="item" wx:key="list">
 	    <view class='line'></view>
 	    <view class="normalCell">
-	      <span class="xm-class-sub">
-	      		<image src="{{item.avatar}}" mode="scaleToFill"></image>
+	      <span class="xm-class-avatar">
+	      		<image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item.avatar}}"></image>
 	      </span>
 	      <span class="xm-class-sub">
 	      		<span>{{item.username}}</span>
