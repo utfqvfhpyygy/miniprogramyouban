@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/more/more",
+    
     "pages/guide/index",
     "pages/class/member/index",
     "pages/class/index/index",
@@ -18,8 +18,8 @@
     "pages/setting/index/index",
     "pages/class/create/index",
     "pages/class/grade/index",
-    "pages/playav/playav"
-    
+    "pages/playav/playav",
+    "pages/more/more"
   ],
   "window": {
     "navigationBarBackgroundColor": "#f8f8f8",
