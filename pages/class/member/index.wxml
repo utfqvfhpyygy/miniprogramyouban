@@ -1,0 +1,38 @@
+
+<view class='class-member-index-container'> 
+
+  <cell-block title="老师列表"></cell-block>
+  <view class='classItem'>
+	  <block wx:for="{{teacher}}" wx:for-item="item" wx:key="list">
+	    <view class='line'></view>
+	    <view class="normalCell">
+	      <span class="xm-class-sub">
+	      		<image src="{{item.avatar}}" mode="scaleToFill"></image>
+	      </span>
+	      <span class="xm-class-sub">
+	      		<span>{{item.job}}</span>
+	      		<span>{{item.username}}</span>
+	      </span>
+	      <span class="xm-class-more"></span>
+	    </view>
+	  </block> 
+  </view>
+
+
+  <cell-block title="家长列表"></cell-block>
+  <view class='classItem'>
+	  <block wx:for="{{member}}" wx:for-item="item" wx:key="list">
+	    <view class='line'></view>
+	    <view class="normalCell">
+	      <span class="xm-class-sub">
+	      		<image src="{{item.avatar}}" mode="scaleToFill"></image>
+	      </span>
+	      <span class="xm-class-sub">
+	      		<span>{{item.username}}</span>
+	      </span>
+	      <span class="xm-class-more"></span>
+	    </view>
+	  </block> 
+  </view>
+
+</view>
