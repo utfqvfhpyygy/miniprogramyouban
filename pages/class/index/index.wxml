@@ -49,19 +49,20 @@
 
 
   <view class="tlist" wx:for="{{homeworkList}}" wx:for-item="dateList" wx:key="dateList">
-    <view class="ttime">"{{dateList[0].date}}"<span>"{{dateList[0].week}}"</span></view>
+    <view class="ttime">{{dateList[0].date}}<span>{{dateList[0].week}}</span></view>
 
     <block wx:for="{{dateList}}" wx:for-item="item" wx:key="item">  
       <view bindtap='gotoHomeworkDetail' data-id="{{item.id}}">
         <view class="confirmnum">
-          "{{item.confirmNum}}"<view>确认</view>
+          {{item.confirmNum}}<view>确认</view>
         </view>
         <view class="detail">
-          <view class="dtitle">"{{item.title}}"</view>
-          <view class="dcontent">"{{item.content}}"</view>
+          <view class="dtitle">{{item.title}}</view>
+          <view class="dcontent">{{item.content}}</view>
         </view>
+        <view class="right"><i class="iconfont icon-enter enter"></i></view>
       </view>
-      <view class="right"><i class="iconfont icon-enter enter"></i></view>
+      
 
       <view class="tline"></view>
     </block>
