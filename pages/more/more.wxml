@@ -1,0 +1,32 @@
+<!--pages/more/more.wxml-->
+<view>
+  <van-row custom-class="tab">
+    
+    <van-col span="8" bindtap="gotoInform"><i class="iconfont icon-xiaoxi"></i> <span>消息</span> </van-col>
+
+    <van-col span="8" bindtap="gotoWork"><i class="iconfont icon-zuoye"></i> <span>作业</span> </van-col>
+
+    <van-col span="8" bindtap="gotoMyclass"><i class="iconfont icon-tongzhi"></i> <span>通知</span>　</van-col>
+
+  </van-row>
+
+  <van-row custom-class="tab">
+    
+    <van-col span="8" bindtap="gotoInform"><i class="iconfont icon-banjiguanli"></i> <span>班级</span> </van-col>
+
+    <van-col span="8" bindtap="gotoWork"><i class="iconfont icon-kechengbiao"></i> <span>课程表</span> </van-col>
+
+    <van-col span="8" bindtap="gotoMyclass"><i class="iconfont icon-xiangce"></i> <span>相册</span>　</van-col>
+    
+  </van-row>
+
+  <van-row custom-class="tab">
+    
+    <van-col span="8" bindtap="gotoInform"><i class="iconfont icon-accessory"></i> <span>资源</span> </van-col>
+
+    <van-col span="8" bindtap="gotoWork"><i class="iconfont icon-zuoye"></i> <span>科目</span> </van-col>
+
+    <van-col span="8" bindtap="gotoMyclass"><i class="iconfont icon-shezhi"></i> <span>设置</span>　</van-col>
+    
+  </van-row>
+</view>

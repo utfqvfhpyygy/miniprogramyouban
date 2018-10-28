@@ -1,30 +1,25 @@
 {
   "pages": [
+    
     "pages/guide/index",
     "pages/class/member/index",
-    
-        "pages/class/index/index",
-        "pages/homework/feedback/feedback",
+    "pages/class/index/index",
+    "pages/homework/feedback/feedback",
     "pages/class/timetable/index",
     "pages/class/myclass/index",
-    
     "pages/logs/logs",
-
     "pages/homework/detail/index",
     "pages/homework/create/index",
-    
     "pages/index/index",
     "pages/inform/create/index",
-    
     "pages/class/courseList/index",
-    
-
     "pages/msg/msg",
     "pages/inform/detail/index",
     "pages/setting/index/index",
     "pages/class/create/index",
     "pages/class/grade/index",
-    "pages/playav/playav"
+    "pages/playav/playav",
+    "pages/more/more"
   ],
   "window": {
     "navigationBarBackgroundColor": "#f8f8f8",

@@ -1,0 +1,20 @@
+/* pages/more/more.wxss */
+.tab{
+  height: 70px;
+  font-size: 25px;
+  display:block;
+  text-align:center;
+  margin-top:15px;
+}
+
+.tab view{
+  height: 70px;
+}
+.tab i{
+  font-size: 25px;
+} 
+.tab span{
+  font-size: 12px;
+  text-align:center;
+  display:block;
+}

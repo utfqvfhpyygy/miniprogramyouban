@@ -83,6 +83,12 @@ Page({
     })
   },
 
+  gotoMore:function(e){
+    wx.navigateTo({
+      url: '../../more/more'
+    })
+  },
+
   gotoWork:function(e){
     wx.navigateTo({
       url: '../../homework/create/index'

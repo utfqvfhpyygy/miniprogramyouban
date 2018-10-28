@@ -1,11 +1,11 @@
 <view class='class-create-container'>
   <van-row custom-class="header">
     <van-col span="1">　</van-col>
-    <van-col span="9" custom-class="pictext">
+    <van-col span="9" custom-class="pictext" bindtap="gotoSetting">
       <image style="width: 25px; height: 25px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{userInfo.avatar}}"></image>
       <span>{{userInfo.username}}</span>
       </van-col>
-    <van-col span="12">　</van-col>
+    <van-col span="12" bindtap="gotoSetting">　</van-col>
     <van-col span="2" bindtap="gotoSetting"> <i class="iconfont icon-enter enter"></i> </van-col>
   </van-row>
 
@@ -15,7 +15,7 @@
     <van-col span="6" bindtap="gotoWork"><i class="iconfont icon-zuoye"></i> <span>作业</span> </van-col>
     <van-col span="6" bindtap="gotoMyclass"><i class="iconfont icon-banjiguanli"></i> <span>班级
     </span>　</van-col>
-    <van-col span="6"><i class="iconfont icon-gengduo"></i> <span>更多</span> </van-col>
+    <van-col span="6" bindtap="gotoMore"><i class="iconfont icon-gengduo"></i> <span>更多</span> </van-col>
   </van-row>
   <view class='line'></view>
   <view>
