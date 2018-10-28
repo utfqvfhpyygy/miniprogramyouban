@@ -20,20 +20,30 @@
   </view>
 
 
-  <cell-block title="班级成员列表"></cell-block>
+  <view class="memberTitleCell">
+    <span>班级成员列表</span>
+    <span><van-button plain type="primary" size="mini" bindtap='changeEdit'>{{editBtnText}}</van-button></span>
+  </view>
 
   <view class='classItem'>
-	  <block wx:for="{{member}}" wx:for-item="item" wx:key="list">
+	  <block wx:for="{{member}}" wx:for-item="item" wx:key="list" wx:for-index="idx">
 	    <view class='line'></view>
-	    <view class="normalCell">
-	      <span class="xm-class-avatar">
-	      		<image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item.avatar}}"></image>
-	      </span>
-	      <span class="xm-class-sub">
-	      		<span>{{item.username}}</span>
-	      </span>
-	      <span class="xm-class-more"></span>
-	    </view>
+      <view class='memberCell'>
+        <view class="normalCell">
+          <span class="xm-class-avatar">
+              <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item.avatar}}"></image>
+          </span>
+          <span class="xm-class-sub">
+              <span>{{item.username}}</span>
+          </span>
+        </view>
+        <view wx:if="{{isEditing}}"> 
+          <span class="xm-class-more">
+              <i class="iconfont icon-editor" bindtap='editMember'></i>
+              <i class="iconfont icon-shanchu" bindtap='delMember' data-classId="{{item.classId}}" data-changeUid="{{item.uid}}" data-idx="{{idx}}"></i>
+          </span>
+        </view>
+      </view>
 	  </block> 
   </view>
 

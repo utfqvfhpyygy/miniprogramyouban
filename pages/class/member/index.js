@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      editBtnText:'编辑模式',
+      isEditing:false,
   },
 
   /**
@@ -46,6 +47,81 @@ Page({
         })
       }
     })
+
+  },
+
+
+  changeEdit: function(e){
+
+    console.log(e);
+    this.setData({
+      editBtnText: this.data.isEditing ? '编辑模式' : '退出编辑',
+      isEditing : !this.data.isEditing,
+     
+    })
+
+  },
+
+  delMember: function (e) {
+
+    console.log(e);
+
+    var uid = app.getUid();
+    var that = this;
+    let classId = e.currentTarget.dataset.classid;
+    let changeUid = e.currentTarget.dataset.changeuid;
+    let idx = e.currentTarget.dataset.idx;
+
+    app.requestData({
+      url: app.globalData.origin + 'class/delMember',
+      params: {
+        deviceUid: uid,
+        classId: classId,
+        changeUid: changeUid,
+        platform: app.globalData.platform
+      },
+      type: 'get',
+      sucBack: function (res) {
+        console.log(res);
+
+        let member = that.data.member;
+
+        console.log(member)
+        
+
+        let delIndex = member.findIndex((element, index, array) => {
+          console.log(element)
+          console.log(changeUid)
+          console.log(index)
+          if (element.uid == changeUid) {
+            return index;
+          } else {
+            return false;
+          }
+        });
+
+        console.log(delIndex)
+
+        member.splice(delIndex,1);
+
+        console.log('after del')
+        console.log(member)
+
+        that.setData({
+          member:member
+        })
+
+      },
+      errBack: function (msg) {
+        console.log('fail111')
+        wx.showModal({
+          title: '提示',
+          content: msg,
+          showCancel: false
+        })
+      }
+    })
+
 
   },
 

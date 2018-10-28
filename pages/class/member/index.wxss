@@ -1,6 +1,5 @@
 .classItem{
   background-color: white;
-  
 }
 
 .normalCell{
@@ -9,6 +8,13 @@
   align-items: center;
   height: 70px;
   font-size: 18px;
+}
+
+.memberCell{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
 }
 
 .xm-class-sub{
@@ -27,5 +33,25 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-left: 20rpx;
+}
+
+.memberTitleCell{
+  height: 20px;
+  font-weight: 400;
+  font-size: 13px;
+  color: rgba(69,90,100,.6);
+  padding: 10px 15px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
+.xm-class-more{
+  width: 100rpx;
+  padding-right: 30rpx;
+}
+
+.xm-class-more i{
   padding-left: 20rpx;
 }
