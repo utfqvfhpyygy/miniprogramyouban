@@ -23,9 +23,10 @@ function miniUploadImage(param){
         .then(function(res){
             console.log(res);
             console.log(res.data.url);
+            console.log(tempFilePath);
 
             //执行suc callback
-            param.sucCallback && param.sucCallback(res);
+            param.sucCallback && param.sucCallback(res.data.url, tempFilePath);
             
         },function(err){
             console.log("uploadImage fail");
@@ -69,7 +70,7 @@ function miniUploadVedio(param){
             console.log("uploadFile suc");
 
             //执行suc callback
-            param.sucCallback && param.sucCallback(res);
+            param.sucCallback && param.sucCallback(res.data.url, tempFilePath);
 
         }, function (err) {
             console.log("uploadFile fail");
@@ -94,43 +95,41 @@ class miniRecordManager {
     isRecording = false;
     timeCounter = 0;
     timer = null;
+    
 
     constructor(param){
 
         voiceManager.init({
 
-            upStart:function(){
+            upStart:() => {
                 console.log('voiceManager upStart')
     
                 //执行start callback
                 param.startCallback && param.startCallback();
 
                 //计时器
-                timer = setInterval(function () {
-                console.log('start interval');
+                this.timer = setInterval(() => {
+                    console.log('start interval');
 
-                if (isRecording) {
-                    let timeTotal = timeCounter + 1;
-                    console.log(timeTotal)
-    
-                    //执行counter callback
-                    param.counterCallback && param.counterCallback(timeTotal);
+                    if (this.isRecording) {
+                        this.timeCounter = this.timeCounter + 1;
+                        console.log(this.timeTotal)
+        
+                        //执行counter callback
+                        param.counterCallback && param.counterCallback(this.timeCounter);
 
-                } else {
-                    console.log('start to stop')
-                    clearInterval(timer)
+                    } else {
+                        console.log('start to stop')
+                        clearInterval(this.timer)
 
-                }
-                }.bind(that), 1000);
+                    }
+                }, 1000);
             },
     
-            upStop:function(res){
+            upStop:(res) => {
                 console.log('voiceManager upStop')
                 console.log(res)
     
-                //执行stop callback
-                param.stopCallback && param.stopCallback();
-
                 if (Math.floor(res.duration / 1000) < 1) {
                     wx.showModal({
                         title: '提示',
@@ -145,11 +144,12 @@ class miniRecordManager {
                 //上传
                 uploadFile(tempFilePath)
                 .then(function (res) {
+                    console.log('uploadFile suc');
                     console.log(res);
                     console.log(res.data.url);
 
                     //执行suc callback
-                    param.sucCallback && param.sucCallback();
+                    param.stopCallback && param.stopCallback(res.data.url, tempFilePath);
     
                 }, function (err) {
                     console.log(err);
@@ -159,7 +159,7 @@ class miniRecordManager {
                 })
             },
     
-            upError:function(err){
+            upError:(err) => {
                 console.log('voiceManager upError')
                 console.log(err)
 
@@ -167,9 +167,9 @@ class miniRecordManager {
                 param.errorCallback && param.errorCallback();
             },
     
-            upComplete:function(){
+            upComplete:() => {
                 console.log('voiceManager upComplete')
-                clearInterval(timer)
+                clearInterval(this.timer)
 
                 //执行complete callback
                 param.completeCallback && param.completeCallback();
@@ -181,16 +181,19 @@ class miniRecordManager {
     startRecord(){
 
         if(this.isRecording){
-            console.log("startRecord");
+            console.log("click stopRecord");
+            
         }else{
-            console.log("stopRecord");
+            console.log("click startRecord");
         }
       
         if (this.isRecording){
             voiceManager.stopRecord()
             clearInterval(this.timer)
+            this.isRecording = false;
         }else{
             voiceManager.startRecord()
+            this.isRecording = true;
         }
     }
 

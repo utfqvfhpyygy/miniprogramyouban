@@ -52,10 +52,7 @@ Page({
                 time_counter: counter
             })
         },
-        stopCallback:function(){
-
-        },  
-        sucCallback:function(url){
+        stopCallback: function (url, tempFilePath){
 
             //追加音频，先看看之前有多少
             var newAlist     = that.data.alist.concat("");
@@ -99,11 +96,11 @@ Page({
           loading:true
         })
       },
-      sucCallback:function(res){
+      sucCallback: function (url, tempFilePath){
 
         //追加图片，先看看之前有多少
         var newAlist = that.data.alist.concat("");
-        var newAlistUrl = that.data.alistUrl.concat(res.data.url);
+        var newAlistUrl = that.data.alistUrl.concat(url);
         var newAlistType = that.data.alistType.concat('img');
         var newAlistTempUrl = that.data.alistTempUrl.concat(tempFilePath);
 
@@ -139,11 +136,11 @@ Page({
           loading:true
         })
       },
-      sucCallback:function(res){
+      sucCallback: function (url,tempFilePath){
 
           //追加视频，先看看之前有多少
           var newAlist = that.data.alist.concat("");
-          var newAlistUrl = that.data.alistUrl.concat(res.data.url);
+          var newAlistUrl = that.data.alistUrl.concat(url);
           var newAlistType = that.data.alistType.concat('video');
           var newAlistTempUrl = that.data.alistTempUrl.concat(tempFilePath);
 

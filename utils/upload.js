@@ -76,8 +76,6 @@ export function wxChooseVedio(){
         maxDuration: 60,
         camera: "back",
         success: function (res) {
-
-          console.log('wxChooseVedio suc');
           console.log(res);
           resolve(res)
         },
@@ -107,9 +105,6 @@ export function uploadFile(tempFilePath){
         uid: 10000
       },
       success(respond) {
-
-        console.log('uploadFile suc');
-        console.log(respond)
 
         if (respond.statusCode === 200) {
           const data = JSON.parse(respond.data)
