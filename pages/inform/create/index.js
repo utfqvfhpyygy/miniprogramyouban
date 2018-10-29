@@ -1,5 +1,5 @@
-import { wxChooseImage, wxChooseVedio, uploadImage, uploadFile} from '../../../utils/upload'
-var voiceManager = require('../../../utils/voiceManager');
+import {miniUploadImage,miniUploadVedio,miniRecordManager} from '../../../model/attachment.js'
+//var voiceManager = require('../../../utils/voiceManager');
 
 const app = getApp()
 
@@ -11,21 +11,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+
+    miniRecordManager:{},
+
     feedBackChecked:false,   //是否需要反馈
     loading:false,
     content:'',   //通知内容
     isShowRecordView: false,  //是否显示录音界面
     isRecording:false,  //是否正在录音中
-    voiceRecordingTimer: null,  //录音计时器
-    time_counter:0,  //录音计时
+    time_counter:0,  //录音计时显示
 
-    selectedImgsTmp: [],  //选中的图片
-    selectedRecordsTmp: [],   //选中的录音
-    selectedVideosTmp: [],    //选中的视频
-
-    selectedImgsUrl: [],  //选中的图片
-    selectedRecordsUrl: [],   //选中的录音
-    selectedVideosUrl: [],    //选中的视频
     /*
     暂定9个附件，用a1-a9,使用后就标记true,没有使用就是false
     */
@@ -46,178 +41,88 @@ Page({
     
     const that = this
 
-    voiceManager.init({
-      
-      upStart:function(){
-          console.log('voiceManager upStart')
-
-          that.setData({
-            "isRecording": true,
-            "time_counter": 0
-          })
-
-          //计时器
-          var voiceRecordingTimer = setInterval(function () {
-            console.log('start interval')
-            if (that.data.isRecording) {
-              var timeTotal = that.data.time_counter + 1;
-
-              console.log(timeTotal)
-
-              that.setData({
-                time_counter: timeTotal
-              })
-            } else {
-              console.log('clearInterval')
-              clearInterval(voiceRecordingTimer)
-            }
-          }.bind(that), 1000);
-      },
-
-      upStop:function(res){
-          console.log('voiceManager upStop')
-          console.log(res)
-
-          if (Math.floor(res.duration / 1000) < 1) {
-            wx.showModal({
-              title: '提示',
-              content: '录音时间不能太短。',
-              showCancel: false
+    this.data.miniRecordManager = new miniRecordManager({
+        startCallback:function(){
+            that.setData({
+                buttonName: '开始录音',
             })
-            return
-          }
+        },
+        counterCallback:function(counter){
+            that.setData({
+                time_counter: counter
+            })
+        },
+        stopCallback:function(){
 
-          var tempFilePath = res.tempFilePath;
-          //音频数量限制
-          // var tmpList = that.data.selectedVideosTmp.concat(tempFilePath);
-          // if (tmpList.length > 5) {
-          //   wx.showToast({
-          //     title: '最多5个音频',
-          //   })
-          //   return
-          // };
+        },  
+        sucCallback:function(url){
 
-          // //上传
-          uploadFile(tempFilePath)
-          .then(function (res) {
-
-            console.log(res);
-            console.log(res.data.url);
             //追加音频，先看看之前有多少
             var newAlist     = that.data.alist.concat("");
-            var newAlistUrl  = that.data.alistUrl.concat(res.data.url);
+            var newAlistUrl  = that.data.alistUrl.concat(url);
             var newAlistType = that.data.alistType.concat('audio');
             var newAlistTempUrl = that.data.alistTempUrl.concat(tempFilePath);
 
             that.setData({
-              alist: newAlist,
-              alistUrl: newAlistUrl,
-              alistType: newAlistType,
-              alistTempUrl: newAlistTempUrl,
+                alist: newAlist,
+                alistUrl: newAlistUrl,
+                alistType: newAlistType,
+                alistTempUrl: newAlistTempUrl,
             })
+        },
+        errorCallback:function(){
 
-          }, function (err) {
-            console.log(err);
-          })
-
-          // uploadFile(tempFilePath)
-          //   .then(function (res) {
-          //     console.log("uploadVoice suc");
-          //     console.log(res);
-          //   }, function (err) {
-          //     console.log("uploadVoice fail");
-          //     console.log(err);
-          //   })
-      },
-
-      upError:function(err){
-        console.log('voiceManager upError')
-        console.log(err)
-      },
-
-      upComplete:function(){
-        console.log('voiceManager upComplete')
-
-        clearInterval(that.data.voiceRecordingTimer)
-        that.setData({
-          voiceRecording: false,
-          voiceRecordingTimer: null,
-          isShowRecordView: false,
-          isRecording: false,
-          time_counter: 0
-        })
-      }
-
-    })
+        },
+        completeCallback:function(){
+            that.setData({
+                time_counter: 0,
+                isShowRecordView: false,
+                buttonName: '开始录音',
+            })
+        },
+    });
 
  
   },
 
-  /**
-   * 是否需要反馈变化
-   */
-  onChange:function (e) {
-    this.setData({
-      "feedBackChecked": !this.data.feedBackChecked
-    })
-  },
 
   /**
    * 用户点击选择图片按钮
    */
   chooseImage: function (e) {
 
-    console.log("chooseImage222");
-
     var that = this;
-    wxChooseImage()
-    .then(function(res){
-      console.log("wxChooseImage suc");
-      console.log(res);
 
-      //数量限制
-      // var tmpList = that.data.selectedImgsTmp.concat(res.tempFilePaths);
-      // if (tmpList.length > 5) {
-      //   wx.showToast({
-      //     title: '最多5图片',
-      //   })
-      //   return
-      // };
-      that.setData({
-        loading:true
-      })
-
-      res.tempFilePaths.forEach(function (tempFilePath){
-        uploadImage(tempFilePath)
-        .then(function(res){
-          console.log(res);
-          console.log(res.data.url);
-
-          //追加图片，先看看之前有多少
-          var newAlist = that.data.alist.concat("");
-          var newAlistUrl = that.data.alistUrl.concat(res.data.url);
-          var newAlistType = that.data.alistType.concat('img');
-          var newAlistTempUrl = that.data.alistTempUrl.concat(tempFilePath);
-
-          that.setData({
-            alist: newAlist,
-            alistUrl: newAlistUrl,
-            alistType: newAlistType,
-            alistTempUrl: newAlistTempUrl,
-            loading: false,
-          })
-        },function(err){
-            console.log(err);
+    miniUploadImage({
+      loadingCallback:function(){
+        that.setData({
+          loading:true
         })
-      })
+      },
+      sucCallback:function(res){
 
-      
+        //追加图片，先看看之前有多少
+        var newAlist = that.data.alist.concat("");
+        var newAlistUrl = that.data.alistUrl.concat(res.data.url);
+        var newAlistType = that.data.alistType.concat('img');
+        var newAlistTempUrl = that.data.alistTempUrl.concat(tempFilePath);
 
-    },function(err){
-      console.log("wxChooseImage fail");
-      console.log(err);
+        that.setData({
+          alist: newAlist,
+          alistUrl: newAlistUrl,
+          alistType: newAlistType,
+          alistTempUrl: newAlistTempUrl,
+          loading: false,
+        })
+
+      },
+      failCallback:function(){
+        that.setData({
+          loading:false
+        })
+      }
     })
-    
+
   },
 
 
@@ -226,33 +131,16 @@ Page({
    */
   chooseVedio: function (e) {
 
-    console.log("chooseVedio");
-
     var that = this;
-    wxChooseVedio()
-    .then(function (res) {
 
-      console.log(res.tempFilePath);
-      var tempFilePath = res.tempFilePath;
+    miniUploadVedio({
+      loadingCallback:function(){
+        that.setData({
+          loading:true
+        })
+      },
+      sucCallback:function(res){
 
-      //数量限制
-      // var tmpList = that.data.selectedVideosTmp.concat(tempFilePath);
-      // if (tmpList.length > 5) {
-      //   wx.showToast({
-      //     title: '最多5个视频',
-      //   })
-      //   return
-      // };
-      that.setData({
-        loading: true
-      })
-
-      
-      uploadFile(tempFilePath)
-        .then(function (res) {
-
-          console.log(res);
-          console.log("upload suc callback");
           //追加视频，先看看之前有多少
           var newAlist = that.data.alist.concat("");
           var newAlistUrl = that.data.alistUrl.concat(res.data.url);
@@ -267,19 +155,14 @@ Page({
             loading: false,
           })
 
-
-        }, function (err) {
-          console.log(err);
-          that.setData({
-            loading: false
-          })
+      },
+      failCallback:function(){
+        that.setData({
+          loading:false
         })
-      
-    }, function (err) {
-      console.log("wxChooseVedio fail");
-      console.log(err);
+      }
     })
-   
+
   },
 
   /**
@@ -299,7 +182,6 @@ Page({
   closeRecordView: function (e) {
     console.log(e)
 
-
     this.setData({
       "isShowRecordView":false,
       "isRecording":false,
@@ -313,41 +195,9 @@ Page({
    * 开始录音
    */
   startRecord: function () {
-
-    if(this.data.isRecording){
-      console.log("startRecord");
-    }else{
-      console.log("stopRecord");
-    }
-    console.log(voiceManager);
-
-    if (this.data.isRecording){
-      voiceManager.stopRecord()
-      clearInterval(this.data.voiceRecordingTimer)
-      this.setData({
-        "buttonName": '开始录音',
-        "isRecording": false,
-        "time_counter": 0,
-      })
-    }else{
-      voiceManager.startRecord()
-      this.setData({
-        "buttonName": '暂停录音',
-      })
-    }
+      this.data.miniRecordManager && this.data.miniRecordManager.startRecord()
   },
 
-
-  /**
-   * 结束录音
-   */
-  // endRecord: function () {
-
-  //   console.log("endRecord");
-
-  //   voiceManager.stopRecord()
-
-  // },
 
   /**
   * 开始播放
@@ -369,7 +219,7 @@ Page({
 
       audioStatusPlay = 1;
       console.log(url);
-      voiceManager.startPlay(url)
+      //voiceManager.startPlay(url)
       this.setData({
         aimage:'../../../image/stop.png'
 
@@ -382,13 +232,24 @@ Page({
   */
     stopPlay: function () {
       console.log('stop play');
-      voiceManager.stopPlay();
+      //voiceManager.stopPlay();
       audioStatusPlay = 0;
       this.setData({
         aimage: '../../../image/play.png'
 
       })
     },
+
+
+  
+  /**
+   * 是否需要反馈变化
+   */
+  onChange:function (e) {
+    this.setData({
+      "feedBackChecked": !this.data.feedBackChecked
+    })
+  },
 
   /**
    * 发布通知
@@ -522,10 +383,6 @@ Page({
 
     var index = e.currentTarget.dataset.id;
   
-    // var bindex = 'alist['+e.currentTarget.dataset.id+"]";
-    // this.setData({
-    //     [bindex]: 'none'
-    // })
     //清空数组
     this.data.alist.splice(index,1);
     var newAlist = this.data.alist;

@@ -86,9 +86,6 @@ Page({
 
         let member = that.data.member;
 
-        console.log(member)
-        
-
         let delIndex = member.findIndex((element, index, array) => {
           console.log(element)
           console.log(changeUid)
@@ -100,12 +97,7 @@ Page({
           }
         });
 
-        console.log(delIndex)
-
         member.splice(delIndex,1);
-
-        console.log('after del')
-        console.log(member)
 
         that.setData({
           member:member

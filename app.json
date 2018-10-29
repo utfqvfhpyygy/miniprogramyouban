@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+    "pages/inform/create/index", 
     "pages/guide/index",
     "pages/class/member/index",
     "pages/class/index/index",
@@ -11,7 +11,7 @@
     "pages/homework/detail/index",
     "pages/homework/create/index",
     "pages/index/index",
-    "pages/inform/create/index",
+
     "pages/class/courseList/index",
     "pages/msg/msg",
     "pages/inform/detail/index",
