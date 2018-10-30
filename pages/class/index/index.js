@@ -1,6 +1,7 @@
 import { onShareAppMessage } from '../../../utils/util'
 
 const app = getApp()
+var classId = 0;
 
 Page({
 
@@ -41,6 +42,7 @@ Page({
             "informList": res.data.informList,
             "homeworkList": res.data.homeworkList,
           })
+          classId = res.data.classId;
         },
         errBack: function (msg) {
           console.log('fail111')
@@ -73,7 +75,7 @@ Page({
 
   gotoInform:function(e){
     wx.navigateTo({
-      url: '../../inform/create/index'
+      url: '../../inform/create/index?id='+classId,
     })
   },
 
@@ -91,7 +93,7 @@ Page({
 
   gotoWork:function(e){
     wx.navigateTo({
-      url: '../../homework/create/index'
+      url: '../../homework/create/index?id='+classId,
     })   
   },
 

@@ -71,6 +71,10 @@ Page({
 
   initGoPage: function (userInfo){
 
+    console.log('initGoPage');
+    console.log(userInfo);
+    console.log(app.globalData);
+
     //如果之前有设置身份，则跳转到对应页面
     if (userInfo.type > 0) {
         this.switchGotoPage(app.globalData.shareType,app.globalData.shareId);

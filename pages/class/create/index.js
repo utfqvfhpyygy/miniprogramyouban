@@ -6,9 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //buttonType: ['default', 'default', 'default', 'default', 'default', 'default', 'default', 'default', 'default'],
-    //buttonName: ['幼小班', '幼中班', '幼大班', '一年级', '二年级', '三年级', '四年级', '五年级', '六年级'],
-    //buttonId:[-3,-2,-1,1,2,3,4,5,6],
     showmore:6,
     moreButton:false,
   },

@@ -193,6 +193,8 @@ class miniRecordManager {
             clearInterval(this.timer)
             this.isRecording = false;
         }else{
+            console.log('start record')
+            console.log(voiceManager)
             voiceManager.startRecord()
             this.isRecording = true;
         }

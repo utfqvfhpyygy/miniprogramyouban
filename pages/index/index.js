@@ -70,7 +70,7 @@ Page({
 
   //事件处理函数
   gotoCreateClass: function() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../class/create/index'
     })
   }
