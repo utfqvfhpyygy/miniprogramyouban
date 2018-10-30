@@ -126,7 +126,7 @@ function doLogin(callback, obj) {
                     }
                     data[codeToSession.codeName] = res.code;
 
-                    console.error('update openid start');
+                    console.log('update openid start');
                     obj.count++;
                     requestWrapper({
                         url: codeToSession.url,
@@ -139,27 +139,24 @@ function doLogin(callback, obj) {
                             session = data.openId;
                             sessionIsFresh = true;
 
-                            console.error('update openid suc');
-                            console.error(session);
+                            console.log('update openid suc');
+                            console.log(session);
 
                             // 如果有设置本地session过期时间
                             if(sessionExpireTime) {
                                 sessionExpire = new Date().getTime() + sessionExpireTime;
-                                wx.setStorage({
-                                    key: sessionExpireKey,
-                                    data: sessionExpire
-                                })
+
+                                try {
+                                    wx.setStorageSync(sessionExpireKey, sessionExpire);
+                                  } catch (e) { }
                             }
                             typeof callback === "function" && callback();
-                            wx.setStorage({
-                                key: sessionName,
-                                data: session
-                            })
 
-                            wx.setStorage({
-                              key: 'userInfo',
-                              data: data
-                            })
+                            try {
+                                wx.setStorageSync(sessionName, session);
+                                wx.setStorageSync('userInfo', data);
+                              } catch (e) { }
+
                         },
                         complete: function () {
                             obj.count--;

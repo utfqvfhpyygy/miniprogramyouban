@@ -128,7 +128,7 @@ Page({
     console.log('inform detail onShareAppMessage');
 
     let title = `班级助手`;;
-    let path = '/pages/inform/detail/index?id='+informid;
+    let path = '/pages/guide/index?type=inform&id='+informid;
     let shareCallBack = () => {
         console.log('share call back suc')
     };

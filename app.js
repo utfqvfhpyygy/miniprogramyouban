@@ -16,7 +16,12 @@ App({
       }
     })
 
-    
+    //如果是从分享页面进入，则保存分享值
+    if(res){
+        this.globalData.shareType = res.type ? res.type : '';
+        this.globalData.shareId = res.id ? res.id : 0;
+        this.globalData.shareRose = res.rose ? res.rose : '';
+    }
 
     weRequest.login(function(){
       console.log(111);
@@ -39,6 +44,9 @@ App({
     host: 'https://www.91youban.com/',
     origin: 'https://www.91youban.com/index.php?r=miniprogram/', 
     platform: '2',
+    shareType: '',
+    shareId: 0,
+    shareRose: '',
     userInfo: null, // 当前登录的用户信息
     wxUserInfo: null // 当前微信用户信息（需要授权获取）
   },
