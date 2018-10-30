@@ -29,7 +29,6 @@ Page({
       },
       type: 'get',
       sucBack: function (res) {
-        console.log('suc111')
         console.log(res)
         that.setData({
            "gradeList": res.data.gradeList,
@@ -102,7 +101,6 @@ Page({
       },
       type: 'get',
       sucBack: function (res) {
-        console.log('suc111')
         console.log(res)
 
         wx.showModal({

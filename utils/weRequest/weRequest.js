@@ -126,6 +126,7 @@ function doLogin(callback, obj) {
                     }
                     data[codeToSession.codeName] = res.code;
 
+                    console.error('update openid start');
                     obj.count++;
                     requestWrapper({
                         url: codeToSession.url,
@@ -134,8 +135,13 @@ function doLogin(callback, obj) {
                         isLogin: true,
                         report: codeToSession.report || codeToSession.url,
                         success: function (data) {
+
                             session = data.openId;
                             sessionIsFresh = true;
+
+                            console.error('update openid suc');
+                            console.error(session);
+
                             // 如果有设置本地session过期时间
                             if(sessionExpireTime) {
                                 sessionExpire = new Date().getTime() + sessionExpireTime;
@@ -164,6 +170,7 @@ function doLogin(callback, obj) {
                         fail: codeToSession.fail || null
                     });
                 } else {
+                    console.error('wx login fail code');
                     fail(obj, res);
                     console.error(res);
                     // 登录失败，解除锁，防止死锁
@@ -173,6 +180,7 @@ function doLogin(callback, obj) {
             },
             fail: function (res) {
                 fail(obj, res);
+                console.error('wx login fail backcall');
                 console.error(res);
                 // 登录失败，解除锁，防止死锁
                 logining = false;

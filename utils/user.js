@@ -10,6 +10,11 @@ export function updateUserInfo(callback){
           const openid = app.getOpenid();
           if(!openid){
               console.log('openid null')
+
+              weRequest.login(function(){
+                console.log('openid null so to login suc');
+              })
+
               return;
           }
 

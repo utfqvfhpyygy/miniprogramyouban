@@ -99,8 +99,6 @@ App({
    */
   requestData: function (option) {
 
-    console.log(option.url)
-    
     var requestBody = {
       url: option.url,
       data: option.params,

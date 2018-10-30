@@ -1,4 +1,6 @@
 import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
+import { onShareAppMessage } from '../../../utils/util'
+
 const app = getApp()
 var informid = 0
 
@@ -19,7 +21,9 @@ Page({
    */
   onLoad: function (options) {
 
-    console.log('onLoad')
+    console.log('inform detail options');
+    console.log(options);
+
     informid = options.id;    
     //id = 52;
     var that = this;
@@ -34,7 +38,6 @@ Page({
       },
       type: 'get',
       sucBack: function (res) {
-        console.log('suc111')
         var atype = that.data.atype;
         var aurl  = that.data.aurl;
         if( res.data.images.length > 0){
@@ -122,6 +125,15 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    console.log('inform detail onShareAppMessage');
+
+    let title = `班级助手`;;
+    let path = '/pages/inform/detail/index?id='+informid;
+    let shareCallBack = () => {
+        console.log('share call back suc')
+    };
+    //此处调用封装好的分享代码
+    return onShareAppMessage(title, path, shareCallBack);
 
   },
 
@@ -180,7 +192,6 @@ Page({
       },
       type: 'get',
       sucBack: function (res) {
-        console.log('suc111')
         console.log(res)
         var datalist = that.data.replyList.concat(res.data)
         that.setData({

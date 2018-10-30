@@ -35,7 +35,6 @@ Page({
       },
       type: 'get',
       sucBack: function (res) {
-        console.log('suc111')
         console.log(res)
         var atype = that.data.atype;
         var aurl = that.data.aurl;
@@ -188,7 +187,6 @@ Page({
       },
       type: 'get',
       sucBack: function (res) {
-        console.log('suc111')
         console.log(res)
         var datalist = that.data.replyList.concat(res.data)
         that.setData({
