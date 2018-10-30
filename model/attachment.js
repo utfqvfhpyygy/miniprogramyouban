@@ -90,6 +90,7 @@ function miniUploadVedio(param){
 
 }
 
+
 class miniRecordManager {
 
     isRecording = false;
@@ -113,7 +114,7 @@ class miniRecordManager {
 
                     if (this.isRecording) {
                         this.timeCounter = this.timeCounter + 1;
-                        console.log(this.timeTotal)
+                        console.log(this.timeCounter)
         
                         //执行counter callback
                         param.counterCallback && param.counterCallback(this.timeCounter);
@@ -196,6 +197,21 @@ class miniRecordManager {
             this.isRecording = true;
         }
     }
+
+    startPlay(url,callback) {
+
+      voiceManager.startPlay(url)
+      callback && callback();
+
+    }
+
+    stopPlay(callback) {
+
+      voiceManager.stopPlay()
+      callback && callback();
+
+    }
+
 
 }
 

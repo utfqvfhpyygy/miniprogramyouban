@@ -1,5 +1,4 @@
 import {miniUploadImage,miniUploadVedio,miniRecordManager} from '../../../model/attachment.js'
-//var voiceManager = require('../../../utils/voiceManager');
 
 const app = getApp()
 
@@ -213,14 +212,16 @@ Page({
         console.log('stop audio')
         return ;
       }
-
-      audioStatusPlay = 1;
+      
       console.log(url);
-      //voiceManager.startPlay(url)
-      this.setData({
-        aimage:'../../../image/stop.png'
-
+      
+      this.data.miniRecordManager.startPlay(url,() => {
+          audioStatusPlay = 1;
+          this.setData({
+            aimage: '../../../image/stop.png'
+          })
       })
+
   },
 
 
@@ -229,12 +230,14 @@ Page({
   */
     stopPlay: function () {
       console.log('stop play');
-      //voiceManager.stopPlay();
-      audioStatusPlay = 0;
-      this.setData({
-        aimage: '../../../image/play.png'
 
+      this.data.miniRecordManager.stopPlay(() => {
+          audioStatusPlay = 0;
+          this.setData({
+            aimage: '../../../image/play.png'
+          })
       })
+
     },
 
 
