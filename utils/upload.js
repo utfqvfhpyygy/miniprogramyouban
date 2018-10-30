@@ -31,6 +31,7 @@ export function uploadImage(tempFilePath){
   console.log('uploadImage');
   console.log(tempFilePath);
 
+  var uid = app.getUid();
   return new Promise((resolve, reject) => {
     
     wx.uploadFile({
@@ -38,7 +39,7 @@ export function uploadImage(tempFilePath){
       filePath: tempFilePath,
       name: 'pic',
       formData: {
-        uid: 10000
+        deviceUid: uid
       },
       success(respond) {
 
@@ -96,13 +97,14 @@ export function uploadFile(tempFilePath){
   console.log('uploadFile');
   console.log(tempFilePath);
 
+  var uid = app.getUid();
   return new Promise((resolve, reject) => {
     wx.uploadFile({
       url: app.globalData.origin + 'upload/informFile',
       filePath: tempFilePath,
       name: 'file',
       formData: {
-        uid: 10000
+        deviceUid: uid
       },
       success(respond) {
 

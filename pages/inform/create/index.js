@@ -3,6 +3,7 @@ import {miniUploadImage,miniUploadVedio,miniRecordManager} from '../../../model/
 const app = getApp()
 
 var audioStatusPlay = 0;
+var classId = 0;
 
 Page({
 
@@ -39,6 +40,7 @@ Page({
   onLoad: function (options) {
     
     const that = this
+    classId = options.id;
 
     this.data.miniRecordManager = new miniRecordManager({
         startCallback:function(){
@@ -281,11 +283,13 @@ Page({
     console.log(this.data.alistTempUrl);
 
     var that = this;
+    var uid = app.getUid();
+
     app.requestData({
       url: app.globalData.origin + 'inform/add',
       params: {
-        uid: '10000',
-        classId: 123,
+        deviceUid: uid,
+        classId: classId,
         content: title,
         content: content,
         feedbackType:this.data.feedBackChecked,

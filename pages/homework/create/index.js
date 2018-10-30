@@ -3,6 +3,7 @@ import {miniUploadImage,miniUploadVedio,miniRecordManager} from '../../../model/
 const app = getApp()
 
 var audioStatusPlay = 0;
+var classId = 0;
 
 Page({
 
@@ -51,6 +52,7 @@ Page({
     console.log('onLoad')
     const that = this
     var uid = app.getUid();
+    classId = options.id;
 
     app.requestData({
       url: app.globalData.origin + 'homework/configList',
@@ -328,10 +330,12 @@ Page({
 
     console.log(this.data.date);
 
+    var uid = app.getUid();
+
     app.requestData({
       url: app.globalData.origin + 'homework/add',
       params: {
-        uid: '10000',
+        deviceUid: uid,
         classId: classId,
         courseNameId:coureId,
         feedbackId:feedId,
