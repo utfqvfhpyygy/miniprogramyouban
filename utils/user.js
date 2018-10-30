@@ -9,13 +9,13 @@ export function updateUserInfo(callback){
         success: (res) => {
 
           //console.log(res.userInfo)
-          const openid = app.getOpenid();
+          var openid = app.getOpenid();
           if(!openid){
               console.log('openid null')
 
               weRequest.login(function(){
                 console.log('openid null so to login suc');
-                const openid = app.getOpenid();
+                openid = app.getOpenid();
                 userLogin(openid,res,callback);
               })
 

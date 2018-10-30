@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/inform/create/index", 
     "pages/guide/index",
+    "pages/inform/create/index", 
+    
     "pages/class/memberjoin/index",
     "pages/class/member/index",
     "pages/class/index/index",
