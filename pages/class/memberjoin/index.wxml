@@ -1,22 +1,24 @@
-<view class="class-member-join-index">
+<view class="class-create-container">
 
     <form bindsubmit="bindFormSubmit">
         <view class="title">请填写您的具体信息</view>
 
         <cell-block title="填写学生名称"></cell-block>
-        <view class="">
+        <view class="nameCell commoncell">
             <input name="title" placeholder='姓名'></input> 
         </view>
 
         <cell-block title="选择您的身份"></cell-block>
-        <view class="normalCell">
-            <span></span>
-            <span></span>
+        <view class="roleCell commoncell">
+            <span>我是父亲</span>
+            <span class="chooseIcon"><icon size='10' type='success_no_circle'></icon></span>
         </view>
-        <view class="normalCell">
-            <span></span>
-            <span></span>
+        <view class='line'></view>
+        <view class="roleCell commoncell">
+            <span>我是母亲</span>
+            <span class="chooseIcon"><icon size='10' type='success_no_circle'></icon></span>
         </view>
+        <view class='line'></view>
 
         <view class="buttonview">
           <button size="normal" form-type="submit" type="primary">确认</button>
