@@ -6,12 +6,17 @@
 
 <view class="ipiclist">
 
-  <image  mode="{{item.mode}}" src="../../../image/play.png" bindtap='clickaudio' data-src='{{aurl[index]}}'>
-    </image>
-
-
-  <image  mode="{{item.mode}}" src="../../../image/play.png" bindtap='clickaudio' data-src='{{aurl[index]}}'>
-    </image>
+  <block wx:for="{{alist}}" wx:key="{{alist}}">
+      <block wx:if="{{alistType[index] == 'video'}}">
+          <video mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></video>
+      </block>
+      <block wx:if="{{alistType[index] == 'img'}}">
+          <image mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></image>
+      </block>
+      <block wx:if="{{alistType[index] == 'audio'}}">
+          <image mode="aspectFit" src="{{aimage}}" bindtap='startPlay' data-src='{{alistTempUrl[index]}}'></image>
+      </block>
+  </block>  
 
 </view>
 
@@ -19,8 +24,19 @@
 
 
 <view class="ipiclist">
-  <image  mode="{{item.mode}}" src="../../../image/play.png" bindtap='clickaudio' data-src='{{aurl[index]}}'>
-    </image>
+
+  <block wx:for="{{alist}}" wx:key="{{alist}}">
+      <block wx:if="{{alistType[index] == 'video'}}">
+          <video mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></video>
+      </block>
+      <block wx:if="{{alistType[index] == 'img'}}">
+          <image mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></image>
+      </block>
+      <block wx:if="{{alistType[index] == 'audio'}}">
+          <image mode="aspectFit" src="{{aimage}}" bindtap='startPlay' data-src='{{alistTempUrl[index]}}'></image>
+      </block>
+  </block>  
+  
 </view>
 
 <view class='submit'><button type="primary">确认提交</button></view>
