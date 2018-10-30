@@ -70,7 +70,7 @@ Page({
     }
 
     wx.navigateTo({
-      url: '../member/index?classId=' + classId,
+      url: '../member/index?id=' + classId,
     })
 
   },

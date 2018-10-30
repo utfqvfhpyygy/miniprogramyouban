@@ -1,5 +1,6 @@
 // pages/class/member/index.js
 const app = getApp()
+var classId = 0;
 
 Page({
 
@@ -20,7 +21,7 @@ Page({
 
     var uid = app.getUid();
     var that = this;
-    var classId = 3;
+    var classId = options.id;
 
     app.requestData({
       url: app.globalData.origin + 'class/member',

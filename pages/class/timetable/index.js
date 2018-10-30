@@ -1,5 +1,5 @@
 const app = getApp()
-
+var classId = 0;
 
 Page({
 
@@ -19,7 +19,7 @@ Page({
 
     var uid = app.getUid();
     var that = this;
-    var classId = 3;
+    classId = options.id;
 
     app.requestData({
       url: app.globalData.origin + 'class/timetableList',
