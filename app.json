@@ -1,11 +1,15 @@
 {
   "pages": [
+    "pages/class/teacherjoin/index",
+    "pages/class/index/index",
     "pages/guide/index",
+    "pages/class/memberjoin/index",
+ 
     "pages/inform/create/index", 
     
-    "pages/class/memberjoin/index",
+    
     "pages/class/member/index",
-    "pages/class/index/index",
+ 
     "pages/homework/feedback/feedback",
     "pages/class/timetable/index",
     "pages/class/myclass/index",

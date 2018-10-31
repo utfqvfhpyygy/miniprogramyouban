@@ -1,6 +1,4 @@
-import {config} from '../../../config';
-
-const app = getApp()
+// pages/class/teacherjoin/index.js
 var classId = 0;
 
 Page({
@@ -9,56 +7,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    roleFather:config.roleTypeFather,
-    roleMother:config.roleTypeMother,
-    roleType:config.roleTypeFather,
-  },
-
-  /**
-   * 选择角色
-   */
-  changeRoleType:function(e){
-      let roleType = e.currentTarget.dataset.roletype;
-      this.setData({
-        roleType:roleType
-      })
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-      console.log(options);
-      classId = options.id;
-  },
-
-  /**
-   * 提交 
-   */
-  bindFormSubmit: function(e){
-    console.log('submit');
-    console.log(e)
-
-    var username = e.detail.value.username;
-    if (username <= 0) {
-      wx.showToast({
-        icon: 'none',
-        title: '姓名不能为空'
-      })
-      return
-    }
+  confirmJoin: function(e){
 
     var that = this;
     var uid = app.getUid();
     app.requestData({
-      url: app.globalData.origin + 'class/addMember',
+      url: app.globalData.origin + 'class/addTeacher',
       params: {
         deviceUid: uid,
-        changeUid: uid,
         classId: classId,
-        username: username,
-        roleType: that.data.roleType,
       },
       type: 'get',
       sucBack(res) {
@@ -83,6 +43,14 @@ Page({
         })
       }
     })
+
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+      console.log(options);
+      classId = options.id;
   },
 
   /**

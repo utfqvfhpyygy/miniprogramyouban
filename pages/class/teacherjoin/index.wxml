@@ -1,0 +1,6 @@
+<view class="teacher-join-index">
+
+    <text></text>
+    <van-button plain type="primary" size="mini" bindtap='confirmJoin'></van-button>
+    
+</view>

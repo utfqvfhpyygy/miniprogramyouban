@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+      "cell-block": "../../../components/cell-block/index",
+      "van-button": "/miniprogram_npm/vant-weapp/button/index"
+    },
+    "navigationBarTitleText": "加入班级"
+  }

@@ -10,7 +10,8 @@ Page({
    */
   data: {
       informList:[],
-      homeworkList:[]
+      homeworkList:[],
+      needRefresh:false,
   },
 
   /**
@@ -20,7 +21,7 @@ Page({
 
       console.log('onLoad')
       var that = this;
-      var uid = app.getUid();
+      
       var userInfo = app.getLoginUserInfo();
 
       if(userInfo){
@@ -29,30 +30,38 @@ Page({
         })
       }
 
+      //加载列表
+      this.loadData();
 
-      app.requestData({
-        url: app.globalData.origin + 'class/index',
-        params: {
-          deviceUid: uid,
-          platform: app.globalData.platform
-        },
-        type: 'get',
-        sucBack: function (res) {
-          that.setData({
-            "informList": res.data.informList,
-            "homeworkList": res.data.homeworkList,
-          })
-          classId = res.data.classId;
-        },
-        errBack: function (msg) {
-          console.log('fail111')
-          wx.showModal({
-            title: '提示',
-            content: msg,
-            showCancel: false
-          })
-        }
-      })
+  },
+
+  loadData: function(){
+
+    var uid = app.getUid();
+
+    app.requestData({
+      url: app.globalData.origin + 'class/index',
+      params: {
+        deviceUid: uid,
+        platform: app.globalData.platform
+      },
+      type: 'get',
+      sucBack: function (res) {
+        that.setData({
+          "informList": res.data.informList,
+          "homeworkList": res.data.homeworkList,
+        })
+        classId = res.data.classId;
+      },
+      errBack: function (msg) {
+        console.log('fail111')
+        wx.showModal({
+          title: '提示',
+          content: msg,
+          showCancel: false
+        })
+      }
+    })
   },
 
   gotoInformDetail: function(e){
@@ -115,6 +124,10 @@ Page({
    */
   onShow: function () {
 
+    if(this.data.needRefresh){
+        this.data.needRefresh = false;
+        this.loadData();
+    }
   },
 
   /**
