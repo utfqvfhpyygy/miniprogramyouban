@@ -44,12 +44,15 @@ Page({
     var uid = app.getUid();
 
     var that = this;
+    var formid = e.detail.value.formid;
+
     app.requestData({
       url: app.globalData.origin + 'setting/updateUserInfo',
       params: {
         deviceUid: uid,
         username: username,
         mobile: mobile,
+        formid:formid,
       },
       type: 'get',
       sucBack(res) {

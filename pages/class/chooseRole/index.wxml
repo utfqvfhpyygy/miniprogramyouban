@@ -7,5 +7,5 @@
 
     <view bind:tap="gotoChooseRole">
          <van-button></van-button>
-    </view
+    </view>
 </view>

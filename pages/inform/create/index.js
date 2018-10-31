@@ -292,6 +292,7 @@ Page({
 
     var that = this;
     var uid = app.getUid();
+    var formid = e.detail.value.formid;
 
     app.requestData({
       url: app.globalData.origin + 'inform/add',
@@ -300,6 +301,7 @@ Page({
         classId: classId,
         content: title,
         content: content,
+        formid: formid,
         feedbackType:this.data.feedBackChecked,
         alistUrl: JSON.stringify(this.data.alistUrl),
       },

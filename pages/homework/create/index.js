@@ -339,6 +339,7 @@ Page({
     console.log(this.data.date);
 
     var uid = app.getUid();
+    var formid = e.detail.value.formid;
 
     app.requestData({
       url: app.globalData.origin + 'homework/add',
@@ -347,6 +348,7 @@ Page({
         classId: classId,
         courseNameId:coureId,
         feedbackId:feedId,
+        formid:formid,
         deadline: this.data.date,
         content: content,
         feedbackType: this.data.feedBackChecked,

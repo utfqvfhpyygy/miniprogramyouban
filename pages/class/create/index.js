@@ -88,12 +88,15 @@ Page({
       return
     }
 
+    var formid = e.detail.value.formid;
+
     app.requestData({
       url: app.globalData.origin + 'class/add',
       params: {
         deviceUid: app.getUid(),
         gradeId: gradeId,
         name:name,
+        formid:formid,
         platform: app.globalData.platform
       },
       type: 'get',

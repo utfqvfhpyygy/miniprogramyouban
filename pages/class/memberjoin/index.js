@@ -51,6 +51,8 @@ Page({
 
     var that = this;
     var uid = app.getUid();
+    var formid = e.detail.value.formid;
+
     app.requestData({
       url: app.globalData.origin + 'class/addMember',
       params: {
@@ -58,6 +60,7 @@ Page({
         changeUid: uid,
         classId: classId,
         username: username,
+        formid: formid,
         roleType: that.data.roleType,
       },
       type: 'get',
