@@ -261,11 +261,8 @@ Page({
 
     var title = e.detail.value.title;
     if (title <= 0) {
-      wx.showToast({
-        icon: 'none',
-        title: '标题不能为空'
-      })
-      return
+      var myDate = new Date();
+      title = myDate.getYear() + "-" + myDate.getMonth + "-" + myDate.getDate()+"通知";
     }
 
     var content = e.detail.value.textarea;
@@ -290,7 +287,7 @@ Page({
       params: {
         deviceUid: uid,
         classId: classId,
-        content: title,
+        title: title,
         content: content,
         feedbackType:this.data.feedBackChecked,
         alistUrl: JSON.stringify(this.data.alistUrl),
