@@ -1,10 +1,24 @@
 // pages/class/memberjoin/index.js
+const app = getApp()
+var classId = 0;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    roleType:1
+  },
+
+  /**
+   * 选择角色
+   */
+  changeRoleType:function(e){
+      let roleType = e.currentTarget.dataset.roletype;
+      this.setData({
+        roleType:roleType
+      })
 
   },
 
@@ -12,7 +26,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      console.log(options);
+      classId = options.id;
   },
 
   /**
@@ -20,6 +35,7 @@ Page({
    */
   bindFormSubmit: function(e){
     console.log('submit');
+    console.log(e)
 
     var username = e.detail.value.username;
     if (username <= 0) {
@@ -32,23 +48,21 @@ Page({
 
     var that = this;
     var uid = app.getUid();
-
     app.requestData({
-      url: app.globalData.origin + 'member/join',
+      url: app.globalData.origin + 'class/addMember',
       params: {
         deviceUid: uid,
-        classId: 123,
-        content: title,
-        content: content,
-        feedbackType:this.data.feedBackChecked,
-        alistUrl: JSON.stringify(this.data.alistUrl),
+        changeUid: uid,
+        classId: classId,
+        username: username,
+        roleType: that.data.roleType,
       },
       type: 'get',
       sucBack(res) {
         console.log(res)
         if (res.code === 0) {
           wx.redirectTo({
-            url: '../detail/index?id='+res.data['id'],
+            url: '../index/index?id='+classId,
           })
         }
 

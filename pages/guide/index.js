@@ -25,6 +25,11 @@ Page({
     console.log('guide options');
     console.log(options);
 
+    if(options.type && options.id){
+       app.globalData.shareId = options.id;
+       app.globalData.shareType = options.type;
+    }
+
     this.checkUserInfo(options);
   },
 
@@ -99,9 +104,16 @@ Page({
     } else {
 
       //家长首次进来，跳转到填写信息页面
-      wx.redirectTo({
-        url: '../index/index'
-      })
+      if(app.globalData.shareId > 0){
+        wx.redirectTo({
+          url: '../class/memberjoin/index?id='+app.globalData.shareId
+        })
+      }else{
+        //TODO
+        wx.redirectTo({
+          url: '../class/index/index',
+        })
+      }
 
     }
 

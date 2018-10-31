@@ -5,18 +5,18 @@
 
         <cell-block title="填写学生名称"></cell-block>
         <view class="nameCell commoncell">
-            <input name="title" placeholder='姓名'></input> 
+            <input name="username" placeholder='姓名'></input> 
         </view>
 
         <cell-block title="选择您的身份"></cell-block>
-        <view class="roleCell commoncell">
+        <view class="roleCell commoncell" bindtap="changeRoleType" data-roleType="1">
             <span>我是父亲</span>
-            <span class="chooseIcon"><icon size='10' type='success_no_circle'></icon></span>
+            <span class="chooseIcon" wx:if="{{roleType == 1}}"><icon size='10' type='success_no_circle'></icon></span>
         </view>
         <view class='line'></view>
-        <view class="roleCell commoncell">
+        <view class="roleCell commoncell" bindtap="changeRoleType" data-roleType="2">
             <span>我是母亲</span>
-            <span class="chooseIcon"><icon size='10' type='success_no_circle'></icon></span>
+            <span class="chooseIcon" wx:if="{{roleType == 2}}"><icon size='10' type='success_no_circle'></icon></span>
         </view>
         <view class='line'></view>
 
