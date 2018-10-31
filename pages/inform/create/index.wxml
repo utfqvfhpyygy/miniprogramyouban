@@ -1,6 +1,6 @@
 <view class='class-create-container'>
 
-  <form bindsubmit="bindFormSubmit">
+  <form bindsubmit="bindFormSubmit" report-submit='true'>
   <cell-block title="通知标题"></cell-block>
   <view class="title">
     <input name="title" placeholder='选填，可不填'></input> 

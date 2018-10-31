@@ -1,5 +1,5 @@
 <view class='class-create-container'>
-<form bindsubmit="bindFormSubmit">
+<form bindsubmit="bindFormSubmit" report-submit='true'>
     <cell-block title="选择年级">
       <van-row gutter="20" custom-class="rows">
       <block wx:for="{{gradeList}}" wx:for-index="idx" wx:key="buttonId" wx:for-item="item">

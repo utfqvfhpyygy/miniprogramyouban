@@ -1,6 +1,6 @@
 <view class='class-create-container'>
 
-  <form bindsubmit="bindFormSubmit">
+  <form bindsubmit="bindFormSubmit" report-submit='true'>
 
   <view class="section">
   <picker bindchange="bindCourseNamePickerChange" value="{{coureIndex}}" range="{{coureNameList}}" range-key="name">

@@ -1,6 +1,6 @@
 <view class='class-setting-index-container'> 
 
-  <form bindsubmit="bindFormSubmit">
+  <form bindsubmit="bindFormSubmit" report-submit='true'>
   <view class='line'></view>
   <view class="avatar">
     <span>我的头像</span>

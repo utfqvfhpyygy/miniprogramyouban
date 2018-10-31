@@ -1,6 +1,6 @@
 <view class="class-create-container">
 
-    <form bindsubmit="bindFormSubmit">
+    <form bindsubmit="bindFormSubmit" report-submit='true'>
         <view class="title">请填写您的具体信息</view>
 
         <cell-block title="填写学生名称"></cell-block>

@@ -1,0 +1,21 @@
+<view class="search-class-index">
+
+    <view class="tips"></view>
+    <view class="search">
+        <input></input>
+        <van-button></van-button>
+    </view>
+
+    <view class="result">
+    
+        <view class="list">
+            <view class="item">
+                <text class="name"></text>
+                <van-button></van-button>
+            </view>
+            <view  class="line"></view>
+        </view>
+
+    </view>
+
+</view>

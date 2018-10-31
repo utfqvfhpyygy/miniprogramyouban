@@ -4,7 +4,8 @@
     "pages/class/index/index",
     "pages/guide/index",
     "pages/class/memberjoin/index",
- 
+    "pages/class/chooseRole/index",
+    "pages/class/searchclass/index",
     "pages/inform/create/index", 
     
     
