@@ -111,7 +111,7 @@ Page({
       }else{
         //TODO
         wx.redirectTo({
-          url: '../class/index/index',
+          url: '../class/create/index'
         })
       }
 
