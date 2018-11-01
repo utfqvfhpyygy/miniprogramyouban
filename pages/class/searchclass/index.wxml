@@ -1,15 +1,16 @@
 <view class="search-class-index">
 
+    <form bindsubmit="bindFormSubmit" report-submit='true'>
     <view class="tips"></view>
     <view class="search">
-        <input></input>
+        <input name="name"></input>
         <van-button></van-button>
     </view>
 
     <view class="result">
     
         <view class="list">
-            <view class="item">
+            <view class="item" wx:for="{{classList}}" wx:key="item" wx:for-index="">
                 <text class="name"></text>
                 <van-button></van-button>
             </view>
@@ -17,5 +18,6 @@
         </view>
 
     </view>
+    </form>
 
 </view>

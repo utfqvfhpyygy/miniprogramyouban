@@ -7,10 +7,60 @@ Page({
    * 页面的初始数据
    */
   data: {
+    selectIndex:0,
+  },
+
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+      console.log(options);
+      classId = options.id;
+      var userTypeId = this.data.userType[this.data.selectIndex].id;
+
+      var uid = app.getUid();
+      var that = this;
+  
+      app.requestData({
+        url: app.globalData.origin + 'class/getClass',
+        params: {
+          deviceUid: uid,
+          classId: classId,
+          userTypeId: userTypeId,
+          platform: app.globalData.platform
+        },
+        type: 'get',
+        sucBack: function (res) {
+          console.log(res);
+  
+          that.setData({
+            "class": res.data.class,
+            "userType": res.data.userType,
+          })
+        },
+        errBack: function (msg) {
+          console.log('fail111')
+          wx.showModal({
+            title: '提示',
+            content: msg,
+            showCancel: false
+          })
+        }
+      })
 
   },
 
+  bindPickerChange: function (e) {
+    console.log('picker bindPickerChange发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      selectIndex: e.detail.value
+    })
+  },
+
   confirmJoin: function(e){
+
+    var username = e.detail.value.username;
 
     var that = this;
     var uid = app.getUid();
@@ -18,6 +68,7 @@ Page({
       url: app.globalData.origin + 'class/addTeacher',
       params: {
         deviceUid: uid,
+        username: username,
         classId: classId,
       },
       type: 'get',
@@ -44,13 +95,6 @@ Page({
       }
     })
 
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-      console.log(options);
-      classId = options.id;
   },
 
   /**

@@ -1,1 +1,15 @@
-/* pages/class/teacherjoin/index.wxss */
+.teacher-join-index{
+    font-size: 15px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+}
+
+.btn{
+    margin-top: 30px;
+}

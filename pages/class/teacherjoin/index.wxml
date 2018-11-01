@@ -1,6 +1,22 @@
 <view class="teacher-join-index">
-
-    <text></text>
-    <van-button plain type="primary" size="mini" bindtap='confirmJoin'></van-button>
+<form bindsubmit="bindFormSubmit" report-submit='true'>
+    <view class="title"><text>你要加入的班级是{{}}?</text></view>
+    <view class='line'></view>
     
+    <view class="section">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{userType}}" range-key="name">
+        <view class="picker">
+        <view class="section__title">请选择角色： </view>  <view class="right">{{userType[index].name}}</view>
+        </view>
+    </picker>
+    </view>
+    <view class='line'></view>
+
+    <view class="username">
+        <input name="username" value="" placeholder="请输入你的名字"/>
+    </view>
+    <view class='line'></view>
+
+    <view class="btn"><van-button plain type="primary" size="small" bindtap='confirmJoin'>确认加入</van-button></view>
+</form>    
 </view>
