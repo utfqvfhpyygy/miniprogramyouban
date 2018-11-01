@@ -38,6 +38,7 @@ Page({
   loadData: function(){
 
     var uid = app.getUid();
+    var that = this;
 
     app.requestData({
       url: app.globalData.origin + 'class/index',

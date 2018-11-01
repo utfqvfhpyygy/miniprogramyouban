@@ -1,15 +1,37 @@
 .teacher-join-index{
     font-size: 15px;
-    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    height: 400px;
 }
 
-.title{
+.section{
+  padding-top: 20px;
+}
+
+.section__title{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
+.gray{
+  color: gray;
+  padding-left: 20px;
+}
+
+.username{
+  padding-top: 20px;
 }
 
 .btn{
-    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  
 }
+

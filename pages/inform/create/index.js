@@ -312,9 +312,8 @@ Page({
 
           //设置状态，发布完回到班级首页，班级首页要刷新才能看到最新发布的作业
           var pages = getCurrentPages();
-          var prePage = pages[pages.lengh - 2];
-          console.log(prevPage);
-          prevPage.setData({  
+          var prePage = pages[pages.length - 2];
+          prePage.setData({  
             needRefresh: true,
           })
 

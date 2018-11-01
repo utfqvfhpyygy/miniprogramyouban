@@ -1,5 +1,6 @@
 // pages/class/teacherjoin/index.js
 var classId = 0;
+var app = getApp();
 
 Page({
 
@@ -8,6 +9,7 @@ Page({
    */
   data: {
     selectIndex:0,
+    selectRole:''
   },
 
 
@@ -17,7 +19,6 @@ Page({
   onLoad: function (options) {
       console.log(options);
       classId = options.id;
-      var userTypeId = this.data.userType[this.data.selectIndex].id;
 
       var uid = app.getUid();
       var that = this;
@@ -27,7 +28,6 @@ Page({
         params: {
           deviceUid: uid,
           classId: classId,
-          userTypeId: userTypeId,
           platform: app.globalData.platform
         },
         type: 'get',
@@ -37,6 +37,7 @@ Page({
           that.setData({
             "class": res.data.class,
             "userType": res.data.userType,
+            "selectRole": res.data.userType[0].name
           })
         },
         errBack: function (msg) {
@@ -53,21 +54,30 @@ Page({
 
   bindPickerChange: function (e) {
     console.log('picker bindPickerChange发送选择改变，携带值为', e.detail.value)
+    var selectIndex = e.detail.value;
+    var selectRole = this.data.userType[selectIndex].name;
+
     this.setData({
-      selectIndex: e.detail.value
+      selectIndex: selectIndex,
+      selectRole, selectRole
     })
   },
 
-  confirmJoin: function(e){
+  bindFormSubmit: function(e){
+
+    console.log(e)
 
     var username = e.detail.value.username;
 
     var that = this;
     var uid = app.getUid();
+    var userTypeId = this.data.userType[this.data.selectIndex].id;
+
     app.requestData({
       url: app.globalData.origin + 'class/addTeacher',
       params: {
         deviceUid: uid,
+        userTypeId: userTypeId,
         username: username,
         classId: classId,
       },
