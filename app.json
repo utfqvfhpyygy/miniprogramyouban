@@ -9,7 +9,6 @@
     "pages/homework/create/index",
     "pages/inform/create/index",
     "pages/class/create/index",
-    "pages/guide/index",
     "pages/class/memberjoin/index",
     "pages/class/member/index",
     "pages/homework/feedback/feedback",
