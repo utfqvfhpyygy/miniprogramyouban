@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/class/searchclass/index",
+    "pages/class/chooseRole/index",
     "pages/class/index/index",
     "pages/class/teacherjoin/index",
     "pages/homework/create/index",
@@ -11,8 +13,8 @@
     
     "pages/guide/index",
     "pages/class/memberjoin/index",
-    "pages/class/chooseRole/index",
-    "pages/class/searchclass/index",
+    
+    
     
     
     

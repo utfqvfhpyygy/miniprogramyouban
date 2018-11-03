@@ -109,9 +109,9 @@ Page({
           url: '../class/memberjoin/index?id='+app.globalData.shareId
         })
       }else{
-        //TODO
+        //如果不是分享进来，则进入选择班级
         wx.redirectTo({
-          url: '../class/create/index'
+          url: '../class/searchclass/index'
         })
       }
 

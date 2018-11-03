@@ -1,4 +1,8 @@
 // pages/class/searchclass/index.js
+import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
+
+const app = getApp()
+
 Page({
 
   /**
@@ -28,7 +32,7 @@ Page({
     }
 
     var formid = e.detail.value.formid;
-
+    var that = this;
     app.requestData({
       url: app.globalData.origin + 'class/search',
       params: {
@@ -55,6 +59,29 @@ Page({
         })
       }
     }) 
+  },
+
+  clickJoin: function (e) {
+
+    console.log(e)
+    var id = e.currentTarget.dataset.id;
+    
+    wx.redirectTo({
+      url: '../memberjoin/index?id='+id
+    })
+
+    // Dialog.confirm({
+    //   title: '标题',
+    //   message: '弹窗内容'
+    // }).then(() => {
+    //   console.log(111) 
+    // }).catch(() => {
+    //   console.log(22)
+    // });
+
+
+
+      
   },
 
   /**

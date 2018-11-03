@@ -1,1 +1,42 @@
-/* pages/class/searchclass/index.wxss */
+.search-class-index{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 15px; 
+
+}
+
+.tips{
+  padding-left: 20px;
+  height: 30px;
+}
+.search{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  padding-top: 10px;
+}
+
+.name{
+  padding-left: 20px;
+}
+.searchBtn{
+  padding-right: 20px;
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.item{
+  display: flex;
+  height: 30px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}

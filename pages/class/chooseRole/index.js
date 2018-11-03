@@ -9,13 +9,13 @@ Page({
 
   gotoCreateClass: function(){
     wx.redirectTo({
-      url: '../class/create/index'
+      url: '../create/index'
     })
   },
 
   gotoJoinClass: function(){
     wx.redirectTo({
-      url: '../class/create/index'
+      url: '../searchclass/index'
     })
   },
 

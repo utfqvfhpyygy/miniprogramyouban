@@ -1,1 +1,12 @@
-/* pages/class/chooseRole/index.wxss */
+.choose-role-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  font-size: 15px;
+}
+
+.role{
+  padding-top: 20px;
+}

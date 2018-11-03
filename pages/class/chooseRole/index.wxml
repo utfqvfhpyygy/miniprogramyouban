@@ -1,11 +1,11 @@
-<view class="choose-role">
+<view class="choose-role-container">
 
-    <view ><text></text></view>
-    <view bind:tap="gotoCreateClass">
-         <van-button></van-button>
+    <view class='tips'><text>请选择你的角色</text></view>
+    <view class="role" bind:tap="gotoCreateClass">
+         <van-button plain type="primary" size="small">我是老师</van-button>
     </view>
 
-    <view bind:tap="gotoChooseRole">
-         <van-button></van-button>
+    <view class="role" bind:tap="gotoJoinClass">
+         <van-button plain type="primary" size="small">我是家长</van-button>
     </view>
 </view>
