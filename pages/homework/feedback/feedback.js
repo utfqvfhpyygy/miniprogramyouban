@@ -3,6 +3,7 @@ import {miniUploadImage,miniUploadVedio,miniRecordManager} from '../../../model/
 const app = getApp()
 
 var audioStatusPlay = 0;
+var homeworkId = 0;
 
 Page({
 
@@ -34,6 +35,7 @@ Page({
   onLoad: function (options) {
         
     const that = this
+    homeworkId = options.id ?  options.id : 12
 
     this.data.miniRecordManager = new miniRecordManager({
         startCallback:function(){
@@ -45,6 +47,11 @@ Page({
             that.setData({
                 time_counter: counter
             })
+        },
+        loadingCallback: function () {
+          that.setData({
+            loading: true
+          })
         },
         stopCallback: function (url, tempFilePath){
 
@@ -115,6 +122,16 @@ Page({
 
   },
 
+  //图片预览
+  clickimg: function (e) {
+
+    var currents = e.target.dataset.src;
+    console.log(currents);
+    wx.previewImage({
+      current: currents,
+      urls: [currents],
+    })
+  },
 
   /**
    * 用户点击选择视频按钮
@@ -234,6 +251,69 @@ Page({
 
     },
 
+
+
+
+  /**
+   * 提交作业
+   */
+  bindFormSubmit: function (e) {
+    console.log('submit');
+
+    var content = e.detail.value.textarea;
+
+    console.log(this.data.alist);
+    console.log(this.data.alistUrl);
+    console.log(this.data.alistType);
+    console.log(this.data.alistTempUrl);
+
+    var that = this;
+    var uid = app.getUid();
+    var formid = e.detail.value.formid;
+
+    app.requestData({
+      url: app.globalData.origin + 'homework/feedback',
+      params: {
+        deviceUid: uid,
+        homeworkId: homeworkId,
+        content: content,
+        formid: formid,
+        alistUrl: JSON.stringify(this.data.alistUrl),
+      },
+      type: 'get',
+      sucBack(res) {
+        console.log(res)
+        if (res.code === 0) {
+
+          //设置状态，发布完回到班级首页，班级首页要刷新才能看到最新发布的作业
+          var pages = getCurrentPages();
+          var prePage = pages[pages.length - 2];
+          prePage.setData({
+            needRefresh: true,
+          })
+
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+
+        wx.showToast({
+          icon: 'none',
+          title: res.msg
+        })
+
+      },
+      errBack(err) {
+        wx.showModal({
+          title: '请求失败',
+          content: err,
+          showCancel: false
+        })
+      }
+    })
+  },
+
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

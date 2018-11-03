@@ -33,11 +33,6 @@
 <view class="timer">{{item['time']}}</view>
 </view>
 
-
-<view class="iuserpic2">
-<i class="iconfont icon-qiandao1 mytianjia" bindtap="onClickConfirm"></i>
-
-</view>
 </cell-block>
 
 
@@ -66,3 +61,9 @@
 </view>
 -->
 <van-dialog id="van-dialog" />
+<view class='feedback' bindtap='feedbackBtn'>
+  <van-button size="large" type="primary">
+    <block wx:if="{{feedStatus == 0}}">我知道了</block>
+    <block wx:if="{{feedStatus == 1}}">上传作业</block>
+  </van-button>
+</view>

@@ -132,3 +132,9 @@
   vertical-align:middle;
   margin-right: 5px;
 }
+
+.feedback{
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+}

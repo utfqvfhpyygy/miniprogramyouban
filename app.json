@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/homework/detail/index",
+    "pages/homework/feedback/feedback",
   	"pages/guide/index",
     "pages/class/searchclass/index",
     "pages/class/chooseRole/index",
@@ -11,11 +13,11 @@
     "pages/class/create/index",
     "pages/class/memberjoin/index",
     "pages/class/member/index",
-    "pages/homework/feedback/feedback",
+    
     "pages/class/timetable/index",
     "pages/class/myclass/index",
     "pages/logs/logs",
-    "pages/homework/detail/index",
+    
     "pages/index/index",
     "pages/class/courseList/index",
     "pages/msg/msg",

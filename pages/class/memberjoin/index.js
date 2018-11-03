@@ -57,7 +57,6 @@ Page({
       url: app.globalData.origin + 'class/addMember',
       params: {
         deviceUid: uid,
-        changeUid: uid,
         classId: classId,
         username: username,
         formid: formid,
