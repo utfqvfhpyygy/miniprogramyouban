@@ -74,6 +74,7 @@ Page({
           "replyList": res.data.confirmLists,
           "aurl": aurl,
           "atype": atype,
+          "feedStatus": res.data.feedStatus,
         })
       },
       errBack: function (msg) {
