@@ -1,7 +1,7 @@
 <view class="search-class-index">
 
   <form bindsubmit="bindFormSubmit" report-submit='true'>
-    <view class="tips">请输入你要加入的班级名称</view>
+    <cell-block title="请输入你要加入的班级名称"></cell-block>
     <view class='line'></view>
     <view class="search">
         <span class="name"><input name="name" placeholder='班级名称'></input></span>
@@ -11,7 +11,8 @@
   </form>
 
 
-  <view class="list">
+  <view class="list" wx:if="{{classList.length > 0}}">
+      <cell-block title="请选择要加入的班级"></cell-block>
       <block wx:for="{{classList}}" wx:key="item" wx:for-item="item">
       <view class="item">
           <view>{{item.name}}</view>
