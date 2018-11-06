@@ -26,11 +26,57 @@
 
 <view class="line"></view>
 
-<cell-block title="回复情况 {{detail.item.confirmNum}}/{{detail.item.memberNum}}" custom-class="ireply">
+<cell-block title="x位家长确认收到作业" custom-class="ireply">
 
 <view class="iuserpic" wx:for="{{replyList}}"  wx:for-item="item" wx:key="item">
 <image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
 <view class="timer">{{item['time']}}</view>
+</view>
+
+</cell-block>
+
+
+<view class="line"></view>
+
+<cell-block title="X位家长未反馈" custom-class="ireply">
+
+<view class="iuserpic" wx:for="{{replyList}}"  wx:for-item="item" wx:key="item">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
+<view class="timer">{{item['time']}}</view>
+</view>
+
+</cell-block>
+
+<view class="line"></view>
+
+<cell-block title="X位家长已反馈" custom-class="ireply">
+
+<view class="iuserpic" wx:for="{{replyList}}"  wx:for-item="item" wx:key="item">
+<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
+<view class="timer">{{item['time']}}</view>
+</view>
+
+</cell-block>
+
+
+<view class="line"></view>
+
+<cell-block title="反馈情况" custom-class="ireply">
+
+<view class="miniline"></view>
+<view class="feedbackItem">
+  <view class='userinfo'>
+    <view class='uavatar'><image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image></view>
+    <view class='unametime'>
+        <view class='uusername'>2222</view>
+        <view class='utime'>2018-01-02</view>
+    </view>
+  </view>
+  <view class='imagelist'>
+    <view class='imageItem' wx:for="{{replyList}}"  wx:for-item="item" wx:key="item">
+      <image style="width: 70px; height: 70px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
+    </view>
+  </view>
 </view>
 
 </cell-block>
