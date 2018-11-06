@@ -61,25 +61,42 @@
 
 <view class="line"></view>
 
-<cell-block title="反馈情况" custom-class="ireply">
+<cell-block title="反馈情况" custom-class="ireply"></cell-block>
 
 <view class="miniline"></view>
+
+<block wx:for="{{feedbacklist}}" wx:for-item="item" wx:key="feedbackIndex">
 <view class="feedbackItem">
   <view class='userinfo'>
     <view class='uavatar'><image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image></view>
     <view class='unametime'>
-        <view class='uusername'>2222</view>
-        <view class='utime'>2018-01-02</view>
+        <view class='uusername'>{{item.uusername}}</view>
+        <view class='utime'>{{item.time}}</view>
     </view>
   </view>
-  <view class='imagelist'>
-    <view class='imageItem' wx:for="{{replyList}}"  wx:for-item="item" wx:key="item">
-      <image style="width: 70px; height: 70px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
+  <!--反馈图片列表-->
+  <view class='imagelist' wx:if="{{item.images}}">
+    <view class='imageItem' wx:for="{{item.images}}"  wx:for-item="image" wx:key="imageIndex">
+      <image style="width: 70px; height: 70px; background-color: #eeeeee;" mode="{{image.mode}}" src="{{image}}"></image>
     </view>
   </view>
-</view>
+  <!--反馈音频列表-->
+  <view class='imagelist' wx:if="{{item.voices}}">
+    <view class='imageItem' wx:for="{{item.voices}}"  wx:for-item="voice" wx:key="voiceIndex">
+      <image style="width: 70px; height: 70px; background-color: #eeeeee;" mode="{{image.mode}}" src="{{voice}}"></image>
+    </view>
+  </view>
+  <!--反馈视频列表-->
+  <view class='imagelist' wx:if="{{item.videos}}">
+    <view class='imageItem' wx:for="{{item.videos}}"  wx:for-item="video" wx:key="videoIndex">
+      <image style="width: 70px; height: 70px; background-color: #eeeeee;" mode="{{image.mode}}" src="{{video}}"></image>
+    </view>
+  </view>
 
-</cell-block>
+</view>
+</block>
+
+
 
 
 <!--
