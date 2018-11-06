@@ -1,4 +1,3 @@
-// pages/class/searchclass/index.js
 import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
 
 const app = getApp()

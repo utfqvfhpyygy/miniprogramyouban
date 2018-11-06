@@ -1,4 +1,3 @@
-// pages/class/teacherjoin/index.js
 var classId = 0;
 var app = getApp();
 
