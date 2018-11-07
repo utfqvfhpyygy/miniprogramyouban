@@ -146,6 +146,7 @@
 .feedbackItem{
   display: flex;
   flex-direction: column;
+  padding-left: 10px;
 }
 
 .userinfo{
@@ -174,4 +175,15 @@
 
 .imageItem{
   padding-right: 10px;
+}
+
+.voicelist{
+  display: flex;
+  flex-direction: column;
+}
+
+.voiceItem{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5px;
 }

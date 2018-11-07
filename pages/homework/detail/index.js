@@ -9,12 +9,13 @@ Page({
    */
   data: {
     detail: '',
-    replyList: '',
+    confirmList: '',
+    feedbacklist: '',
     atype: [],
     aurl: [],
     contentCss:'.idetail',
     moreButton:false,
-    feedStatus:0,
+    feedStatus:2,
     needRefresh:false,
   },
 
@@ -71,7 +72,8 @@ Page({
 
         that.setData({
           "detail": res.data,
-          "replyList": res.data.confirmLists,
+          "confirmList": res.data.confirmLists,
+          "feedbacklist": res.data.feedbacklist,
           "aurl": aurl,
           "atype": atype,
           "feedStatus": res.data.feedStatus,
@@ -201,9 +203,9 @@ Page({
       type: 'get',
       sucBack: function (res) {
         console.log(res)
-        var datalist = that.data.replyList.concat(res.data)
+        var datalist = that.data.confirmList.concat(res.data)
         that.setData({
-          "replyList": datalist,
+          "confirmList": datalist,
           "feedStatus": 1,
         })
       },
