@@ -53,9 +53,9 @@
     <button loading="{{loading}}"  size='mini' type='default' hidden='{{!loading}}'></button>
   </view>
 
+  <view class='line'></view>
 
-
-  <view>
+  <view class="section2">
       <van-switch-cell
       title="是否需要确认"
       checked="{{ feedBackChecked }}"

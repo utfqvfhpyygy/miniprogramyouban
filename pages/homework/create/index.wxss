@@ -1,9 +1,11 @@
-.inputcss{
+.views textarea{
   background-color: #fff;
   width: 90%;
   font-size: 14px;
   margin-top: 5px;
   height: 195px;
+  z-index: 0;
+  position: absolute;
 }
 
 .title{
@@ -45,6 +47,9 @@
   margin-left: 10px;
   font-size: 35px;
   margin-top: 10px;
+  z-index: 99;
+  position: absolute;
+  display: block;
 }
 .attach i{
   margin-right: 5px;
@@ -139,6 +144,10 @@
   padding-top: 10px;
   background-color: #fff; 
   padding-bottom: 10px;
+}
+
+.section2{
+  margin-top:50px;
 }
 
 .right{
