@@ -142,6 +142,9 @@ class miniRecordManager {
     
                 var tempFilePath = res.tempFilePath;
     
+                //执行loading callback
+                param.loadingCallback && param.loadingCallback();
+
                 //上传
                 uploadFile(tempFilePath)
                 .then(function (res) {

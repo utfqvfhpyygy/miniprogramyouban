@@ -9,11 +9,14 @@ Page({
    */
   data: {
     detail: '',
-    replyList: '',
+    confirmList: '',
+    feedbacklist: '',
     atype: [],
     aurl: [],
     contentCss:'.idetail',
-    moreButton:false
+    moreButton:false,
+    feedStatus:2,
+    needRefresh:false,
   },
 
   /**
@@ -22,7 +25,13 @@ Page({
   onLoad: function (options) {
 
     console.log('onLoad')
-    id = options.id ? options.id : 10;
+    id = options.id ? options.id : 12;
+    this.loadData()
+  },
+
+
+  loadData(){
+
     var that = this;
     var uid = app.getUid();
 
@@ -36,6 +45,8 @@ Page({
       type: 'get',
       sucBack: function (res) {
         console.log(res)
+        that.data.needRefresh = false;
+
         var atype = that.data.atype;
         var aurl = that.data.aurl;
         if (res.data.images.length > 0) {
@@ -61,9 +72,11 @@ Page({
 
         that.setData({
           "detail": res.data,
-          "replyList": res.data.confirmLists,
+          "confirmList": res.data.confirmLists,
+          "feedbacklist": res.data.feedbacklist,
           "aurl": aurl,
           "atype": atype,
+          "feedStatus": res.data.feedStatus,
         })
       },
       errBack: function (msg) {
@@ -75,8 +88,8 @@ Page({
         })
       }
     })
-  },
 
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -89,6 +102,9 @@ Page({
    */
   onShow: function () {
 
+      if(this.data.needRefresh){
+          this.loadData()
+      }
   },
 
   /**
@@ -126,20 +142,7 @@ Page({
 
   },
 
-  onClickConfirm: function (e) {
 
-    var aa = Dialog.confirm({
-      title: '重要提示',
-      message: '我已经阅读完通知内容22'
-    }).then(() => {
-      // on confirm
-      this.confirm(id);
-    }).catch(() => {
-      // on cancel
-    });
-
-    console.log(aa)
-  },
 
   clickimg: function (e) {
     var currents = e.target.dataset.src;
@@ -171,9 +174,21 @@ Page({
     })
   },
 
-  confirm: function (id) {
+  feedbackBtn:function(e){
+    console.log(e)
+
+    if(this.data.feedStatus == 0){
+      this.confirm()
+    } else if (this.data.feedStatus == 1){
+      wx.navigateTo({
+        url: '../feedback/feedback?id='+id,
+      })
+    }
+
+  },
+
+  confirm: function () {
     console.log('confirm')
-    console.log(id)
 
     var that = this;
     var uid = app.getUid();
@@ -188,9 +203,10 @@ Page({
       type: 'get',
       sucBack: function (res) {
         console.log(res)
-        var datalist = that.data.replyList.concat(res.data)
+        var datalist = that.data.confirmList.concat(res.data)
         that.setData({
-          "replyList": datalist,
+          "confirmList": datalist,
+          "feedStatus": 1,
         })
       },
       errBack: function (msg) {

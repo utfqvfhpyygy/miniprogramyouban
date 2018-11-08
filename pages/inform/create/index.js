@@ -53,6 +53,11 @@ Page({
                 time_counter: counter
             })
         },
+        loadingCallback:function(){
+          that.setData({
+            loading:true
+          })
+        },
         stopCallback: function (url, tempFilePath){
 
             //追加音频，先看看之前有多少
@@ -66,10 +71,13 @@ Page({
                 alistUrl: newAlistUrl,
                 alistType: newAlistType,
                 alistTempUrl: newAlistTempUrl,
+                loading:false,
             })
         },
         errorCallback:function(){
-
+            that.setData({
+              loading:false
+            })
         },
         completeCallback:function(){
             that.setData({
@@ -281,6 +289,7 @@ Page({
 
     var that = this;
     var uid = app.getUid();
+    var formid = e.detail.value.formid;
 
     app.requestData({
       url: app.globalData.origin + 'inform/add',
@@ -289,6 +298,7 @@ Page({
         classId: classId,
         title: title,
         content: content,
+        formid: formid,
         feedbackType:this.data.feedBackChecked,
         alistUrl: JSON.stringify(this.data.alistUrl),
       },
@@ -296,6 +306,14 @@ Page({
       sucBack(res) {
         console.log(res)
         if (res.code === 0) {
+
+          //设置状态，发布完回到班级首页，班级首页要刷新才能看到最新发布的作业
+          var pages = getCurrentPages();
+          var prePage = pages[pages.length - 2];
+          prePage.setData({  
+            needRefresh: true,
+          })
+
           wx.redirectTo({
             url: '../detail/index?id='+res.data['id'],
           })

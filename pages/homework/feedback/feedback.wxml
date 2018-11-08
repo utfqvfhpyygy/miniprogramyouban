@@ -1,42 +1,54 @@
-<!--pages/homework/feedback/feedback.wxml-->
-<view>上传作业附件:</view>
+<view class='class-create-container'>
 
-<view class='upload'><button>点击上传附件</button></view>
-
-
-<view class="ipiclist">
-
-  <block wx:for="{{alist}}" wx:key="{{alist}}">
-      <block wx:if="{{alistType[index] == 'video'}}">
-          <video mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></video>
-      </block>
-      <block wx:if="{{alistType[index] == 'img'}}">
-          <image mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></image>
-      </block>
-      <block wx:if="{{alistType[index] == 'audio'}}">
-          <image mode="aspectFit" src="{{aimage}}" bindtap='startPlay' data-src='{{alistTempUrl[index]}}'></image>
-      </block>
-  </block>  
-
-</view>
-
-<view class='upload'><button>点击录制音频</button></view>
-
-
-<view class="ipiclist">
-
-  <block wx:for="{{alist}}" wx:key="{{alist}}">
-      <block wx:if="{{alistType[index] == 'video'}}">
-          <video mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></video>
-      </block>
-      <block wx:if="{{alistType[index] == 'img'}}">
-          <image mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></image>
-      </block>
-      <block wx:if="{{alistType[index] == 'audio'}}">
-          <image mode="aspectFit" src="{{aimage}}" bindtap='startPlay' data-src='{{alistTempUrl[index]}}'></image>
-      </block>
-  </block>  
+  <form bindsubmit="bindFormSubmit" report-submit='true'>
+  <cell-block title="作业内容"></cell-block>
+  <view class="views">
+    <textarea placeholder="" focus="{{focus}}" class="inputcss" fixed  maxlength="500"  name="textarea"/>
+  </view>
+  <view class="line"></view>
   
-</view>
+  <view class="attach">
+    <i class="iconfont icon-camera_fill" bindtap='chooseImage'></i>
+    <i class="iconfont icon-video_fill" bindtap='chooseVedio'></i>
+    <i class="iconfont icon-translation_fill" bindtap='chooseVoice'></i>
+    <i class="iconfont icon-accessory" bindtap='chooseFile'></i>
+  </view>
 
-<view class='submit'><button type="primary">确认提交</button></view>
+  <view class="imagelist2">
+    
+    <block wx:for="{{alist}}" wx:key="{{alist}}">
+      <view class="imagelist" style='display:{{item}};'>
+        <block wx:if="{{alistType[index] == 'video'}}">
+          <video mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></video>
+        </block>
+        <block wx:if="{{alistType[index] == 'img'}}">
+          <image mode="aspectFit" src="{{alistTempUrl[index]}}" bindtap='clickimg' data-src='{{alistTempUrl[index]}}'></image>
+        </block>
+        <block wx:if="{{alistType[index] == 'audio'}}">
+          <image mode="aspectFit" src="{{aimage}}" bindtap='startPlay' data-src='{{alistTempUrl[index]}}'></image>
+        </block>
+        
+        <icon type="cancel" size="15" color="red" class="cancel" bindtap='close' data-id="{{index}}"/>
+      </view>
+    </block>
+    <button loading="{{loading}}"  size='mini' type='default' hidden='{{!loading}}'></button>
+  </view>
+
+
+  <view class="buttonview">
+    <button size="normal" form-type="submit" type="primary">提交</button>
+  </view>
+  </form>
+
+  <van-popup
+    show="{{isShowRecordView}}"
+    overlay="true"
+    position="bottom"
+    custom-class="pop-bottom"
+    bind:close="closeRecordView">
+      
+      <text class="record-time-label">{{time_counter}}s</text>
+      <icon name="play"  size="40px" class="iconfont icon-translation_fill translation_fill"/>
+      <button type='default' size='default' bindtap='startRecord'>{{buttonName}}</button>
+  </van-popup>
+</view>

@@ -1,6 +1,5 @@
-// pages/class/memberjoin/index.js
-const app = getApp()
 var classId = 0;
+var app = getApp();
 
 Page({
 
@@ -8,19 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    roleType:1
+    selectIndex:0,
+    selectRole:''
   },
 
-  /**
-   * 选择角色
-   */
-  changeRoleType:function(e){
-      let roleType = e.currentTarget.dataset.roletype;
-      this.setData({
-        roleType:roleType
-      })
-
-  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -28,34 +18,67 @@ Page({
   onLoad: function (options) {
       console.log(options);
       classId = options.id;
+
+      var uid = app.getUid();
+      var that = this;
+  
+      app.requestData({
+        url: app.globalData.origin + 'class/getClass',
+        params: {
+          deviceUid: uid,
+          classId: classId,
+          platform: app.globalData.platform
+        },
+        type: 'get',
+        sucBack: function (res) {
+          console.log(res);
+  
+          that.setData({
+            "class": res.data.class,
+            "userType": res.data.userType,
+            "selectRole": res.data.userType[0].name
+          })
+        },
+        errBack: function (msg) {
+          console.log('fail111')
+          wx.showModal({
+            title: '提示',
+            content: msg,
+            showCancel: false
+          })
+        }
+      })
+
   },
 
-  /**
-   * 提交 
-   */
+  bindPickerChange: function (e) {
+    console.log('picker bindPickerChange发送选择改变，携带值为', e.detail.value)
+    var selectIndex = e.detail.value;
+    var selectRole = this.data.userType[selectIndex].name;
+
+    this.setData({
+      selectIndex: selectIndex,
+      selectRole, selectRole
+    })
+  },
+
   bindFormSubmit: function(e){
-    console.log('submit');
+
     console.log(e)
 
     var username = e.detail.value.username;
-    if (username <= 0) {
-      wx.showToast({
-        icon: 'none',
-        title: '姓名不能为空'
-      })
-      return
-    }
 
     var that = this;
     var uid = app.getUid();
+    var userTypeId = this.data.userType[this.data.selectIndex].id;
+
     app.requestData({
-      url: app.globalData.origin + 'class/addMember',
+      url: app.globalData.origin + 'class/addTeacher',
       params: {
         deviceUid: uid,
-        changeUid: uid,
-        classId: classId,
+        userTypeId: userTypeId,
         username: username,
-        roleType: that.data.roleType,
+        classId: classId,
       },
       type: 'get',
       sucBack(res) {
@@ -80,6 +103,7 @@ Page({
         })
       }
     })
+
   },
 
   /**

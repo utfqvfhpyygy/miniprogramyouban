@@ -106,12 +106,12 @@ Page({
       //家长首次进来，跳转到填写信息页面
       if(app.globalData.shareId > 0){
         wx.redirectTo({
-          url: '../class/memberjoin/index?id='+app.globalData.shareId
+          url: '../fromshare/memberjoin/index?id='+app.globalData.shareId
         })
       }else{
-        //TODO
+        //如果不是分享进来，则进入选择班级
         wx.redirectTo({
-          url: '../class/create/index'
+          url: '../fromshare/searchclass/index'
         })
       }
 

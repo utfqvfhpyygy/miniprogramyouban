@@ -1,0 +1,109 @@
+/* pages/class/index/index.wxss */
+.header{
+  font-size: 12px;
+}
+.enter{
+  font-size: 20px;
+}
+.pictext{
+    align-items: center;
+    display: flex;  
+}
+.pictext span {
+  margin-left: 5px;
+}
+.tab{
+  height: 70px;
+  font-size: 25px;
+  display:block;
+  text-align:center;
+  margin-top:15px;
+}
+
+.tab view{
+  height: 70px;
+}
+.tab i{
+  font-size: 25px;
+} 
+
+.tab span{
+  font-size: 12px;
+  text-align:center;
+  display:block;
+}
+.title{
+font-weight:bold;
+font-size:14px;
+padding-top:10px;
+margin-left:10px;
+align-items:center;
+display:flex;
+
+}
+.tuchu{
+background-color:#3D9970;
+width:5px;
+height:22px;
+margin-right:5px;
+}
+.tlist{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.ttime{
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.ttime span{
+  font-size: 11px;
+  color: #AAAAAA;
+}
+.confirmnum{
+  border-radius: 5px;
+  background-color: #0074D9;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  font-size: 12px;
+  text-align: center;
+  padding-top: 2px;
+  color: #fff;
+}
+.detail{
+  display: inline-block;
+  font-size: 13px;
+  vertical-align:top;
+  margin-left: 5px;
+}
+.dtitle{
+  align-items: top;
+  display: flex;
+}
+.dcontent{
+  color: #666666;
+  font-size: 12px;
+  margin-top: 5px;
+
+}
+.right{
+  display:block;
+  float:right;
+  margin-right:10px;
+}
+
+.tline{
+  height:10px;
+  display: block;
+}
+.line{
+  height: 4px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.housework{
+  margin-top: 10px;
+}

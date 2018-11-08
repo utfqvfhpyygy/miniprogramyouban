@@ -1,27 +1,38 @@
 {
   "pages": [
+
     "pages/guide/index",
-    "pages/inform/create/index", 
-    
-    "pages/class/memberjoin/index",
-    "pages/class/member/index",
-    "pages/class/index/index",
+
+    "pages/homework/detail/index",
     "pages/homework/feedback/feedback",
+  	
+    "pages/fromshare/searchclass/index",
+    "pages/fromshare/chooseRole/index",
+    "pages/fromshare/teacherjoin/index",
+    "pages/fromshare/memberjoin/index",
+
+    "pages/family/index",
+    "pages/class/index/index",
+    
+    "pages/homework/create/index",
+    "pages/inform/create/index",
+    "pages/class/create/index",
+    
+    "pages/class/member/index",
+    
     "pages/class/timetable/index",
     "pages/class/myclass/index",
     "pages/logs/logs",
-    "pages/homework/detail/index",
-    "pages/homework/create/index",
+    
     "pages/index/index",
-
     "pages/class/courseList/index",
     "pages/msg/msg",
     "pages/inform/detail/index",
     "pages/setting/index/index",
-    "pages/class/create/index",
     "pages/class/grade/index",
     "pages/playav/playav",
     "pages/more/more"
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "#f8f8f8",

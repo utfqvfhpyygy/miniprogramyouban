@@ -84,7 +84,11 @@
   height: 4px;
   margin-top: 3px;
 }
-
+.miniline{
+  height: 1px;
+  background: rgb(237, 243, 230);
+  clear: both;
+}
 .enter{
   float: right;
   margin-right: 10px;
@@ -131,4 +135,55 @@
   margin-top:5px;
   vertical-align:middle;
   margin-right: 5px;
+}
+
+.feedback{
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+}
+
+.feedbackItem{
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.userinfo{
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  align-items: center;
+}
+
+.unametime{
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  justify-content:center;
+}
+.uusername{
+  font-size: 13px;
+}
+.utime{
+  font-size: 10px;
+}
+.imagelist{
+  display: flex;
+  flex-direction: row;
+}
+
+.imageItem{
+  padding-right: 10px;
+}
+
+.voicelist{
+  display: flex;
+  flex-direction: column;
+}
+
+.voiceItem{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5px;
 }

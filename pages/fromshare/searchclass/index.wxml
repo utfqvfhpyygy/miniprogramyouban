@@ -1,0 +1,29 @@
+<view class="search-class-index">
+
+  <form bindsubmit="bindFormSubmit" report-submit='true'>
+    <cell-block title="请输入你要加入的班级名称"></cell-block>
+    <view class='line'></view>
+    <view class="search">
+        <span class="name"><input name="name" placeholder='班级名称'></input></span>
+        <span class="searchBtn"><button size="mini" form-type="submit" type="default">搜索</button></span>
+    </view>
+    <view  class="line"></view>
+  </form>
+
+
+  <view class="list" wx:if="{{classList.length > 0}}">
+      <cell-block title="请选择要加入的班级"></cell-block>
+      <block wx:for="{{classList}}" wx:key="item" wx:for-item="item">
+      <view class="item">
+          <view>{{item.name}}</view>
+          <view bindtap="clickJoin" data-id="{{item.id}}">加入</view>
+      </view>
+        <view  class="line"></view>
+        </block>
+      
+  </view>
+
+
+    
+
+</view>

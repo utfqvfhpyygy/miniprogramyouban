@@ -1,4 +1,5 @@
-// pages/setting/index/index.js
+import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
+
 const app = getApp()
 
 Page({
@@ -7,84 +8,79 @@ Page({
    * 页面的初始数据
    */
   data: {
-      
+      classList:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var userInfo = app.getLoginUserInfo()
-    this.setData({
-      userInfo
-    })
+
+
   },
 
-  /**
-   * 更新设置
-   */
-  bindFormSubmit: function (e) {
-    console.log('submit');
+  bindFormSubmit: function(e) {  
 
-    var username = e.detail.value.username;
-    if (username <= 0) {
+    var name = e.detail.value.name;
+    if (name <= 0) {
       wx.showToast({
         icon: 'none',
-        title: '昵称不能为空'
+        title: '名称不能为空'
       })
       return
     }
 
-    var mobile = e.detail.value.mobile;
-
-
-    console.log(username);
-    console.log(mobile);
-
-    var uid = app.getUid();
-
-    var that = this;
     var formid = e.detail.value.formid;
-
+    var that = this;
     app.requestData({
-      url: app.globalData.origin + 'setting/updateUserInfo',
+      url: app.globalData.origin + 'class/search',
       params: {
-        deviceUid: uid,
-        username: username,
-        mobile: mobile,
+        deviceUid: app.getUid(),
+        name:name,
         formid:formid,
+        platform: app.globalData.platform
       },
       type: 'get',
-      sucBack(res) {
+      sucBack: function (res) {
         console.log(res)
-        if (res.code === 0) {
-          app.globalData.userInfo = res.data;
-          wx.setStorage({
-            key: 'userInfo',
-            data: res.data
-          })
-          that.setData({
-            userInfo:res.data
-          })
 
-          wx.navigateBack({
-            delta: 1
-          })
-        }
-        wx.showToast({
-          icon: 'none',
-          title: res.msg
+        that.setData({
+          classList:res.data.list, 
         })
 
       },
-      errBack(err) {
+      errBack: function (msg) {
+        console.log('fail111')
         wx.showModal({
-          title: '请求失败',
-          content: err,
+          title: '提示',
+          content: msg,
           showCancel: false
         })
       }
+    }) 
+  },
+
+  clickJoin: function (e) {
+
+    console.log(e)
+    var id = e.currentTarget.dataset.id;
+    
+    wx.redirectTo({
+      url: '../memberjoin/index?id='+id
     })
+
+    // Dialog.confirm({
+    //   title: '标题',
+    //   message: '弹窗内容'
+    // }).then(() => {
+    //   console.log(111) 
+    // }).catch(() => {
+    //   console.log(22)
+    // });
+
+
+
+      
   },
 
   /**

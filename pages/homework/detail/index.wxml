@@ -24,21 +24,71 @@
 <!--视频附件-->
 <!--其他附件-->
 
+<view hidden="{{confirmList.length > 0 ? false : true}}">
+  <view class="line"></view>
+
+  <cell-block title="{{confirmList.length}}位家长确认收到作业" custom-class="ireply">
+  <view class="iuserpic" wx:for="{{confirmList}}"  wx:for-item="item" wx:key="item">
+  <image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
+  <view class="timer">{{item['username']}}</view>
+  </view>
+  </cell-block>
+</view>
+
+
+<view hidden="{{feedbacklist.length > 0 ? false : true}}">
+  <view class="line"></view>
+
+  <cell-block title="{{feedbacklist.length}}位家长已反馈" custom-class="ireply">
+
+  <view class="iuserpic" wx:for="{{feedbacklist}}"  wx:for-item="item" wx:key="item">
+  <image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
+  <view class="timer">{{item['username']}}</view>
+  </view>
+
+  </cell-block>
+</view>
+
+
 <view class="line"></view>
 
-<cell-block title="回复情况 {{detail.item.confirmNum}}/{{detail.item.memberNum}}" custom-class="ireply">
+<cell-block title="反馈情况" custom-class="ireply"></cell-block>
 
-<view class="iuserpic" wx:for="{{replyList}}"  wx:for-item="item" wx:key="item">
-<image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image>
-<view class="timer">{{item['time']}}</view>
+
+<block wx:for="{{feedbacklist}}" wx:for-item="item" wx:key="feedbackIndex">
+<view class="miniline"></view>
+
+<view class="feedbackItem">
+  <view class='userinfo'>
+    <view class='uavatar'><image style=" border-radius:15px;width: 30px; height: 30px; background-color: #eeeeee;" mode="{{item.mode}}" src="{{item['avatar']}}"></image></view>
+    <view class='unametime'>
+        <view class='uusername'>{{item.username}}</view>
+        <view class='utime'>{{item.time}}</view>
+    </view>
+  </view>
+  <!--反馈图片列表-->
+  <view class='imagelist' wx:if="{{item.images}}">
+    <view class='imageItem' wx:for="{{item.images}}"  wx:for-item="image" wx:key="imageIndex">
+      <image style="width: 70px; height: 70px; background-color: #eeeeee;" mode="{{image.mode}}" src="{{image}}"></image>
+    </view>
+  </view>
+  <!--反馈音频列表-->
+  <view class='voicelist' wx:if="{{item.voices}}">
+    <view class='voiceItem' wx:for="{{item.voices}}"  wx:for-item="voice" wx:key="voiceIndex">
+      <audio src='{{voice}}' autoplay="false" style='width:100%;' controls="true" name="音频附件" loop author="音频" id="myAudio"> </audio>
+    </view>
+  </view>
+  <!--反馈视频列表-->
+  <view class='imagelist' wx:if="{{item.videos}}">
+    <view class='imageItem' wx:for="{{item.videos}}"  wx:for-item="video" wx:key="videoIndex">
+      <video mode="aspectFit" src="{{video}}"  data-src='{{video}}' style="width: 60px; height: 60px; "></video>
+    </view>
+  </view>
+
 </view>
+</block>
 
 
-<view class="iuserpic2">
-<i class="iconfont icon-qiandao1 mytianjia" bindtap="onClickConfirm"></i>
-
-</view>
-</cell-block>
 
 
 <!--
@@ -66,3 +116,11 @@
 </view>
 -->
 <van-dialog id="van-dialog" />
+
+
+<view class="feedback" bindtap='feedbackBtn' hidden="{{feedStatus != 2 ? false : true}}">
+  <van-button size="large" type="primary">
+    <block wx:if="{{feedStatus == 0}}">我知道了</block>
+    <block wx:if="{{feedStatus == 1}}">上传作业</block>
+  </van-button>
+</view>
